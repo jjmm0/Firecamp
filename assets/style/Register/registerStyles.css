@@ -1,0 +1,21 @@
+.container {
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.stuff {
+  margin: 20px;
+}
+
+label {
+  margin-bottom: 6px;
+}
+
+input {
+  margin-bottom: 6px;
+}
+
+.button {
+  text-align: center;
+}
+/*# sourceMappingURL=registerStyles.css.map */

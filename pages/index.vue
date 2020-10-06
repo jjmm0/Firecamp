@@ -15,5 +15,5 @@ export default {
 </script>
 
 <style scoped>
-    @import '~/assets/style/test.css';
+    @import '~/assets/style/mainsite/style.css';
 </style>

@@ -7,7 +7,7 @@
       
       <div class="accbuttons">
         <div>
-          <nuxt-link to="/loginPage">
+          <nuxt-link to="/createRoom">
             <div class="lbutton">
               <b><a class="buttontext">Client</a></b>
             </div>
@@ -17,7 +17,7 @@
         <div>
           <nuxt-link to="/loginPage">
             <div class="rbutton">
-              <b><a class="buttontext">Login/register as a helper</a></b>
+              <b><a class="buttontext">Helper</a></b>
             </div>
           </nuxt-link>
         </div>

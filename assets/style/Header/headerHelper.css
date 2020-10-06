@@ -1,0 +1,13 @@
+.logo {
+  display: inline-block;
+  padding: 24px;
+  height: 200px;
+  width: 200px;
+}
+
+.buttons {
+  position: absolute;
+  right: 15px;
+  top: 8%;
+}
+/*# sourceMappingURL=headerHelper.css.map */

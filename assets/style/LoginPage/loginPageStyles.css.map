@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,UAAU,EAAE,MAAM;CACrB",
+    "mappings": "AAAA,AAAA,QAAQ,CAAA;EACJ,UAAU,EAAE,MAAM;CACrB",
     "sources": [
         "loginPageStyles.scss"
     ],

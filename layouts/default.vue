@@ -1,10 +1,30 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="box">
+    <div class="box2"><Nuxt /></div>
+
+    <Footer />
+
   </div>
 </template>
 
 <style>
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.box2 {
+  flex: 1;
+}
+
 html {
   font-family:
     'Source Sans Pro',

@@ -1,4 +1,4 @@
-.container{
+.mainsitecontainer{
     text-align: center;
     justify-content: center;
     width: 60%;
@@ -27,6 +27,7 @@
     cursor: pointer;
     height: 100px;
     width: 300px;
+    line-height: 90px;
     text-align: center;
     background-color: green;
 }
@@ -40,6 +41,7 @@
     cursor: pointer;
     height: 100px;
     width: 300px;
+    line-height: 90px;
     text-align: center;
     background-color: green;
 }
@@ -54,7 +56,6 @@
     margin: 0 auto;
     padding: 0;
     display: inline-block;
-    line-height: 90px;
     text-align: center;
     text-decoration: none;
 }

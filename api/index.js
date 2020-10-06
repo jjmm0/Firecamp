@@ -1,3 +1,17 @@
-// const express = require('express')
+require('./db')
+const express = require('express')
+const app = express()
 
-// console.log('server Middleware dziala! es')
+//Import routes
+const userRoutes = require('./routes/users')
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+//Routes
+app.use(userRoutes)
+
+module.exports = {
+    path: '/api',
+    handler: app,
+  }

@@ -15,7 +15,7 @@
 export default {
   data(){
     return{
-      choice: 0
+      choice: 0,
     }
   },
   methods:{

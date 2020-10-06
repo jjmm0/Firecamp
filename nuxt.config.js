@@ -32,11 +32,15 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    '@nuxtjs/axios',
   ],
-  // serverMiddleware: [
-  //   "~/api/index"
-  // ],
-  axios: {},
+
+  axios: {
+    // proxyHeaders: false
+  },
+  serverMiddleware: [
+    "~/api/index"
+  ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

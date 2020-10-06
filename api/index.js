@@ -1,3 +1,3 @@
-const express = require('express')
+// const express = require('express')
 
-console.log('server Middleware dziala! es')
+// console.log('server Middleware dziala! es')

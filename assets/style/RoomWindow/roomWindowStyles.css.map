@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,QAAQ,CAAA;EACJ,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,SAAS;EAC3B,OAAO,EAAE,YAAY;CACxB;;AACD,AAAA,CAAC,CAAA;EACG,MAAM,EAAE,CAAC;EACT,SAAS,EAAE,UAAU;CACxB;;AACD,AAAA,KAAK,CAAA;EACD,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "roomWindowStyles.scss"
+    ],
+    "names": [],
+    "file": "roomWindowStyles.css"
+}

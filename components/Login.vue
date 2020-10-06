@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="stuff">
+  <div class="wrapper">
+    <div class="forms">
       <label for="login">Nazwa użytkownika</label>
       <br>
       <input id="login">

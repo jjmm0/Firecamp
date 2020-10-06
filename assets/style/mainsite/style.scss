@@ -29,7 +29,6 @@
     width: 300px;
     text-align: center;
     background-color: green;
-    margin-left: 15%;
 }
 .lbutton:hover{
     background-color: rgb(78, 214, 78);
@@ -43,7 +42,6 @@
     width: 300px;
     text-align: center;
     background-color: green;
-    margin: 0 15% 0 15%;
 }
 
 .rbutton:hover{
@@ -51,9 +49,17 @@
 }
 
 .buttontext{
+    font-size: 17px;
+    word-wrap: break-word;
     margin: 0 auto;
     padding: 0;
     display: inline-block;
     line-height: 90px;
     text-align: center;
+    text-decoration: none;
+}
+
+.buttontext:visited{
+    text-decoration: none;
+    color: black;
 }

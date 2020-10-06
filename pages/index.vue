@@ -5,10 +5,10 @@
       </div>
       <div class="accbuttons">
         <div class="lbutton">
-          Client
+          <a class="buttontext">Client</a>
         </div>
         <div class="rbutton">
-          Login/register as a helper
+          <a class="buttontext">Login/register as a helper</a>
         </div>
       </div>
   </div>

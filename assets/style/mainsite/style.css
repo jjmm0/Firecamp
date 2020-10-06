@@ -63,4 +63,12 @@
 .rbutton:hover {
   background-color: #3ee93e;
 }
+
+.buttontext {
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+  line-height: 90px;
+  text-align: center;
+}
 /*# sourceMappingURL=style.css.map */

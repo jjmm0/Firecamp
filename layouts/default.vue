@@ -5,6 +5,13 @@
 </template>
 
 <style>
+html,
+body,
+#__nuxt,
+#__layout {
+  height: 100%;
+}
+
 html {
   font-family:
     'Source Sans Pro',

@@ -1,4 +1,4 @@
-.mainsitecontainer{
+.indexcontainer{
     text-align: center;
     justify-content: center;
     width: 60%;
@@ -30,9 +30,11 @@
     line-height: 90px;
     text-align: center;
     background-color: green;
+    color: black;
 }
 .lbutton:hover{
     background-color: rgb(78, 214, 78);
+    color: black;
 }
 
 .rbutton{
@@ -44,10 +46,12 @@
     line-height: 90px;
     text-align: center;
     background-color: green;
+    color: black;
 }
 
 .rbutton:hover{
     background-color: rgb(62, 233, 62);
+    color: black;
 }
 
 .buttontext{

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <HeaderClient />
     <div class="choice">
       <button @click="handleChoice(1)" class="log">Zaloguj się</button>
       <button @click="handleChoice(2)" class="reg">Zarejestruj się</button>

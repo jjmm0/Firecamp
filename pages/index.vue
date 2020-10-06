@@ -13,10 +13,6 @@ export default {
 }
 </script>
 
-<style>
-  .container{
-    height: 800px;
-    width: 100%;
-    background-color: red;
-  }
+<style scoped>
+    @import '~/assets/style/test.css';
 </style>

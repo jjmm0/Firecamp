@@ -9,7 +9,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.12.2",
+    "body-parser": "^1.19.0",
     "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.8",
     "nuxt": "^2.14.6"
   },
   "devDependencies": {}

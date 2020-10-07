@@ -3,8 +3,8 @@
       <HeaderClient />
       <div class="wrapper">
         <div class="choice">
-          <button @click="handleChoice(1)" class="log">Zaloguj się</button>
-          <button @click="handleChoice(2)" class="reg">Zarejestruj się</button>
+          <div @click="handleChoice(1)" class="loginpg log"><span>Zaloguj się</span></div>
+          <div @click="handleChoice(2)" class="loginpg reg"><span>Zarejestruj się</span></div>
         </div>
         <Login v-if="choice == 1" />
         <Register v-if="choice == 2"/>

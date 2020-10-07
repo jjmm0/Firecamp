@@ -43,6 +43,9 @@
   line-height: 90px;
   text-align: center;
   background-color: green;
+}
+
+.lbutton a {
   color: black;
 }
 
@@ -60,12 +63,15 @@
   width: 300px;
   line-height: 90px;
   text-align: center;
-  background-color: green;
+  background-color: rgba(0, 204, 255, 0.89);
+}
+
+.rbutton a {
   color: black;
 }
 
 .rbutton:hover {
-  background-color: #3ee93e;
+  background-color: #0099ff;
   color: black;
 }
 

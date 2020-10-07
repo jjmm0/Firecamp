@@ -31,7 +31,9 @@
     line-height: 90px;
     text-align: center;
     background-color: green;
-    color: black;
+    a{
+        color: black;
+    }
 }
 .lbutton:hover{
     background-color: rgb(78, 214, 78);
@@ -46,12 +48,14 @@
     width: 300px;
     line-height: 90px;
     text-align: center;
-    background-color: green;
-    color: black;
+    background-color: rgba(0, 204, 255, 0.89);
+    a{
+        color: black;
+    }
 }
 
 .rbutton:hover{
-    background-color: rgb(62, 233, 62);
+    background-color: rgb(0, 153, 255);
     color: black;
 }
 

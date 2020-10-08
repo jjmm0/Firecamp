@@ -1,0 +1,53 @@
+$pfpHeight: 200px;
+$infowrapHeight: 50px;
+.wrapper{
+  height: 100%;
+  overflow: hidden;
+}
+.user-pfp{
+  height: 100%;
+  display: inline-block;
+  background-color: blue;
+  img{
+    width: $pfpHeight ;
+    height: $pfpHeight;
+    background-color: red;
+    vertical-align: 0;
+  }
+  
+}
+
+.userInfo{  
+  width: 70%;
+  display: inline-block;
+  height: 30%;
+  border: 2px solid #d88ae7;
+  box-sizing: border-box;
+  // flex-direction: column;
+}
+.info{
+  display: inline;
+}
+.descWrap{
+  height: 100%;
+}
+.infowrap{
+  height: $infowrapHeight;
+}
+.userDesc{
+  box-sizing: border-box;
+  display: block;
+  border: 2px solid black;
+  height: calc(100% - #{$infowrapHeight});
+  
+  
+  input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+}
+.userStats{
+  border: 2px solid green;
+
+}

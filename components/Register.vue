@@ -45,7 +45,8 @@ export default {
         this.error = false
         this.$axios.post('/api/register', {Login, Password}).then((resolve) => {
           if(resolve.status === 200){
-            //przekierowanie
+            let token = resolve.data
+            this.$store.commit('setAuth', token)
             this.$router.push('/roomsPage')
           }
           else{

@@ -31,9 +31,13 @@ export default {
       let Login = this.login.Login
       let Password = this.login.Password
       await this.$axios.post('/api/login', {Login, Password}).then((resolve) => {
-        let token = resolve.data
-        this.$store.commit('setAuth', token)
-        this.$router.push('/roomsPage')
+        if(resolve.status === 201){
+          let token = resolve.data
+          this.$store.commit('setAuth', token)
+          this.$router.push('/roomsPage')
+        } else{
+          alert("cos jest nie tak")
+        }
       })
       // await this.$auth.loginWith('local', { data: this.login }).then(() => {
       //   console.log('koniec')

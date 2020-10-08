@@ -12,6 +12,7 @@
       <label for="confirmPassword">Potwierdź hasło</label>
       <br>
       <input id="confirmPassword" class="form-control" v-model="confirmPassword">
+      {{message}}
       <p v-show="error" class="alertText">Hasła nie są identyczne!</p>
       <br>
       <div class="button">
@@ -27,6 +28,7 @@ export default {
     return{
       Login: "",
       Password: "",
+      message: "",
       confirmPassword: "",
       Email: String,
       error: false
@@ -39,20 +41,15 @@ export default {
       if(confirmPassword !== Password){
         this.error = true;
       }
-
       else{
         this.error = false
         this.$axios.post('/api/register', {Login, Password}).then((resolve) => {
-          if(resolve.status === 200)
-          {
-            alert("Utworzyles konto!")
+          if(resolve.status === 200){
+            //przekierowanie
+            this.$router.push('/roomsPage')
           }
-          else if(resolve.status === 400)
-          {
-            alert("Cos nie tak status 400")
-          }
-          else {
-            alert("hmm?")
+          else{
+            this.message = resolve.data.message
           }
         })  
       }

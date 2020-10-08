@@ -1,17 +1,49 @@
 const express = require('express')
-
+const jwt = require('jsonwebtoken')
 //Import user model
 const User = require('../models/user')
 
+const authSecret = 
+
 module.exports.register = [
     function(req, res){
-        User.create({Login: req.body.Login, Password: req.body.Password}, (err, result) => {
+        User.findOne({Login: req.body.Login}, (err, result) => {
             if(err){
                 console.log(err)
-                res.status(400).end()
-            }else{
-                console.log(`Utworzono uzytkownika: ${result}`)
-                res.status(200).end()
+            } 
+            else if (result)
+            {
+                res.status(201).send({message: "Użytkownik o podanym loginie już istnieje!"})
+            } 
+            else
+            {
+                User.create({Login: req.body.Login, Password: req.body.Password}, (err, result) => {
+                    if(err){
+                        console.log(err)
+                        res.status(400).end()
+                    }else{
+                        console.log(`Utworzono uzytkownika: ${result}`)
+                        res.status(200).end()
+                    }
+                })
+            }
+        })
+    }
+]
+
+module.exports.login = [
+    function(req, res){
+        User.findOne({Login: req.body.Login, Password: req.body.Password}, (err, result) => {
+            if(err){
+                console.log(err)
+            } 
+            else if(result){
+                res.send(result.Login)
+            }
+            else{
+                return res.status(500).json({
+                    message: "Podałeś zły login lub hasło użytkownika"
+                })
             }
         })
     }

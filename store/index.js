@@ -1,21 +1,25 @@
 export const state = () => {
     return {
       usertoken: null,
+      username: null,
     }
   }
   export const mutations = {
-    setAuth (state, auth) {
-      state.usertoken = auth
+    setAuth (state, {token, nickname}) {
+      state.usertoken = token
+      state.username = nickname
     },
     logout(state){
       state.usertoken = null
+      state.username = null
     }
   }
   export const actions = {
     setInitialData: function({commit}){
   
-      commit('setAuth', auth)
+      commit('setAuth', {token, nickname})
     }
   }
+  
   
   

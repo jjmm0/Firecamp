@@ -20,7 +20,9 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '~/plugins/persistedState.client.js' }],
+  plugins: [
+    { src: '~/plugins/persistedState.client.js', ssr: false } 
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -32,8 +34,18 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'nuxt-socket-io'
   ],
+  // io: {
+  //   sockets: [ // Required
+  //     { // At least one entry is required
+  //       name: 'home',
+  //       url: 'http://localhost:3000',
+  //       default: true,
+  //     }
+  //   ]
+  // },
 
   auth: {
     strategies: {

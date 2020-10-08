@@ -44,10 +44,17 @@ export default {
       else{
         this.error = false
         this.$axios.post('/api/register', {Login, Password}).then((resolve) => {
-          if(resolve.status === 200){
-            let token = resolve.data
-            this.$store.commit('setAuth', token)
-            this.$router.push('/roomsPage')
+          if(resolve.status === 200){ //Jeżeli pomyślnie zarejestrowano
+            let token = resolve.data.token
+            let nickname = resolve.data.login
+            if(token || nickname != null || undefined) //Jeżeli serwer odesłał poprawne dane
+            {
+              this.$store.commit('setAuth', {token, nickname}) //Wywołaj setAuth w '~/store/index.js'
+              this.$router.push('/roomsPage') //Przekierowanie
+            }
+            else{
+              alert("cos jest nie tak")
+            }
           }
           else{
             this.message = resolve.data.message

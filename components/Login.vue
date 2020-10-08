@@ -31,14 +31,26 @@ export default {
       let Login = this.login.Login
       let Password = this.login.Password
       await this.$axios.post('/api/login', {Login, Password}).then((resolve) => {
-        if(resolve.status === 201){
-          let token = resolve.data
-          this.$store.commit('setAuth', token)
-          this.$router.push('/roomsPage')
-        } else{
+        if(resolve.status === 200){
+          let token = resolve.data.token
+          let nickname = resolve.data.login
+          if(token != (null || undefined))
+          {
+            this.$store.commit('setAuth', {token, nickname})
+            this.$router.push('/roomsPage')
+          }
+          else{
+            alert('cos jest nie tak')
+          }
+        } 
+        else{
           alert("cos jest nie tak")
         }
       })
+
+
+
+
       // await this.$auth.loginWith('local', { data: this.login }).then(() => {
       //   console.log('koniec')
       //   alert('es')

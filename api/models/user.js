@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    Likes: Number,
 })
 
 const User = mongoose.model("User", userSchema)

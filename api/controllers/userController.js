@@ -38,12 +38,10 @@ module.exports.login = [
                 console.log(err)
             } 
             else if(result){
-                res.send(result.Login)
+                res.send(`Zalogowano jako:${result.Login}`)
             }
             else{
-                return res.status(500).json({
-                    message: "Podałeś zły login lub hasło użytkownika"
-                })
+                res.send(`Uzytkownik nie istnieje`)
             }
         })
     }

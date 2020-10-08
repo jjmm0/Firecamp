@@ -31,7 +31,7 @@ export default {
       let Login = this.login.Login
       let Password = this.login.Password
       await this.$axios.post('/api/login', {Login, Password}).then((resolve) => {
-        alert(`Zalogowano jako ${resolve.data}`)
+        alert(resolve.data)
       })
       // await this.$auth.loginWith('local', { data: this.login }).then(() => {
       //   console.log('koniec')

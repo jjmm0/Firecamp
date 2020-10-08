@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="form-group">
+    <div class="form-group" @keyup.enter="registerSubmit()">
       <label for="login" >Nazwa użytkownika</label>
       <br>
       <input id="login" class="form-control" v-model="Login">
@@ -12,11 +12,12 @@
       <label for="confirmPassword">Potwierdź hasło</label>
       <br>
       <input id="confirmPassword" class="form-control" v-model="confirmPassword">
-      {{message}}
+      
       <p v-show="error" class="alertText">Hasła nie są identyczne!</p>
+      <p v-show="message" class="alertText">{{message}}</p>
       <br>
       <div class="button">
-        <button @click="registerSubmit()" type="submit" class="btn btn-primary">Zarejestruj się</button>
+        <button @click="registerSubmit()"  type="submit" class="btn btn-primary">Zarejestruj się</button>
       </div>
     </div>
   </div>

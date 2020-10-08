@@ -38,7 +38,9 @@ module.exports.login = [
                 console.log(err)
             } 
             else if(result){
-                res.send(`Zalogowano jako:${result.Login}`)
+                // jwt.sign({result}, 'jdd', (err, decoded) => {
+                    res.send(result)
+                // })
             }
             else{
                 res.send(`Uzytkownik nie istnieje`)

@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    {{moje}}
     <div class="form-group">
       <label for="login">Nazwa użytkownika</label>
       <br>
@@ -24,6 +25,7 @@ export default {
         Password: '',
       },
       message: "",
+      moje: this.$store.state.usertoken
     }
   },
   methods: {
@@ -31,7 +33,9 @@ export default {
       let Login = this.login.Login
       let Password = this.login.Password
       await this.$axios.post('/api/login', {Login, Password}).then((resolve) => {
-        alert(resolve.data)
+        let token = resolve.data
+        this.$store.commit('setAuth', token)
+        this.$router.push('/roomsPage')
       })
       // await this.$auth.loginWith('local', { data: this.login }).then(() => {
       //   console.log('koniec')

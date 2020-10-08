@@ -13,6 +13,7 @@
 </template>
 <script>
 export default {
+  middleware: 'notLoggedIn',
   data(){
     return{
       choice: 0,

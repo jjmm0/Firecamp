@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    {{moje}}
     <div class="form-group">
       <label for="login">Nazwa użytkownika</label>
       <br>
@@ -25,7 +24,6 @@ export default {
         Password: '',
       },
       message: "",
-      moje: this.$store.state.usertoken
     }
   },
   methods: {

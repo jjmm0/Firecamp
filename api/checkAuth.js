@@ -2,8 +2,9 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const User = require('./models/user')
 
+//Check user token isn't expired or fake
 module.exports = [
-    function(req, res, next){
+    function(req, res, next){   
         if(req.body.token != (null || undefined))
         {
             jwt.verify(req.body.token, 'SikretKluczES', (err, decoded) => {
@@ -15,7 +16,7 @@ module.exports = [
                             next()
                         }
                         else{
-                            res.status(500).send({message: "Unauthorized"})
+                            res.status(400).send({message: "Unauthorized!"})
                         }
                     })
                 }
@@ -26,10 +27,4 @@ module.exports = [
         }
     }
 
-]
-
-module.exports.test = [
-    function(req, res){
-        console.log('next')
-    }
 ]

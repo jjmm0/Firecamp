@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 //Import user model
 const User = require('../models/user')
 
-const authSecret = 
-
 module.exports.register = [
     function(req, res){
         User.findOne({Login: req.body.Login}, (err, result) => {
@@ -23,8 +21,8 @@ module.exports.register = [
                         res.status(400).end()
                     }else{
                         console.log(`Utworzono uzytkownika: ${result}`)
-                        jwt.sign({result}, 'secretKey', (err, decoded) => {
-                            res.status(200).send({token: decoded, login: result.Login})
+                        jwt.sign({result}, 'SikretKluczES', (err, coded) => {
+                            res.status(200).send({token: coded, login: result.Login})
                         })
                     }
                 })
@@ -40,8 +38,8 @@ module.exports.login = [
                 console.log(err)
             } 
             else if(result){
-                jwt.sign({result}, 'secretKey', (err, decoded) => {
-                    res.status(200).send({token: decoded, login: result.Login})
+                jwt.sign({result}, 'SikretKluczES', (err, coded) => {
+                    res.status(200).send({token: coded, login: result.Login})
                 })
             }
             else{

@@ -1,28 +1,41 @@
 <template>
-<div>
+<!-- <div>
     <nuxt-link to="/"><img class="logo"
     src="https://pbs.twimg.com/profile_images/1170663788405825536/2mbm927v_400x400.jpg"/>
     </nuxt-link>
-    <a v-if="this.$store.state.username && this.$store.state.usertoken != null" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.username}} //Info</a>
     <div class="buttons">
+  <div class="buttons">
     <button @click="LogOut()">Wyloguj</button>
     <button>Profil</button>
     <button>Ranking</button>
-</div>
-</div>
+  </div>
+</div> -->
+
+  <div class="wrapperHeader">
+    <img class="logo" src="https://pbs.twimg.com/profile_images/1170663788405825536/2mbm927v_400x400.jpg"/>
+    <a v-if="this.$store.state.username && this.$store.state.usertoken != null" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.username}} //Info</a>
+    <div class="buttons" >
+      <ul>
+        <li><nuxt-link to="/profilePage"><button>Profil</button></nuxt-link></li>
+        <li><button>Ranking</button></li>
+        <li><button @click="LogOut()">Wyloguj</button></li>
+      </ul>
+    </div>
+  </div>
 </template>
+
 <script>
 export default {
-    data(){
-        return{
+  data(){
+    return{
 
-        }
-    },
+    }
+  },
     methods:{
-        LogOut(){
-            this.$store.commit('logout')
-            this.$router.push('/')
-        }
+      LogOut(){
+        this.$store.commit('logout')
+        this.$router.push('/')
+      }
     }
 }
 </script>

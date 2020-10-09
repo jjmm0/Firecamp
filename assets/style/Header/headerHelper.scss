@@ -1,11 +1,18 @@
 .logo {
     display: inline-block;
     padding: 24px;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
 .buttons {
-    position: absolute;
-    right: 15px;
-    top: 8%;
+  display: inline-block;
+  text-align: end;
+
+}
+ul{
+  display: inline-block;
+  li{
+    
+    display: inline-block;
+  }
 }

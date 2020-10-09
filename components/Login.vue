@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="form-group">
+    <div class="form-group" @keyup.enter="loginSubmit">
       <label for="login">Nazwa użytkownika</label>
       <br>
       <input v-model="login.Login" id="login" class="form-control">
@@ -10,7 +10,7 @@
       <input v-model="login.Password" id="password" class="form-control">
       <br>
       <div class="button">
-        <button @click="loginSubmit" type="submit" class="btn btn-primary">Zaloguj się</button>
+        <button @click="loginSubmit" type="submit" class="btn btn-primary" >Zaloguj się</button>
       </div>
     </div>
   </div>

@@ -9,14 +9,13 @@
 export default {
     data(){
         return{
-            token: this.$store.state.usertoken
         }
     },
     methods: {
         przycisk(){
-            const {token} = this
-            if(token != null || undefined){
-                this.$axios.post('/api/rooms', {token}).then((resolve) => {
+            let udata = this.$store.state.userdata
+            if((udata.token && udata.name) != (null || undefined)){
+                this.$axios.post('/api/rooms', {udata}).then((resolve) => {
                     if(resolve.status === 200){
                         alert('jestes zalogowany gituwa')
                     }

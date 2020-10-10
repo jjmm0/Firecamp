@@ -13,7 +13,7 @@
 
   <div class="wrapperHeader">
     <img class="logo" src="https://pbs.twimg.com/profile_images/1170663788405825536/2mbm927v_400x400.jpg"/>
-    <a v-if="this.$store.state.username && this.$store.state.usertoken != null" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.username}} //Info</a>
+    <a v-if="this.$store.state.userdata != (null || undefined)" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.userdata.name}} //Info</a>
     <div class="buttons" >
       <ul>
         <li><nuxt-link to="/profilePage"><button>Profil</button></nuxt-link></li>

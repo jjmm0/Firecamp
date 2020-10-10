@@ -1,17 +1,19 @@
 export const state = () => {
     return {
-      usertoken: null,
-      username: null,
+      userdata: {
+        token: null,
+        name: null,
+      }
     }
   }
   export const mutations = {
     setAuth (state, {token, nickname}) {
-      state.usertoken = token
-      state.username = nickname
+      state.userdata.token = token
+      state.userdata.name = nickname
     },
     logout(state){
-      state.usertoken = null
-      state.username = null
+      state.userdata.token = null
+      state.userdata.name = null
     }
   }
   export const actions = {

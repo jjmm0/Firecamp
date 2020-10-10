@@ -32,10 +32,15 @@ export default {
             this.name = resolve.data.name
             this.description = resolve.data.description
             this.likes = resolve.data.likes
-            if(resolve.status !== 200){
-              this.$route.push('/')
-            }
+            console.log(resolve.data)
+            // if(resolve.status !== 200){
+            //   this.$router.push('/')
+            // }
         })
     }
 }
 </script>
+
+<style scoped>
+@import '~/assets/style/profile/profilestyles';
+</style>

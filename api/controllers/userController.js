@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 //Import user model
 const User = require('../models/user')
 
+//User register
 module.exports.register = [
     function(req, res){
         User.findOne({Login: req.body.Login}, (err, result) => {
@@ -30,7 +31,7 @@ module.exports.register = [
         })
     }
 ]
-
+//User login
 module.exports.login = [
     function(req, res){
         User.findOne({Login: req.body.Login, Password: req.body.Password}, (err, result) => {
@@ -49,7 +50,7 @@ module.exports.login = [
     }
 ]
 
-//Get Profile by ID
+//Get profile by id
 module.exports.profile = [
     function(req, res){
         User.findOne({_id: req.params.userId}, (err, result) => {
@@ -62,6 +63,15 @@ module.exports.profile = [
             else{
                 res.status(400).end()
             }
+        })
+    }
+]
+
+//Get all user profiles
+module.exports.profiles = [
+    function(req, res){
+        User.find({}, (err, result) => {
+            res.status(200)
         })
     }
 ]

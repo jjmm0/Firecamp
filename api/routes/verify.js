@@ -6,6 +6,4 @@ const checkAuth = require('../checkAuth')
 
 router.post('/verify', checkAuth)
 
-
-
 module.exports = router

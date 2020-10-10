@@ -16,7 +16,7 @@
     <a v-if="this.$store.state.userdata != (null || undefined)" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.userdata.name}} //Info</a>
     <div class="buttons" >
       <ul>
-        <li><nuxt-link to="/profilePage"><button>Profil</button></nuxt-link></li>
+        <li><nuxt-link to=""><button>Profil</button></nuxt-link></li>
         <li><button>Ranking</button></li>
         <li><button @click="LogOut()">Wyloguj</button></li>
       </ul>
@@ -28,15 +28,15 @@
 export default {
   data(){
     return{
-
+      id: null,
     }
   },
-    methods:{
+  methods:{
       LogOut(){
         this.$store.commit('logout')
         this.$router.push('/')
       }
-    }
+  },
 }
 </script>
 <style scoped>

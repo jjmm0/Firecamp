@@ -12,8 +12,18 @@ const userSchema = new mongoose.Schema({
     Email: {
         type: String,
         required: false,
+        default: null,
     },
-    Likes: Number,
+    Description: {
+        type: String,
+        required: false,
+        default: "Your description",
+    },
+    Likes: {
+        type: Number,
+        required: false,
+        default: 0,
+    }
 })
 
 const User = mongoose.model("User", userSchema)

@@ -48,3 +48,13 @@ module.exports.login = [
         })
     }
 ]
+
+//Get Profile by ID
+module.exports.profile = [
+    function(req, res){
+        User.findOne({_id: req.params.userId}, (err, result) => {
+            console.log('ok?')
+            res.send({name: result.Login, description: result.description})
+        })
+    }
+]

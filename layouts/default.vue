@@ -2,7 +2,7 @@
   <div class="box">
     <div class="box2"><Nuxt /></div>
 
-    <Footer />
+    <!-- <Footer /> -->
 
   </div>
 </template>

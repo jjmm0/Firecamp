@@ -70,8 +70,8 @@ module.exports.profile = [
 //Get all user profiles
 module.exports.profiles = [
     function(req, res){
-        User.find({}, (err, result) => {
-            res.status(200)
+        User.find({}, '-Password -Email -Description -Likes',).then((resolve) => {
+            res.status(200).send(resolve)
         })
     }
 ]

@@ -2,7 +2,7 @@
     <div>
         Lista profili:
         <div v-for="profile in profiles">
-            <div>{{profile.name}}</div>
+            <div><nuxt-link :to="`/profiles/${profile._id}`">{{profile.Login}}</nuxt-link></div>
         </div>
     </div>
 </template>
@@ -11,14 +11,13 @@
 export default {
     data(){
         return{
-            profiles: []
+            profiles: [{name: 'jd'}]
         }
     },
     mounted(){
         this.$axios.get('/api/profiles').then((resolve) => {
             this.profiles = resolve.data
-            console.log(resolve.data)
         })
-    }
+    },
 }
 </script>

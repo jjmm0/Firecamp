@@ -54,10 +54,10 @@ module.exports.profile = [
     function(req, res){
         User.findOne({_id: req.params.userId}, (err, result) => {
             if(result){
-                res.send({name: result.Login, description: result.description})
+                res.send({name: result.Login, description: result.Description, likes: result.Likes})
             }
             else if(err){
-                console.log(err)
+                res.status(400).end()
             }
             else{
                 res.status(400).end()

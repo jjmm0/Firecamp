@@ -53,8 +53,15 @@ module.exports.login = [
 module.exports.profile = [
     function(req, res){
         User.findOne({_id: req.params.userId}, (err, result) => {
-            console.log('ok?')
-            res.send({name: result.Login, description: result.description})
+            if(result){
+                res.send({name: result.Login, description: result.description})
+            }
+            else if(err){
+                console.log(err)
+            }
+            else{
+                res.status(400).end()
+            }
         })
     }
 ]

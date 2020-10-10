@@ -23,7 +23,7 @@ module.exports.register = [
                     }else{
                         console.log(`Utworzono uzytkownika: ${result}`)
                         jwt.sign({result}, 'SikretKluczES', (err, coded) => {
-                            res.status(200).send({token: coded, login: result.Login})
+                            res.status(200).send({token: coded, login: result.Login, uid: result._id})
                         })
                     }
                 })
@@ -40,7 +40,7 @@ module.exports.login = [
             } 
             else if(result){
                 jwt.sign({result}, 'SikretKluczES', (err, coded) => {
-                    res.status(200).send({token: coded, login: result.Login})
+                    res.status(200).send({token: coded, login: result.Login, uid: result._id})
                 })
             }
             else{

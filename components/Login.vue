@@ -34,9 +34,10 @@ export default {
         if(resolve.status === 200){
           let token = resolve.data.token
           let nickname = resolve.data.login
-          if(token != (null || undefined))
+          let userid = resolve.data.uid
+          if(token != (null || undefined))//Jeżeli token istnieje przejdź do logowania
           {
-            this.$store.commit('setAuth', {token, nickname})
+            this.$store.commit('setAuth', {token, nickname, userid})
             this.$router.push('/roomsPage')
           }
           else{

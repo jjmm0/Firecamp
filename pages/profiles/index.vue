@@ -11,7 +11,7 @@
 export default {
     data(){
         return{
-            profiles: [{name: 'jd'}]
+            profiles: []
         }
     },
     mounted(){

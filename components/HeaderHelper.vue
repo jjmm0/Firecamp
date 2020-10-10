@@ -16,7 +16,9 @@
     <a v-if="this.$store.state.userdata != (null || undefined)" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.userdata.name}} //Info</a>
     <div class="buttons" >
       <ul>
-        <li><nuxt-link to=""><button>Profil</button></nuxt-link></li>
+        <li><nuxt-link to="/roomsPage"><button>Znajdź Pokój</button></nuxt-link></li>
+        <li><nuxt-link :to="`/profiles/${this.$store.state.userdata.uid}`"><button>Mój profil</button></nuxt-link></li>
+        <li><nuxt-link to="/profiles"><button>Lista profili</button></nuxt-link></li>
         <li><button>Ranking</button></li>
         <li><button @click="LogOut()">Wyloguj</button></li>
       </ul>
@@ -28,7 +30,6 @@
 export default {
   data(){
     return{
-      id: null,
     }
   },
   methods:{

@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  middleware: 'LoggedIn',
+  middleware: ['LoggedIn', 'verify'],
 }
 </script>

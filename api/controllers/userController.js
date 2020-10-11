@@ -44,7 +44,7 @@ module.exports.login = [
                 })
             }
             else{
-                res.send(`Uzytkownik nie istnieje`)
+                res.status(200).send(`Uzytkownik nie istnieje`)
             }
         })
     }
@@ -55,7 +55,7 @@ module.exports.profile = [
     function(req, res){
         User.findOne({_id: req.params.userId}, (err, result) => {
             if(result){
-                res.send({name: result.Login, description: result.Description, likes: result.Likes})
+                res.send({name: result.Login, description: result.Description, likes: result.Likes, id: result._id})
             }
             else if(err){
                 res.status(400).end()
@@ -73,5 +73,28 @@ module.exports.profiles = [
         User.find({}, '-Password -Email -Description -Likes',).then((resolve) => {
             res.status(200).send(resolve)
         })
+    }
+]
+
+//Update user profile data
+module.exports.editprofile = [
+    function(req, res){
+        if(req.body.description){
+            User.findOneAndUpdate({_id: req.body.udata.uid, Login: req.body.udata.name}, {Description: req.body.description}, {new: true},  (err, result) => {
+                if(result != null || undefined){
+                    res.status(200).end()
+                }
+                else if(err){
+                    console.log(err)
+                    res.status(400).end()
+                }
+                else{
+                    res.status(400).end()
+                }
+            })
+        }
+        else {
+            req.status(400).end()
+        }
     }
 ]

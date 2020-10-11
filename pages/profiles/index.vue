@@ -9,6 +9,7 @@
 
 <script>
 export default {
+    middleware: ['verify'],
     data(){
         return{
             profiles: []

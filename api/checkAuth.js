@@ -18,7 +18,7 @@ module.exports = [
                             if((result.Login === (decoded.result.Login && req.body.udata.name)) && (result.Password === decoded.result.Password)){
                                 // console.log('Authorized!')
                                 res.status(200).end()
-                                // next()
+                                next()
                             }
                             else{
                                 res.status(201).end()
@@ -27,7 +27,7 @@ module.exports = [
                         }
                         else{
                             res.status(201).end()
-                            console.log('Unauthorized!')
+                            // console.log('Unauthorized!')
                         }
                     })
                 }
@@ -35,6 +35,7 @@ module.exports = [
         }
         else{
             res.status(201).end()
+            // console.log('Unauthorized!')
         }
     }
 

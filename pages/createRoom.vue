@@ -8,3 +8,19 @@
         <input type="text">
     </div>
 </template>
+
+<style scoped>
+/*@import ... */
+</style>
+
+
+
+
+
+
+
+<script>
+export default {
+    middleware: ['verify'],
+}
+</script>

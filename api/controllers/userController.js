@@ -31,6 +31,7 @@ module.exports.register = [
         })
     }
 ]
+
 //User login
 module.exports.login = [
     function(req, res){

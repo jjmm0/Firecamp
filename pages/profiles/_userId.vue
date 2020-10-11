@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <div>
-      <HeaderHelper />
+      <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
+      <HeaderClient v-else />
     </div>
     <div class="user-pfp">
       <img src="/" placeholder="Missing pfp" id="userProfilePicture">
@@ -38,9 +39,10 @@ export default {
         this.name = resolve.data.name
         this.description = resolve.data.description
         this.likes = resolve.data.likes
-
+        //Jezeli ten profil nalezy do ciebie zezwol na edycje
         if((resolve.data.id === this.$store.state.userdata.uid)&&
-        (resolve.data.name === this.$store.state.userdata.name)){
+        (resolve.data.name === this.$store.state.userdata.name)&&
+        (this.$store.state.userdata.token || this.$store.state.userdata.name || this.$store.state.userdata.uid)){
           this.canedit = true
         }
     })

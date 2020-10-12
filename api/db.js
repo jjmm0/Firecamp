@@ -5,6 +5,8 @@ const mongoURL = "mongodb://localhost/ProjektnaKONKURS"
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
 }, (err, done) => {
     if(err){
         console.log(err)

@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <div>
-      <HeaderHelper />
+      <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
+      <HeaderClient v-else />
     </div>
     <div class="user-pfp">
       <img src="/" placeholder="Missing pfp" id="userProfilePicture">
@@ -12,7 +13,10 @@
         <div class="userStats info">{{likes}}</div>
       </div>
       
-        <div class="userDesc info"><input type="text" :value="description"></div>
+        <div class="userDesc info">
+          <input v-if="canedit" type="text" v-model="description" @keyup.enter="editDesc()">
+          <a v-else>{{description}}</a>
+        </div>
       
     </div>
   </div>
@@ -20,24 +24,43 @@
 
 <script>
 export default {
-    data(){
-        return{
-            name: null,
-            description: null,
-            likes: null,
-        }
-    },
-    mounted(){
-        this.$axios.get(`/api/profiles/${this.$route.params.userId}`).then((resolve) => {
-            this.name = resolve.data.name
-            this.description = resolve.data.description
-            this.likes = resolve.data.likes
-            console.log(resolve.data)
-            // if(resolve.status !== 200){
-            //   this.$router.push('/')
-            // }
-        })
+  middleware: ['verify'],
+  data(){
+    return{
+      name: null,
+      description: null,
+      likes: null,
+      canedit: false,
     }
+  },
+  mounted(){
+    //Pobierz profil na podstawie routa w adresie
+    this.$axios.get(`/api/profiles/${this.$route.params.userId}`).then((resolve) => {
+        this.name = resolve.data.name
+        this.description = resolve.data.description
+        this.likes = resolve.data.likes
+        //Jezeli ten profil nalezy do ciebie zezwol na edycje
+        if((resolve.data.id === this.$store.state.userdata.uid)&&
+        (resolve.data.name === this.$store.state.userdata.name)&&
+        (this.$store.state.userdata.token || this.$store.state.userdata.name || this.$store.state.userdata.uid)){
+          this.canedit = true
+        }
+    })
+  },
+  methods: {
+    editDesc(){
+      const { description } = this
+      this.$axios.put('/api/profiles', {udata: this.$store.state.userdata, description}).then((resolve) => {
+        //Jezeli pomyslnie zedytowales profil
+        if(resolve.status === 200){
+          alert('Zedytowano!')
+        }
+        else{ //Jezeli podczas edycji profilu zostales zle zweryfikowany
+          
+        }
+      })
+    }
+  }
 }
 </script>
 

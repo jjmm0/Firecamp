@@ -23,7 +23,7 @@
 </template>
 <script>
 export default {
-  middleware: 'notLoggedIn',
+  middleware: ['notLoggedIn', 'verify'],
   data(){
     return{
       choice: 0,

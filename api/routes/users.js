@@ -10,10 +10,16 @@ router.post('/register', userController.register)
 //Login user
 router.post('/login', userController.login)
 
+
+
+
 //Get user profile by ID
 router.get('/profiles/:userId', userController.profile)
 
 //Get all user profiles
 router.get('/profiles', userController.profiles)
+
+// //Edit user profile
+router.put('/profiles', checkAuth, userController.editprofile)
 
 module.exports = router

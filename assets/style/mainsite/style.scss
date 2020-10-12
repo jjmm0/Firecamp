@@ -1,31 +1,31 @@
 $fontColor: rgb(182, 82, 0);
+$pusherHeight: 10%;
 
-
-.bodycontainer{
-    display: flex;
+.master{
     height: 100%;
-    width: 100%;
-    background: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    filter: brightness(130%) contrast(110%);
+    
+}
+.pusher{
+    height: $pusherHeight;
 }
 .indexcontainer{
-    // border-radius: 2%;
+    box-sizing: border-box;
     text-align: center;
     justify-content: center;
     width: 60%;
-    height: 1000px;
-    // background-color: #62BFED;
-    margin: 10%  20% 0% 20%;
+    height: calc(100% - #{$pusherHeight});  
+    margin: 0 20%;
     border-top: 2px solid white;
     border-left: 2px solid white;
     border-right: 2px solid white;
-    // backdrop-filter: blur(3px);
     backdrop-filter: brightness(70%) blur(3px);
     
+}
+Footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 h1{
     font-size: 50px;

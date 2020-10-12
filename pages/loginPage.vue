@@ -2,12 +2,22 @@
     <div class="page">
       <HeaderClient />
       <div class="wrapper">
-        <div class="choice">
+        <!-- <div class="choice">
           <div @click="handleChoice(1)" class="loginpg log"><span>Zaloguj się</span></div>
           <div @click="handleChoice(2)" class="loginpg reg"><span>Zarejestruj się</span></div>
-        </div>
-        <Login v-if="choice == 1" />
-        <Register v-if="choice == 2"/>
+        </div> -->
+        <nuxt-link to="/">
+          <img id="return" src="~/assets/ReturnArrow.png">
+        </nuxt-link>
+        <div class="buttons">
+          <div class="button loginbt" @click="handleChoice(1)">Zaloguj się</div>
+          <div class="button registerbt" @click="handleChoice(2)">Zarejestruj się</div>
+
+
+        </div>  
+
+          <Login v-if="choice == 1" />
+          <Register v-if="choice == 2"/>
       </div>
     </div>
 </template>

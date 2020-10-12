@@ -13,9 +13,17 @@ body,
 #__nuxt,
 #__layout {
   height: 100%;
+  /* Tło */
+    background: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    filter: brightness(100%) contrast(100%);
 }
 
 .box {
+  margin: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -26,6 +34,7 @@ body,
 }
 
 html {
+  
   font-family:
     'Source Sans Pro',
     -apple-system,

@@ -1,21 +1,48 @@
 .wrapper{
-    display: inline-block;
-    border: 2px solid black;
-    padding: 10px;
+    // display: inline-block;
+    
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
 }
-.forms{
-    margin: 20px;
+.form-group{
+    backdrop-filter: blur(3px) brightness(70%);
+    padding: 10px;
+    border: 2px solid white;
+    // margin: 20px;
+    width: 400px;
+    box-sizing: border-box;
 }
 label{
     // margin-bottom: 2px;
+    color: white;
+    font-size: 20px;
 }
 input{
     // margin-bottom: 2px;
+    width: 70%;
+    background-color: transparent;
+    border: 2px solid white;
 }
+input:focus{
+    background-color: transparent;
+}
+input::selection{
+    background-color: transparent;
+}
+input:active{
+    background-color: transparent;
+}
+input *{
+    background-color: transparent;
+}
+
 .button{
     text-align: center;
 }
 .alertText{
+    padding-top: 4px;
     color: red;
-    font-size: 14px;
+    font-size: 16px;
 }

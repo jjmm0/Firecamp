@@ -12,7 +12,9 @@
 </div> -->
 
   <div class="wrapperHeader">
-    <img class="logo" src="https://pbs.twimg.com/profile_images/1170663788405825536/2mbm927v_400x400.jpg"/>
+    <!-- <img class="logo" src="https://pbs.twimg.com/profile_images/1170663788405825536/2mbm927v_400x400.jpg"/> -->
+    <img class="logo" src="~/assets/Logo.png"/>
+
     <a v-if="this.$store.state.userdata != (null || undefined)" style="font-size: 20px;">ZALOGOWANY JAKO: {{this.$store.state.userdata.name}} //Info</a>
     <div class="buttons" >
       <ul>

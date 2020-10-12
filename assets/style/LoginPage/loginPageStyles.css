@@ -1,43 +1,53 @@
-.wrapper {
-  text-align: center;
-}
-
-.loginpg {
-  display: inline-block;
-  margin-bottom: 40px;
-  width: 200px;
-  height: 40px;
-  background: #f3f0f1;
-  background: #f3f0f1;
-  border-radius: 32px;
-  text-align: center;
+#return {
+  position: absolute;
+  width: 70px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
   cursor: pointer;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  -webkit-box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-  color: #6f6cde;
+  margin-left: 2%;
 }
 
-.loginpg span {
+#return:hover {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+.button {
+  color: white;
+  font-size: 24px;
   text-align: center;
-  line-height: 40px;
-  vertical-align: middle;
-  font-family: "Montserrat", sans-serif;
-  font-size: 12px;
-  font-weight: semibold;
+  border: 2px solid white;
+  display: inline-block;
 }
 
-.loginpg:hover {
-  opacity: 0.3;
-  -webkit-box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+.buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[1];
+      grid-template-rows: repeat(1, 1fr);
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
 }
 
-.loginpg:active {
-  opacity: 1;
-  -webkit-box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-          box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
-  color: #79e3b6;
+.loginbt {
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(2px) brightness(70%);
+          backdrop-filter: blur(2px) brightness(70%);
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 2;
+  grid-area: 1 / 4 / 1 / 6;
+}
+
+.registerbt {
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(2px) brightness(70%);
+          backdrop-filter: blur(2px) brightness(70%);
+  -ms-grid-row: 1;
+  -ms-grid-column: 8;
+  -ms-grid-column-span: 2;
+  grid-area: 1 / 8 / 1 / 10;
 }
 /*# sourceMappingURL=loginPageStyles.css.map */

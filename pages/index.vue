@@ -1,5 +1,8 @@
 <template>
-  <div class="bodycontainer">
+  <div class="master">
+    <div class="pusher">
+    
+    </div>
     <div class="indexcontainer">
       <div class="text">
         <h1>NAGŁÓWEK</h1><br/>
@@ -23,7 +26,7 @@
           </nuxt-link>
         </div>
       </div>
-    <Footer style="margin-top: 35%"/>
+      <Footer />
     </div>
   </div>
 </template>

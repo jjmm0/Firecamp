@@ -1,31 +1,33 @@
-.bodycontainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.master {
   height: 100%;
-  width: 100%;
-  background: url("https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  -webkit-filter: brightness(130%) contrast(110%);
-          filter: brightness(130%) contrast(110%);
+}
+
+.pusher {
+  height: 10%;
 }
 
 .indexcontainer {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   width: 60%;
-  height: 1000px;
-  margin: 10%  20% 0% 20%;
+  height: calc(100% - 10%);
+  margin: 0 20%;
   border-top: 2px solid white;
   border-left: 2px solid white;
   border-right: 2px solid white;
   -webkit-backdrop-filter: brightness(70%) blur(3px);
           backdrop-filter: brightness(70%) blur(3px);
+}
+
+Footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 h1 {

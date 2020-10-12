@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <center>
     <div class="form-group" @keyup.enter="registerSubmit()">
       <label for="login" >Nazwa użytkownika</label>
       <br>
@@ -13,13 +14,14 @@
       <br>
       <input id="confirmPassword" class="form-control" v-model="confirmPassword">
       
-      <p v-show="error" class="alertText">Hasła nie są identyczne!</p>
-      <p v-show="message" class="alertText">{{message}}</p>
+      <p v-show="error" class="alertText"><b>Hasła nie są identyczne!</b></p>
+      <p v-show="message" class="alertText"><b>{{message}}</b></p>
       <br>
       <div class="button">
         <button @click="registerSubmit()"  type="submit" class="btn btn-primary">Zarejestruj się</button>
       </div>
     </div>
+    </center>
   </div>
 </template>
 
@@ -41,6 +43,7 @@ export default {
 
       if(confirmPassword !== Password){
         this.error = true;
+        this.message = "";
       }
       else{
         this.error = false

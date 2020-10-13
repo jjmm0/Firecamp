@@ -25,28 +25,14 @@ label {
 }
 
 input {
+  color: white;
   width: 70%;
   background-color: transparent;
   border: 2px solid white;
 }
 
 input:focus {
-  background-color: transparent;
-}
-
-input::-moz-selection {
-  background-color: transparent;
-}
-
-input::selection {
-  background-color: transparent;
-}
-
-input:active {
-  background-color: transparent;
-}
-
-input * {
+  color: white;
   background-color: transparent;
 }
 

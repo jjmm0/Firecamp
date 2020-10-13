@@ -20,21 +20,16 @@ label{
     font-size: 20px;
 }
 input{
+    color: white;
     // margin-bottom: 2px;
     width: 70%;
-    background-color: transparent;
-    border: 2px solid white;
+    background-color: transparent ;
+    border: 2px solid white ;
+    // appearance: none;
 }
+
 input:focus{
-    background-color: transparent;
-}
-input::selection{
-    background-color: transparent;
-}
-input:active{
-    background-color: transparent;
-}
-input *{
+    color: white;
     background-color: transparent;
 }
 

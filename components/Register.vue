@@ -4,15 +4,15 @@
     <div class="form-group" @keyup.enter="registerSubmit()">
       <label for="login" >Nazwa użytkownika</label>
       <br>
-      <input id="login" class="form-control" v-model="Login">
+      <input id="login" type="text" class="form-control" autocomplete="off" v-model="Login">
       <br>
       <label for="password">Hasło</label>
       <br>
-      <input id="password" class="form-control" v-model="Password">
+      <input type="password" id="password" class="form-control" v-model="Password">
       <br>
       <label for="confirmPassword">Potwierdź hasło</label>
       <br>
-      <input id="confirmPassword" class="form-control" v-model="confirmPassword">
+      <input  type="password" id="confirmPassword" class="form-control" v-model="confirmPassword">
       
       <p v-show="error" class="alertText"><b>Hasła nie są identyczne!</b></p>
       <p v-show="message" class="alertText"><b>{{message}}</b></p>

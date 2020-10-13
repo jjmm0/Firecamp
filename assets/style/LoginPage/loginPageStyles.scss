@@ -28,6 +28,13 @@ $buttonHeight: 40px;
     // width: 150px;
     border: 2px solid white;
     display: inline-block;
+    cursor: pointer;
+    backdrop-filter: blur(2px) brightness(70%);
+    transition: 0.4s ease-out;
+
+}
+.button:hover{
+    transform: scale(1.05);
 }
 .buttons{
     display: grid;
@@ -35,12 +42,10 @@ $buttonHeight: 40px;
     grid-template-columns: repeat(12, 1fr);
 }
 .loginbt{
-    cursor: pointer;
-    backdrop-filter: blur(2px) brightness(70%);
+
     grid-area: 1 / 4 / 1 / 6;
 }
 .registerbt{
-    cursor: pointer;
-    backdrop-filter: blur(2px) brightness(70%);
+
     grid-area: 1 / 8 / 1 / 10;
 }

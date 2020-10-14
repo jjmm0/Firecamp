@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderHelper/>
-    <RoomWindow />
+    <RoomWindow  />
   </div>
 </template>
 

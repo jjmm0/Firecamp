@@ -11,7 +11,7 @@
       
       <div class="accbuttons">
         <div>
-          <nuxt-link to="/createRoom">
+          <nuxt-link to="/rooms/create">
             <div class="lbutton">
               <b><a class="buttontext">Client</a></b>
             </div>

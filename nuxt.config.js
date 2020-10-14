@@ -38,15 +38,15 @@ export default {
     '@nuxtjs/auth',
     'nuxt-socket-io'
   ],
-  // io: {
-  //   sockets: [ // Required
-  //     { // At least one entry is required
-  //       name: 'home',
-  //       url: 'http://localhost:3000',
-  //       default: true,
-  //     }
-  //   ]
-  // },
+  io: {
+    // module options
+    sockets: [{
+      name: 'main',
+      url: 'http://localhost:3000',
+      default: true,
+    }]
+  },
+
 
   // auth: {
   //   strategies: {

@@ -21,6 +21,12 @@
 
 <script>
 export default {
-    middleware: ['verify'],
+    middleware: ['verify', 'notLoggedIn'],
+    data(){
+        return{
+
+        }
+    },
+    
 }
 </script>

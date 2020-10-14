@@ -55,7 +55,7 @@ export default {
             if(token || nickname || userid != null || undefined) //Jeżeli serwer odesłał poprawne dane
             {
               this.$store.commit('setAuth', {token, nickname, userid}) //Wywołaj setAuth w '~/store/index.js'
-              this.$router.push('/roomsPage') //Przekierowanie
+              this.$router.push('/rooms') //Przekierowanie
             }
             else{
               alert("cos jest nie tak")

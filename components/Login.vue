@@ -38,7 +38,7 @@ export default {
           if(token != (null || undefined))//Jeżeli token istnieje przejdź do logowania
           {
             this.$store.commit('setAuth', {token, nickname, userid})
-            this.$router.push('/roomsPage')
+            this.$router.push('/rooms')
           }
           else{
             alert('cos jest nie tak')
@@ -48,16 +48,6 @@ export default {
           alert("cos jest nie tak")
         }
       })
-
-
-
-
-      // await this.$auth.loginWith('local', { data: this.login }).then(() => {
-      //   console.log('koniec')
-      //   alert('es')
-        
-      // })
-      // this.$router.push('/roomsPage')
     }
   }
 }

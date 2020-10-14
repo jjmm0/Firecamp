@@ -21,9 +21,10 @@ router.get('/profiles/:userId', userController.profile)
 //Get all user profiles
 router.get('/profiles', userController.profiles)
 
-// //Edit user profile
+//Edit user profile
 router.put('/profiles', checkAuth, userController.editprofile)
 
+//User avatar upload
 router.post('/avatar', upload.single('avatar'), checkAuth, userController.avatar)
 
 module.exports = router

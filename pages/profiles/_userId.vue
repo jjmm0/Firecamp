@@ -53,17 +53,17 @@ export default {
     editDesc(){
       const { description } = this
       this.$axios.put('/api/profiles', {udata: this.$store.state.userdata, description}).then((resolve) => {
-        //Jezeli pomyslnie zedytowales profil
         if(resolve.status === 200){
           alert('Zedytowano!')
         }
-        else{ //Jezeli podczas edycji profilu zostales zle zweryfikowany
-          
+        else{
+          alert('?')
         }
       })
     },
     async sendAvatar(event){
 
+      
       const udata = this.$store.state.userdata
       const formData = new FormData()
       formData.append('avatar', event.target.files[0])

@@ -19,18 +19,19 @@ export default {
 
 
     /* Listen for events: */
-    this.socket.on('method1', (msg, cb) => {
+    this.socket.on('method1', (msg) => {
       /* Handle event */
-      alert('method1')
+      alert(msg)
     })
   },
   methods: {
     method1() {
         console.log(this.socket)
       /* Emit events */
-      this.socket.emit('method1', {hello: 'world'}, (resp) => {
-        /* Handle response, if any */
-      })
+      this.socket.emit('method1', {hello: 'world'})
+    //     ,(resp) => {
+    //     /* Handle response, if any */
+    //   })
     }
   }
 }

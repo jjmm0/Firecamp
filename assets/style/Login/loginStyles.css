@@ -1,14 +1,73 @@
 .wrapper {
-  display: inline-block;
-  border: 2px solid black;
-  padding: 10px;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3%;
 }
 
-.forms {
-  margin: 20px;
+.form-group {
+  -webkit-animation: SlideFromTop 1s ease-out;
+          animation: SlideFromTop 1s ease-out;
+  position: relative;
+  -webkit-backdrop-filter: blur(3px) brightness(70%);
+          backdrop-filter: blur(3px) brightness(70%);
+  padding: 10px;
+  border: 2px solid white;
+  width: 400px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@-webkit-keyframes SlideFromTop {
+  from {
+    top: -430px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes SlideFromTop {
+  from {
+    top: -430px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+label {
+  color: white;
+  font-size: 20px;
+}
+
+input {
+  color: white;
+  width: 70%;
+  background-color: transparent;
+  border: 2px solid white;
+}
+
+input:focus {
+  color: white;
+  background-color: transparent;
 }
 
 .button {
   text-align: center;
+}
+
+.alertText {
+  padding-top: 4px;
+  color: red;
+  font-size: 16px;
 }
 /*# sourceMappingURL=loginStyles.css.map */

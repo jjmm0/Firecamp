@@ -9,6 +9,8 @@ $buttonHeight: 40px;
     // filter: brightness(130%) contrast(110%);
 }
 
+
+
 #return{
     position: absolute;
     width: 70px;
@@ -29,6 +31,7 @@ $buttonHeight: 40px;
     border: 2px solid white;
     display: inline-block;
     cursor: pointer;
+    padding: 10px 0px;
     backdrop-filter: blur(2px) brightness(70%);
     transition: 0.4s ease-out;
 

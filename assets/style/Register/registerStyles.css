@@ -10,6 +10,9 @@
 }
 
 .form-group {
+  position: relative;
+  -webkit-animation: SlideFromTop 1s ease-out;
+          animation: SlideFromTop 1s ease-out;
   -webkit-backdrop-filter: blur(3px) brightness(70%);
           backdrop-filter: blur(3px) brightness(70%);
   padding: 10px;
@@ -17,6 +20,28 @@
   width: 400px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+@-webkit-keyframes SlideFromTop {
+  from {
+    top: -430px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes SlideFromTop {
+  from {
+    top: -430px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 label {

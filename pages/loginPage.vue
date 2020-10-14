@@ -15,9 +15,10 @@
 
 
         </div>  
-
+        <div style="overflow: hidden;">
           <Login v-if="choice == 1" />
           <Register v-if="choice == 2"/>
+        </div>
       </div>
     </div>
 </template>

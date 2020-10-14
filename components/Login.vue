@@ -1,18 +1,21 @@
 <template>
   <div class="wrapper">
+    <center>
     <div class="form-group" @keyup.enter="loginSubmit">
       <label for="login">Nazwa użytkownika</label>
       <br>
-      <input v-model="login.Login" id="login" class="form-control">
+      <input v-model="login.Login" id="login" autocomplete="off" type="text" class="form-control">
       <br>
       <label for="password">Hasło</label>
       <br>
-      <input v-model="login.Password" id="password" class="form-control">
+      <input v-model="login.Password" id="password" type="password" class="form-control">
       <br>
+
       <div class="button">
         <button @click="loginSubmit" type="submit" class="btn btn-primary" >Zaloguj się</button>
       </div>
     </div>
+    </center>
   </div>
 </template>
 <script>

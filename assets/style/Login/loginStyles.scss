@@ -1,17 +1,55 @@
 .wrapper{
-    display: inline-block;
-    border: 2px solid black;
-    padding: 10px;
+    // display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    
+    
 }
-.forms{
-    margin: 20px;
+.form-group{
+    animation: SlideFromTop 1s ease-out;
+    position: relative;
+    backdrop-filter: blur(3px) brightness(70%);
+    padding: 10px;
+    border: 2px solid white;
+    // margin: 20px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+@keyframes SlideFromTop { 
+    from {top: -430px;
+        opacity: 0;
+    }
+    to{ top: 0;  
+        opacity: 1;
+    }
 }
 label{
-    // margin-bottom: 6px;
+    // margin-bottom: 2px;
+    color: white;
+    font-size: 20px;
 }
 input{
-    // margin-bottom: 6px;
+    color: white;
+    // margin-bottom: 2px;
+    width: 70%;
+    background-color: transparent ;
+    border: 2px solid white ;
+    // appearance: none;
 }
+
+input:focus{
+    color: white;
+    background-color: transparent;
+}
+
 .button{
     text-align: center;
+}
+.alertText{
+    padding-top: 4px;
+    color: red;
+    font-size: 16px;
 }

@@ -21,6 +21,7 @@
   border: 2px solid white;
   display: inline-block;
   cursor: pointer;
+  padding: 10px 0px;
   -webkit-backdrop-filter: blur(2px) brightness(70%);
           backdrop-filter: blur(2px) brightness(70%);
   -webkit-transition: 0.4s ease-out;

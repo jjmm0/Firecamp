@@ -3,6 +3,7 @@ $pusherHeight: 10%;
 
 .master{
     height: 100%;
+    overflow: hidden;
     
 }
 .pusher{
@@ -19,8 +20,21 @@ $pusherHeight: 10%;
     border-left: 2px solid white;
     border-right: 2px solid white;
     backdrop-filter: brightness(70%) blur(3px);
-    
+    position: relative;
+    animation: SlideFromDown 1.2s ease-out;
 }
+
+@keyframes SlideFromDown {
+    from{
+        bottom: -900px;
+        opacity: 0;
+    }
+    to{
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
 Footer{
     position: absolute;
     bottom: 0;

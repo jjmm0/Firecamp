@@ -1,5 +1,6 @@
 .master {
   height: 100%;
+  overflow: hidden;
 }
 
 .pusher {
@@ -21,6 +22,31 @@
   border-right: 2px solid white;
   -webkit-backdrop-filter: brightness(70%) blur(3px);
           backdrop-filter: brightness(70%) blur(3px);
+  position: relative;
+  -webkit-animation: SlideFromDown 1.2s ease-out;
+          animation: SlideFromDown 1.2s ease-out;
+}
+
+@-webkit-keyframes SlideFromDown {
+  from {
+    bottom: -900px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes SlideFromDown {
+  from {
+    bottom: -900px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 Footer {

@@ -1,5 +1,7 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
+const multer  = require('multer')
+
 //Import user model
 const User = require('../models/user')
 
@@ -97,5 +99,13 @@ module.exports.editprofile = [
         else {
             req.status(400).end()
         }
+    }
+]
+
+//Upload user avatar
+module.exports.avatar = [
+    function(req, res){
+        console.log(req.file)
+        console.log('siemano')
     }
 ]

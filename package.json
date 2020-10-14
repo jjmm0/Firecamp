@@ -16,8 +16,10 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jimp": "^0.16.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.8",
+    "multer": "^1.4.2",
     "nuxt": "^2.14.6",
     "nuxt-socket-io": "^1.1.11",
     "vuex-persistedstate": "^3.1.0"

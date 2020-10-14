@@ -12,6 +12,8 @@
         <div class="userName info">{{name}}</div>
         <div class="userStats info">{{likes}}</div>
       </div>
+
+      <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" />
       
         <div class="userDesc info">
           <input v-if="canedit" type="text" v-model="description" @keyup.enter="editDesc()">
@@ -58,6 +60,23 @@ export default {
         else{ //Jezeli podczas edycji profilu zostales zle zweryfikowany
           
         }
+      })
+    },
+    async sendAvatar(event){
+
+      const udata = this.$store.state.userdata
+      const formData = new FormData()
+      formData.append('avatar', event.target.files[0])
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+
+      this.$axios.post('/api/avatar', {udata}, formData, config).then((resolve) => {
+        alert('Zmieniono!')
+        console.log(event)
+
       })
     }
   }

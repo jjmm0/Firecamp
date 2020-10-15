@@ -37,7 +37,7 @@ export default {
   },
   mounted(){
     //Pobierz profil na podstawie routa w adresie
-    this.$axios.get(`/api/profiles/${this.$route.params.userId}`).then((resolve) => {
+    this.$axios.get(`/api/profile/${this.$route.params.userId}`).then((resolve) => {
         this.name = resolve.data.name
         this.description = resolve.data.description
         this.likes = resolve.data.likes
@@ -52,7 +52,7 @@ export default {
   methods: {
     editDesc(){
       const { description } = this
-      this.$axios.put('/api/profiles', {udata: this.$store.state.userdata, description}).then((resolve) => {
+      this.$axios.put('/api/profile', {udata: this.$store.state.userdata, description}).then((resolve) => {
         if(resolve.status === 200){
           alert('Zedytowano!')
         }
@@ -61,25 +61,22 @@ export default {
         }
       })
     },
-    async sendAvatar(event){
-
-      
+    sendAvatar(event) {
       const udata = this.$store.state.userdata
+
       const formData = new FormData()
+
       formData.append('avatar', event.target.files[0])
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      }
 
-      this.$axios.post('/api/avatar', {udata}, formData, config).then((resolve) => {
-        alert('Zmieniono!')
-        console.log(event)
 
-      })
-    }
-  }
+      this.$axios.post('/api/avatar', formData)
+      // return this.$axios.post('/api/verify', {udata}).then((resolve) => {
+      //   if(resolve.status === 200){
+      //     this.$axios.post(`/api/avatar/${this.$route.params.userId}`, formData)
+      //   }
+      // })
+    },
+  },
 }
 </script>
 

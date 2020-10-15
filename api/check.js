@@ -5,7 +5,6 @@ const User = require('./models/user')
 //Check user token isn't expired or fake
 module.exports.auth = [
     function(req, res, next){
-        console.log(req.headers)
         if((req.body.udata.token && req.body.udata.name) != (null || undefined))
         {
             jwt.verify(req.body.udata.token, 'SikretKluczES', (err, decoded) => {

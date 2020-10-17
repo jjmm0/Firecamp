@@ -1,11 +1,13 @@
 export default function ({ store, redirect }) {
   // If the user is not authenticated
-  if (!store.state.userdata || store.state.userdata == null) {
-    if((store.state.userdata.token || store.state.userdata.uid || store.state.userdata.name == null || undefined))
-    {
+  if(store.state.userdata){
+    if((store.state.userdata.token == null) || (store.state.userdata.name == null) || (store.state.userdata.uid == null)){
       store.commit('logout')
-      return redirect('/loginPage')
+      redirect('/loginPage')
     }
+  }else if(!store.state.userdata){
+    store.commit('logout')
+    redirect('/loginPage')
   }
 }
   

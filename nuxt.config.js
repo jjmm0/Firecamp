@@ -36,7 +36,6 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
     'nuxt-socket-io'
   ],
   io: {
@@ -47,28 +46,6 @@ export default {
       default: true,
     }]
   },
-
-
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           url: '/api/login',
-  //           method: 'post',
-  //           propertyName: 'token',
-  //         },
-  //         logout: true,
-  //       },
-  //     },
-  //   },
-  //   redirect: {
-  //     login: '/loginPage', // User will be redirected to this path if login is required
-  //     logout: '/', // User will be redirected to this path if after logout, current route is protected
-  //     home: '/', // User will be redirect to this path after login if accessed login page directly
-  //   },
-  //   rewriteRedirects: true,
-  // },
 
   axios: {
     baseURL: "/"

@@ -1,9 +1,15 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const multer  = require('multer')
+const multer = require('multer')
+const fs = require('fs')
+const path = require('path')
+const Jimp = require('jimp')
 
 //Import user model
 const User = require('../models/user')
+
+const check = require('../check')
+
 
 //User register
 module.exports.register = [
@@ -83,7 +89,7 @@ module.exports.profiles = [
 module.exports.editprofile = [
     function(req, res){
         if(req.body.description){
-            User.findOneAndUpdate({_id: req.body.udata.uid, Login: req.body.udata.name}, {Description: req.body.description}, {new: true},  (err, result) => {
+            User.findOneAndUpdate({_id: req.headers.uid, Login: req.headers.uname}, {Description: req.body.description}, {new: true},  (err, result) => {
                 if(result != null || undefined){
                     res.status(200).end()
                 }
@@ -102,10 +108,40 @@ module.exports.editprofile = [
     }
 ]
 
+//Get user avatar
+module.exports.getAvatar = [
+    async function(req, res){
+        const filePath = await path.resolve(__dirname, '../avatar', req.params.userId + ".jpg")
+        const fileStream = await fs.createReadStream(filePath)
+        
+        fileStream.on('open', () => {
+            fileStream.pipe(res)
+        })
+
+        fileStream.on('error', () => {
+            res.set('Content-Type', 'text/plain')
+            res.status(400).end('Not Found!')
+        })
+
+    }
+]
+
 //Upload user avatar
-module.exports.avatar = [
-    function(req, res){
-        console.log(req.file)
-        console.log('siemano')
+module.exports.uploadAvatar = [
+    async function(req, res){
+        const userid = await check.userId(req)
+        const filePath = await path.resolve(__dirname, "../avatar/" + userid + ".jpg")
+        
+        Jimp.read(filePath, (err, done) => {
+            if(done){
+                done
+                .resize(256, 256) //Change image size
+                .write(filePath) //Save image
+                res.status(200).end()
+            }else{
+                console.log(err)
+                res.status(400).end()
+            }
+        })
     }
 ]

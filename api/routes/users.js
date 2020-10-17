@@ -7,13 +7,13 @@ const check = require('../check')
 
 // Multer config
 const storage = multer.diskStorage({
-    destination: './api/avatar',
-    async filename(req, file, cb) {
-      const userid = "req.params.userId"
-  
-      cb(null, userid + '.jpg')
-    },
-  })
+  destination: './api/avatar',
+  async filename(req, file, cb) {
+    const fileName = await check.userId(req)
+
+    cb(null, fileName + '.jpg')
+  },
+})
 const upload = multer({ storage })
 
 
@@ -35,8 +35,11 @@ router.get('/profile', userController.profiles)
 //Edit user profile
 router.put('/profile', check.auth, userController.editprofile)
 
+//User avatar get
+router.get('/avatar/:userId', userController.getAvatar)
+
 //User avatar upload
-router.post('/avatar', upload.single('avatar'))
+router.post('/avatar', check.auth, upload.single('avatar'), userController.uploadAvatar)
 
 
 

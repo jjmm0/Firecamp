@@ -5,7 +5,7 @@
       <HeaderClient v-else />
     </div>
     <div class="user-pfp">
-      <img src="/" placeholder="Missing pfp" id="userProfilePicture">
+      <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
     </div>
     <div class="userInfo">
       <div class="infowrap">
@@ -52,7 +52,7 @@ export default {
   methods: {
     editDesc(){
       const { description } = this
-      this.$axios.put('/api/profile', {udata: this.$store.state.userdata, description}).then((resolve) => {
+      this.$axios.put('/api/profile', {description}).then((resolve) => {
         if(resolve.status === 200){
           alert('Zedytowano!')
         }
@@ -62,8 +62,6 @@ export default {
       })
     },
     sendAvatar(event) {
-      const udata = this.$store.state.userdata
-
       const formData = new FormData()
 
       formData.append('avatar', event.target.files[0])

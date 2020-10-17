@@ -5,17 +5,46 @@ const User = require('./models/user')
 //Check user token isn't expired or fake
 module.exports.auth = [
     function(req, res, next){
-        if((req.body.udata.token && req.body.udata.name) != (null || undefined))
+        const udata = req.body.udata || null //Using when logging in
+        const utoken = req.headers.utoken || null //Using in requests after login
+        if(udata)
         {
-            jwt.verify(req.body.udata.token, 'SikretKluczES', (err, decoded) => {
+            jwt.verify(udata.token, 'SikretKluczES', (err, decoded) => {
                 if(decoded == (undefined || null)){
                     res.status(201).end()
                     // console.log('Unauthorized!')
                 }
                 else if(decoded.result.Login != (null || undefined)){
-                    User.findOne({_id: req.body.udata.uid, Login: decoded.result.Login}, (err, result) => {
+                    User.findOne({_id: udata.uid, Login: decoded.result.Login}, (err, result) => {
                         if(result){
-                            if((result.Login === (decoded.result.Login && req.body.udata.name)) && (result.Password === decoded.result.Password)){
+                            if((result.Login === (decoded.result.Login && udata.name)) && (result.Password === decoded.result.Password)){
+                                console.log('Authorized!')
+                                next()
+                            }
+                            else{
+                                res.status(201).end()
+                                // console.log('Unauthorized!')
+                            }
+                        }
+                        else{
+                            res.status(201).end()
+                            // console.log('Unauthorized!')
+                        }
+                    })
+                }
+            })
+        }
+        else if(utoken)
+        {
+            jwt.verify(req.headers.utoken, 'SikretKluczES', (err, decoded) => {
+                if(decoded == (undefined || null)){
+                    res.status(201).end()
+                    // console.log('Unauthorized!')
+                }
+                else if(decoded.result.Login != (null || undefined)){
+                    User.findOne({_id: req.headers.uid, Login: decoded.result.Login}, (err, result) => {
+                        if(result){
+                            if((result.Login === (decoded.result.Login && req.headers.uname)) && (result.Password === decoded.result.Password)){
                                 console.log('Authorized!')
                                 next()
                             }
@@ -37,11 +66,25 @@ module.exports.auth = [
             console.log('Unauthorized!')
         }
     }
-
 ]
 
-module.exports.userId = [
-    function(req, res){
-        console.log(req.body.udata.token)
+module.exports.userId = function (req) {
+  return new Promise((resolve, reject) => {
+    const token = req.headers.utoken
+
+    if (!token) {
+      reject(new Error('no token supplied'))
     }
-]
+
+    jwt.verify(token, 'SikretKluczES', function (
+      err,
+      decoded
+    ) {
+      if (err) {
+        return reject(err)
+      }
+
+      resolve(decoded.result._id)
+    })
+  })
+}

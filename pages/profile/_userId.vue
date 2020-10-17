@@ -63,16 +63,9 @@ export default {
     },
     sendAvatar(event) {
       const formData = new FormData()
-
       formData.append('avatar', event.target.files[0])
-
-
+      
       this.$axios.post('/api/avatar', formData)
-      // return this.$axios.post('/api/verify', {udata}).then((resolve) => {
-      //   if(resolve.status === 200){
-      //     this.$axios.post(`/api/avatar/${this.$route.params.userId}`, formData)
-      //   }
-      // })
     },
   },
 }

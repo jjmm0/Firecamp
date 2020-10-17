@@ -18,7 +18,7 @@ module.exports.auth = [
                     User.findOne({_id: udata.uid, Login: decoded.result.Login}, (err, result) => {
                         if(result){
                             if((result.Login === (decoded.result.Login && udata.name)) && (result.Password === decoded.result.Password)){
-                                console.log('Authorized!')
+                                // console.log('Authorized!')
                                 next()
                             }
                             else{
@@ -45,7 +45,7 @@ module.exports.auth = [
                     User.findOne({_id: req.headers.uid, Login: decoded.result.Login}, (err, result) => {
                         if(result){
                             if((result.Login === (decoded.result.Login && req.headers.uname)) && (result.Password === decoded.result.Password)){
-                                console.log('Authorized!')
+                                // console.log('Authorized!')
                                 next()
                             }
                             else{
@@ -72,19 +72,15 @@ module.exports.userId = function (req) {
   return new Promise((resolve, reject) => {
     const token = req.headers.utoken
 
-    if (!token) {
-      reject(new Error('no token supplied'))
+    if(!token) {
+        reject(new Error('No token supplied!'))
     }
 
-    jwt.verify(token, 'SikretKluczES', function (
-      err,
-      decoded
-    ) {
-      if (err) {
+    jwt.verify(token, 'SikretKluczES', function (err, decoded){
+    if(err){
         return reject(err)
-      }
-
-      resolve(decoded.result._id)
+    }
+    resolve(decoded.result._id)
     })
   })
 }

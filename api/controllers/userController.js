@@ -111,16 +111,20 @@ module.exports.editprofile = [
 //Get user avatar
 module.exports.getAvatar = [
     async function(req, res){
-        const filePath = await path.resolve(__dirname, '../avatar', req.params.userId + ".jpg")
+        //User image
+        const filePath = await path.resolve(__dirname, '../avatar/' + req.params.userId + ".jpg")
         const fileStream = await fs.createReadStream(filePath)
+
+        //Default image
+        const defIMG = await path.resolve(__dirname, '../avatar/' + "default.jpg")
+        const defStream = await fs.createReadStream(defIMG)
         
         fileStream.on('open', () => {
             fileStream.pipe(res)
         })
-
+        
         fileStream.on('error', () => {
-            res.set('Content-Type', 'text/plain')
-            res.status(400).end('Not Found!')
+            defStream.pipe(res)
         })
 
     }

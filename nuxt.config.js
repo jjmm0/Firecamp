@@ -41,7 +41,7 @@ export default {
   io: {
     sockets: [{
       name: "main",
-      url: "http://localhost:3000",
+      url: "http://localhost:3002",
       default: true,
     }]
   },

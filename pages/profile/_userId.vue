@@ -13,7 +13,6 @@
         <div class="userStats info">{{likes}}</div>
       </div>
 
-      <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" />
       
         <div class="userDesc info">
           <input v-if="canedit" type="text" v-model="description" @keyup.enter="editDesc()">
@@ -23,7 +22,11 @@
     </div> -->
     <div class="content">      
       <div class="profile">
+        <div class="pfp">
+          <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
+          <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" placeholder="gunga" />
 
+        </div>
       </div>
     </div>
   </div>

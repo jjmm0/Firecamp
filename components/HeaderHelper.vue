@@ -78,6 +78,7 @@ export default {
           this.$router.push(`/${router}`)
 
       }
+      
   },
 }
 </script>

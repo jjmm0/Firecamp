@@ -1,53 +1,34 @@
-$pfpHeight: 200px;
-$infowrapHeight: 50px;
 .wrapper{
+  // position: fixed;
   height: 100%;
-  overflow: hidden;
 }
-.user-pfp{
-  height: 100%;
-  display: inline-block;
-  background-color: blue;
-  img{
-    width: $pfpHeight ;
-    height: $pfpHeight;
-    background-color: red;
-    vertical-align: 0;
-  }
-  
-}
-
-.userInfo{  
-  width: 70%;
-  display: inline-block;
-  height: 30%;
-  border: 2px solid #d88ae7;
+.content{
+  max-height: calc(100% - 83px);
+  // height: calc(100% - 83px);
+  height: 856px;
+  width: 100%;
   box-sizing: border-box;
-  // flex-direction: column;
+  // border: 2px solid green
+  padding-top: 4%;
+  // padding-bottom: auto    ;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  // margin: auto 0;
+  // background-color: blue;  
+  // vertical-align: middle;
 }
-.info{
-  display: inline;
-}
-.descWrap{
-  height: 100%;
-}
-.infowrap{
-  height: $infowrapHeight;
-}
-.userDesc{
-  box-sizing: border-box;
-  display: block;
-  border: 2px solid black;
-  height: calc(100% - #{$infowrapHeight});
+.profile{
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px) ;
+  // width: 1200px;
+  width: 1600px;
+  height: 700px;
+  margin: auto;
+  // margin-left: 10%;
+  // margin-left: auto;
+  // margin-right: auto;
   
-  
-  input{
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-  }
-}
-.userStats{
-  border: 2px solid green;
-
 }

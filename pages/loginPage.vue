@@ -6,6 +6,7 @@
           <div @click="handleChoice(1)" class="loginpg log"><span>Zaloguj się</span></div>
           <div @click="handleChoice(2)" class="loginpg reg"><span>Zarejestruj się</span></div>
         </div> -->
+        
         <nuxt-link to="/">
           <img id="return" src="~/assets/ReturnArrow.png">
         </nuxt-link>

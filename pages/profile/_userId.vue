@@ -4,7 +4,7 @@
       <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
       <HeaderClient v-else />
     </div>
-    <div class="user-pfp">
+    <!-- <div class="user-pfp">
       <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
     </div>
     <div class="userInfo">
@@ -20,6 +20,11 @@
           <a v-else>{{description}}</a>
         </div>
       
+    </div> -->
+    <div class="content">      
+      <div class="profile">
+
+      </div>
     </div>
   </div>
 </template>

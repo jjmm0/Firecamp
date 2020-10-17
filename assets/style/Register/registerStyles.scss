@@ -47,7 +47,13 @@ input:focus{
     text-align: center;
 }
 .alertText{
-    padding-top: 4px;
-    color: red;
+    padding: 4px 8px;
+    margin-top: 4px;
+    color: #ff1c1c;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: auto;
+    display: inline-block;
+    border-radius: 6px;
     font-size: 16px;
 }

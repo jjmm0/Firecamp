@@ -1,58 +1,32 @@
 .wrapper {
   height: 100%;
-  overflow: hidden;
 }
 
-.user-pfp {
-  height: 100%;
-  display: inline-block;
-  background-color: blue;
-}
-
-.user-pfp img {
-  width: 200px;
-  height: 200px;
-  background-color: red;
-  vertical-align: 0;
-}
-
-.userInfo {
-  width: 70%;
-  display: inline-block;
-  height: 30%;
-  border: 2px solid #d88ae7;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.info {
-  display: inline;
-}
-
-.descWrap {
-  height: 100%;
-}
-
-.infowrap {
-  height: 50px;
-}
-
-.userDesc {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: block;
-  border: 2px solid black;
-  height: calc(100% - 50px);
-}
-
-.userDesc input {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+.content {
+  max-height: calc(100% - 83px);
+  height: 856px;
   width: 100%;
-  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 4%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
-.userStats {
-  border: 2px solid green;
+.profile {
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  width: 1600px;
+  height: 700px;
+  margin: auto;
 }
 /*# sourceMappingURL=ProfileStyles.css.map */

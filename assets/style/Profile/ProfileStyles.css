@@ -1,58 +1,6 @@
 .wrapper {
   height: 100%;
-  overflow: hidden;
-}
-
-.user-pfp {
-  height: 100%;
-  display: inline-block;
-  background-color: blue;
-}
-
-.user-pfp img {
-  width: 200px;
-  height: 200px;
-  background-color: red;
-  vertical-align: 0;
-}
-
-.userInfo {
-  width: 70%;
-  display: inline-block;
-  height: 30%;
-  border: 2px solid #d88ae7;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.info {
-  display: inline;
-}
-
-.descWrap {
-  height: 100%;
-}
-
-.infowrap {
-  height: 50px;
-}
-
-.userDesc {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: block;
-  border: 2px solid black;
-  height: calc(100% - 50px);
-}
-
-.userDesc input {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   width: 100%;
-  height: 100%;
-}
-
-.userStats {
-  border: 2px solid green;
+  margin: 0;
 }
 /*# sourceMappingURL=ProfileStyles.css.map */

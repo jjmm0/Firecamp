@@ -39,7 +39,7 @@ module.exports.auth = [
             jwt.verify(req.headers.utoken, 'SikretKluczES', (err, decoded) => {
                 if(decoded == (undefined || null)){
                     res.status(201).end()
-                    // console.log('Unauthorized!')
+                    console.log('Unauthorized!')
                 }
                 else if(decoded.result.Login != (null || undefined)){
                     User.findOne({_id: req.headers.uid, Login: decoded.result.Login}, (err, result) => {
@@ -50,12 +50,12 @@ module.exports.auth = [
                             }
                             else{
                                 res.status(201).end()
-                                // console.log('Unauthorized!')
+                                console.log('Unauthorized!')
                             }
                         }
                         else{
                             res.status(201).end()
-                            // console.log('Unauthorized!')
+                            console.log('Unauthorized!')
                         }
                     })
                 }
@@ -63,7 +63,7 @@ module.exports.auth = [
         }
         else{
             res.status(201).end()
-            console.log('Unauthorized!')
+            console.log('No token in header!')
         }
     }
 ]

@@ -10,6 +10,7 @@
       <br>
       <input v-model="login.Password" id="password" type="password" class="form-control">
       <br>
+      <p v-show="errorMsg" class="alertText"><b>Login lub hasło są nieprawidłowe!</b></p>
 
       <div class="button">
         <button @click="loginSubmit" type="submit" class="btn btn-primary" >Zaloguj się</button>
@@ -26,6 +27,7 @@ export default {
         Login: '',
         Password: '',
       },
+      errorMsg: false,
       message: "",
     }
   },
@@ -44,11 +46,11 @@ export default {
             this.$router.push('/rooms')
           }
           else{
-            alert('cos jest nie tak')
+            this.errorMsg = true 
           }
         } 
         else{
-          alert("cos jest nie tak")
+          this.errorMsg = true 
         }
       })
     }

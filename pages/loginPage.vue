@@ -16,8 +16,8 @@
 
         </div>  
         <div style="overflow: hidden;">
-          <Login v-if="choice == 1" />
-          <Register v-if="choice == 2"/>
+          <Login class="forms" v-if="choice == 1" />
+          <Register class="forms" v-if="choice == 2"/>
         </div>
       </div>
     </div>

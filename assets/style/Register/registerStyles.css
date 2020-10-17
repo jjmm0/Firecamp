@@ -6,6 +6,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 3%;
 }
 
 .form-group {
@@ -65,13 +66,8 @@ input:focus {
 }
 
 .alertText {
-  padding: 4px 8px;
-  margin-top: 4px;
-  color: #ff1c1c;
+  padding-top: 4px;
+  color: red;
   font-size: 16px;
-  background-color: rgba(0, 0, 0, 0.4);
-  width: auto;
-  display: inline-block;
-  border-radius: 6px;
 }
 /*# sourceMappingURL=registerStyles.css.map */

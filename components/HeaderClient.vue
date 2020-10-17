@@ -2,7 +2,7 @@
   <div class="wrapperHeader">
     <!-- <img class="logo" src="https://pbs.twimg.com/profile_images/1170663788405825536/2mbm927v_400x400.jpg"/> -->
     <nuxt-link to="/">
-      <img class="logo" src="~/assets/Logo2.png"/>
+      <img class="logo" src="~/assets/Logo.png"/>
     </nuxt-link>
     <!-- <div class="buttons" >
       <ul>

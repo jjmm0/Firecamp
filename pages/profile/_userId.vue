@@ -12,6 +12,14 @@
         <div class="userName info">{{name}}</div>
         <div class="userStats info">{{likes}}</div>
       </div>
+
+      <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" />
+      
+        <div class="userDesc info">
+          <input v-if="canedit" type="text" v-model="description" @keyup.enter="editDesc()">
+          <a v-else>{{description}}</a>
+        </div>
+      
     </div>
   </div>
 </template>

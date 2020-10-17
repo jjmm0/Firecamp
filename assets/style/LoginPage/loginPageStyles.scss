@@ -28,11 +28,11 @@ $buttonHeight: 40px;
     font-size: 24px;
     text-align: center;
     // width: 150px;
-    border: 3px solid white;
+    border: 2px solid white;
     display: inline-block;
     cursor: pointer;
     padding: 10px 0px;
-    backdrop-filter: blur(3px) brightness(100%);
+    backdrop-filter: blur(2px) brightness(70%);
     transition: 0.4s ease-out;
 
 }
@@ -49,9 +49,6 @@ $buttonHeight: 40px;
     grid-area: 1 / 4 / 1 / 6;
 }
 .registerbt{
+
     grid-area: 1 / 8 / 1 / 10;
-}
-.forms{
-    margin-top: 4%;
-    overflow: hidden;
 }

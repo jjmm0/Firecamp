@@ -24,9 +24,15 @@ export default {
     middleware: ['verify', 'notLoggedIn'],
     data(){
         return{
-
+            
         }
     },
+    mounted(){
+        this.socket = this.$nuxtsocket({})
+    },
+    methods: {
+
+    }
     
 }
 </script>

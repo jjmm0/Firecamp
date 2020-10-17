@@ -39,10 +39,9 @@ export default {
     'nuxt-socket-io'
   ],
   io: {
-    // module options
     sockets: [{
-      name: 'main',
-      url: 'http://localhost:3000',
+      name: "main",
+      url: "http://localhost:3000",
       default: true,
     }]
   },

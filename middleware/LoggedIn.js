@@ -1,6 +1,6 @@
 export default function ({ store, redirect }) {
   // If the user is not authenticated
-  if (!store.state.userdata.token || !store.state.userdata.name || !store.state.userdata.uid) {
+  if (!store.state.userdata) {
     store.commit('logout')
     return redirect('/loginPage')
   }

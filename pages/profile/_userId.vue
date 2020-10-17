@@ -37,7 +37,7 @@ export default {
   },
   mounted(){
     //Pobierz profil na podstawie routa w adresie
-    this.$axios.get(`/api/profile/${this.$route.params.userId}`).then((resolve) => {
+    let result = this.$axios.get(`/api/profile/${this.$route.params.userId}`).then((resolve) => {
         this.name = resolve.data.name
         this.description = resolve.data.description
         this.likes = resolve.data.likes
@@ -65,7 +65,13 @@ export default {
       const formData = new FormData()
       formData.append('avatar', event.target.files[0])
       
-      this.$axios.post('/api/avatar', formData)
+      this.$axios.post('/api/avatar', formData).then((resolve) => {
+        if(resolve.status === 200){
+          location.reload(true)
+        }else{
+          alert("Błąd")
+        }
+      })
     },
   },
 }

@@ -22,7 +22,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~/plugins/persistedState.client.js', ssr: false } 
+    { src: '~/plugins/persistedState.client.js', ssr: false },
+    { src: '~/plugins/axios.js'}
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -35,7 +36,6 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
     'nuxt-socket-io'
   ],
   io: {
@@ -47,30 +47,8 @@ export default {
     }]
   },
 
-
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           url: '/api/login',
-  //           method: 'post',
-  //           propertyName: 'token',
-  //         },
-  //         logout: true,
-  //       },
-  //     },
-  //   },
-  //   redirect: {
-  //     login: '/loginPage', // User will be redirected to this path if login is required
-  //     logout: '/', // User will be redirected to this path if after logout, current route is protected
-  //     home: '/', // User will be redirect to this path after login if accessed login page directly
-  //   },
-  //   rewriteRedirects: true,
-  // },
-
   axios: {
-    // proxyHeaders: false
+    baseURL: "/"
   },
   serverMiddleware: [
     "~/api/index"

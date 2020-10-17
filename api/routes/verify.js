@@ -2,8 +2,8 @@ const { Router } = require('express')
 
 const router = Router()
 
-const checkAuth = require('../checkAuth')
+const check = require('../check')
 
-router.post('/verify', checkAuth, (req, res) => {res.end()})
+router.post('/verify', check.auth, (req, res) => {res.end()})
 
 module.exports = router

@@ -4,9 +4,13 @@
       <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
       <HeaderClient v-else />
     </div>
-    <div class="content">
-      <div class="profileBox">
-        
+    <div class="user-pfp">
+      <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
+    </div>
+    <div class="userInfo">
+      <div class="infowrap">
+        <div class="userName info">{{name}}</div>
+        <div class="userStats info">{{likes}}</div>
       </div>
     </div>
   </div>
@@ -25,7 +29,7 @@ export default {
   },
   mounted(){
     //Pobierz profil na podstawie routa w adresie
-    this.$axios.get(`/api/profiles/${this.$route.params.userId}`).then((resolve) => {
+    let result = this.$axios.get(`/api/profile/${this.$route.params.userId}`).then((resolve) => {
         this.name = resolve.data.name
         this.description = resolve.data.description
         this.likes = resolve.data.likes
@@ -40,7 +44,7 @@ export default {
   methods: {
     editDesc(){
       const { description } = this
-      this.$axios.put('/api/profiles', {udata: this.$store.state.userdata, description}).then((resolve) => {
+      this.$axios.put('/api/profile', {description}).then((resolve) => {
         if(resolve.status === 200){
           alert('Zedytowano!')
         }
@@ -49,25 +53,19 @@ export default {
         }
       })
     },
-    async sendAvatar(event){
-
-      
-      const udata = this.$store.state.userdata
+    sendAvatar(event) {
       const formData = new FormData()
       formData.append('avatar', event.target.files[0])
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data'
+      
+      this.$axios.post('/api/avatar', formData).then((resolve) => {
+        if(resolve.status === 200){
+          location.reload(true)
+        }else{
+          alert("Błąd")
         }
-      }
-
-      this.$axios.post('/api/avatar', {udata}, formData, config).then((resolve) => {
-        alert('Zmieniono!')
-        console.log(event)
-
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

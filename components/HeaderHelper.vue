@@ -6,8 +6,8 @@
     <div class="buttons" >
       <ul>
         <li><nuxt-link to="/rooms"><button>Znajdź Pokój</button></nuxt-link></li>
-        <li><nuxt-link :to="`/profiles/${this.$store.state.userdata.uid}`"><button>Mój profil</button></nuxt-link></li>
-        <li><nuxt-link to="/profiles"><button>Lista profili</button></nuxt-link></li>
+        <li><nuxt-link :to="`/profile/${this.$store.state.userdata.uid}`"><button>Mój profil</button></nuxt-link></li>
+        <li><nuxt-link to="/profile"><button>Lista profili</button></nuxt-link></li>
         <li><button>Ranking</button></li>
         <li><button @click="LogOut()">Wyloguj</button></li>
       </ul>

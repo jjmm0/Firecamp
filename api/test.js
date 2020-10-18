@@ -16,24 +16,20 @@ http.listen(port, IP, (err) => {
 
 
 const users = []
-
+const rooms = [{name: "XD", description: "desc", uname: "JANUSZ"}]
 
 io.on('connection', (socket) => {
     console.log('User connected!')
     users.push({ID: socket.id})
-
-
-
-    socket.on('method1', (x) => {
-        console.log(users)
-        console.log('ok')
-        console.log(x)
-        io.emit('method1', x)
-    })
+    console.log(users)
 
     socket.on('newRoom', (room) => {
-        console.log(room)
         io.emit('newRoom', room)
     })
-    
+
+    socket.on('disconnect', (socket) => {
+        users.splice({ID: socket.id})
+        console.log(users)
+        console.log('User disconnected!')
+    })
 })

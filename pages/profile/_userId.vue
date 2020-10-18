@@ -22,11 +22,17 @@
     </div> -->
     <div class="content">      
       <div class="profile">
-        <div class="pfp">
-          <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
-          <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" placeholder="gunga" />
-
-        </div>
+        <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
+        <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" placeholder="gunga" class="pfpEdit">
+        
+          <div class="Username">
+            {{name}} 
+          </div>
+          <textarea class="editor" v-if="canedit" type="text" v-model="description" />
+          <div class="Desc" v-else>
+            {{description}}
+          </div>
+          <button class="saveDesc btn btn-primary" v-if="canedit" @click="editDesc()">Zapisz</button>
       </div>
     </div>
   </div>
@@ -38,7 +44,7 @@ export default {
   data(){
     return{
       name: null,
-      description: null,
+      description: 'asdasda',
       likes: null,
       canedit: false,
     }

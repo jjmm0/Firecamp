@@ -14,11 +14,13 @@ body,
 #__layout {
   height: 100%;
   /* Tło */
-    background: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg');
+    /* background: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg'); */
+    background-image: url("../assets/boat.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    
     filter: brightness(100%) contrast(100%);
 }
 

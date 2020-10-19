@@ -5,7 +5,7 @@ const app = express()
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 
-//Tablice użytkowników/pokoi
+// Tablice użytkowników/pokoi
 let users = []
 let rooms = []
 
@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
     users.push({ID: socket.id})
     console.log(users)
 
-    //Aktualizacja listy pokoi jeżeli ktoś właśnie utworzył nowy
+    // Aktualizacja listy pokoi jeżeli ktoś właśnie utworzył nowy
     socket.on('updateRooms', (room) => {
         rooms.push({name: room.name, description: room.description, uname: room.uname, socket: socket.id})
         console.log(rooms)
@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('joinRoom', async(roomToJoin) => {
-        //Usuwanie z tablicy z pokojami tego pokoju do którego ktoś dołączył
+        // Usuwanie z tablicy z pokojami tego pokoju do którego ktoś dołączył
         rooms = await rooms.filter(room => {
             if(room.socket != roomToJoin.socket){
                 return room
@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
         io.emit('updateRooms', rooms)
     })
 
-    //Dołączanie użytkownika do danego pokoju
+    // Dołączanie użytkownika do danego pokoju
     socket.on('roomConnect', (roomId) => {
         socket.join(roomId)
     })
@@ -44,15 +44,15 @@ io.on('connection', (socket) => {
     })
 
     socket.on('disconnect', async () => {
-        //Usuwanie pokoju założonego przez rozłączonego użytkownika
+        // Usuwanie pokoju założonego przez rozłączonego użytkownika
         rooms = rooms.filter(room => {
             if(room.socket != socket.id){
                 return room
             }else{
-                io.emit('updateRooms', rooms) //Ponowna emitacja zaktualizowanej listy pokoi
+                io.emit('updateRooms', rooms) // Ponowna emitacja zaktualizowanej listy pokoi
             }
         })
-        //Usuwanie rozłączonego użytkownika z listy użytkowników
+        // Usuwanie rozłączonego użytkownika z listy użytkowników
         users = users.filter(user => {
             if(user.ID != socket.id){
                 return user
@@ -63,8 +63,7 @@ io.on('connection', (socket) => {
 })
 
 
-
-//Import routes
+// Import routes
 const userRoutes = require('./routes/users')
 const roomsRoutes = require('./routes/rooms')
 const verifyRoutes = require('./routes/verify')
@@ -73,13 +72,14 @@ const verifyRoutes = require('./routes/verify')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-//Routes
+// Routes
 app.use(userRoutes)
 app.use(roomsRoutes)
 app.use(verifyRoutes)
 // app.use(rankingRoutes)
 
-http.on('error', function(xd){}).listen(3001);
+// Run socket.io external server
+http.on('error', () => {}).listen(3001);
 
 module.exports = {
     path: '/api',

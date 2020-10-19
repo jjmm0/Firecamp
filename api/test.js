@@ -44,6 +44,13 @@ io.on('connection', (socket) => {
         io.emit('updateRooms', rooms)
     })
 
+    socket.on('newMessage', (message) => {
+        console.log(message)
+        console.log(socket.id)
+        io.to(socket.id).emit('newMessage', message)
+        io.to(message.socket).emit('newMessage', message)
+    })
+
     socket.on('disconnect', async () => {
         // let filteredRooms = await rooms.filter((event) => {
         //     return event.socket == socket.id

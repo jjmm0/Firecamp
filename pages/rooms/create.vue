@@ -36,12 +36,17 @@ export default {
     mounted(){
         this.socket = this.$nuxtSocket({
         name: "main",
-        })    
+        })
+
+        this.socket.on('joinedRoom', (roomId) => {
+            alert('Ktos wbija do cb')
+            this.$router.push(`/rooms/${roomId}`)
+        })
     },
     methods: {
         createRoom(){
             const room = this.room
-            this.socket.emit('newRoom', room)
+            this.socket.emit('updateRooms', room)
         }
     }
     

@@ -15,21 +15,55 @@ http.listen(port, IP, (err) => {
 })
 
 
-const users = []
-const rooms = [{name: "XD", description: "desc", uname: "JANUSZ"}]
+let users = []
+let rooms = []
 
 io.on('connection', (socket) => {
+    io.emit('updateRooms', rooms)
     console.log('User connected!')
     users.push({ID: socket.id})
     console.log(users)
 
-    socket.on('newRoom', (room) => {
-        io.emit('newRoom', room)
+    socket.on('updateRooms', (room) => {
+        rooms.push({name: room.name, description: room.description, uname: room.uname, socket: socket.id})
+        console.log(rooms)
+        io.emit('updateRooms', rooms)
     })
 
-    socket.on('disconnect', (socket) => {
-        users.splice({ID: socket.id})
-        console.log(users)
+    socket.on('joinRoom', async(roomToJoin) => {
+        rooms = await rooms.filter(room => {
+            if(room.socket != roomToJoin.socket){
+                console.log('git')
+                return room
+            }else{
+                // console.log(socket.id)
+                io.to(roomToJoin.socket).emit('joinedRoom', roomToJoin.socket)
+                io.to(socket.id).emit('joinedRoom', roomToJoin.socket)
+            }
+        })
+        io.emit('updateRooms', rooms)
+    })
+
+    socket.on('disconnect', async () => {
+        // let filteredRooms = await rooms.filter((event) => {
+        //     return event.socket == socket.id
+        // })
+        // rooms = filteredRooms
+
+        rooms = rooms.filter(room => {
+            if(room.socket != socket.id){
+                return room
+            }
+        })
+
+        console.log(rooms)
+        users = users.filter(user => {
+            if(user.ID != socket.id){
+                return user
+            }
+        })
+
+        io.emit('updateRooms', rooms)
         console.log('User disconnected!')
     })
 })

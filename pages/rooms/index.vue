@@ -3,7 +3,7 @@
     <HeaderHelper/>
     <!-- <RoomWindow  /> -->
     <div v-for="room in rooms">
-      <div style="background-color: blue; margin: 1%;">{{room.name}}<br />{{room.uname}}<br />{{room.description}}</div>
+      <div @click="joinRoom(room)" style="background-color: blue; margin: 1%;">{{room.name}}<br />{{room.uname}}<br />{{room.description}}</div>
 
     </div>
   </div>
@@ -14,7 +14,7 @@ export default {
   middleware: ['LoggedIn', 'verify'],
   data(){
     return{
-      rooms: [{name: "TEST"}]
+      rooms: []
     }
   },
   mounted(){
@@ -22,10 +22,19 @@ export default {
       name: "main",
     })
 
-    this.socket.on('newRoom', (room) => {
-      console.log(room.name)
-      this.rooms.push({name: room.name, uname: room.uname, description: room.description})
+    this.socket.on('updateRooms', (rooms) => {
+      this.rooms = rooms
     })
+
+    this.socket.on('joinedRoom', (roomId) => {
+      alert('wbijanko')
+      this.$router.push(`/rooms/${roomId}`)
+    })  
+  },
+  methods: {
+    joinRoom(roomToJoin){
+      this.socket.emit('joinRoom', roomToJoin)
+    }
   }
 }
 </script>

@@ -1,8 +1,6 @@
 require('./db')
 const express = require('express')
 const app = express()
-// const http = require('http').createServer(app)
-// const io = require('socket.io')(http)
 
 //Import routes
 const userRoutes = require('./routes/users')
@@ -18,16 +16,6 @@ app.use(userRoutes)
 app.use(roomsRoutes)
 app.use(verifyRoutes)
 // app.use(rankingRoutes)
-
-
-// io.on('connection', (socket) => {
-//     console.log('user connected')
-//     // io.emit('welcomeMSG')
-//     // socket.on('sendMSG', (emiting) => {
-//     //     io.emit('receivemsg', emiting)
-//     // })
-// })
-
 
 module.exports = {
     path: '/api',

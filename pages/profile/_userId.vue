@@ -76,5 +76,5 @@ export default {
 </script>
 
 <style scoped>
-@import '~/assets/style/profile/profilestyles';
+@import '~/assets/style/Profile/ProfileStyles.css';
 </style>

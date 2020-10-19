@@ -14,7 +14,7 @@ http.listen(port, IP, (err) => {
     console.log("socket")
 })
 
-
+//Tablice użytkowników/pokoi
 let users = []
 let rooms = []
 
@@ -24,6 +24,7 @@ io.on('connection', (socket) => {
     users.push({ID: socket.id})
     console.log(users)
 
+    //Aktualizacja listy pokoi jeżeli ktoś właśnie utworzył nowy
     socket.on('updateRooms', (room) => {
         rooms.push({name: room.name, description: room.description, uname: room.uname, socket: socket.id})
         console.log(rooms)
@@ -31,12 +32,11 @@ io.on('connection', (socket) => {
     })
 
     socket.on('joinRoom', async(roomToJoin) => {
+        //Usuwanie z tablicy z pokojami tego pokoju do którego ktoś dołączył
         rooms = await rooms.filter(room => {
             if(room.socket != roomToJoin.socket){
-                console.log('git')
                 return room
             }else{
-                // console.log(socket.id)
                 io.to(roomToJoin.socket).emit('joinedRoom', roomToJoin.socket)
                 io.to(socket.id).emit('joinedRoom', roomToJoin.socket)
             }
@@ -44,33 +44,29 @@ io.on('connection', (socket) => {
         io.emit('updateRooms', rooms)
     })
 
-    socket.on('newMessage', (message) => {
-        console.log(message)
-        console.log(socket.id)
-        io.to(socket.id).emit('newMessage', message)
-        io.to(message.socket).emit('newMessage', message)
+    //Dołączanie użytkownika do danego pokoju
+    socket.on('roomConnect', (roomId) => {
+        socket.join(roomId)
+    })
+    socket.on('newMessage', (chat) => {
+        io.to(chat.socket).emit('newMessage', chat.input)
     })
 
     socket.on('disconnect', async () => {
-        // let filteredRooms = await rooms.filter((event) => {
-        //     return event.socket == socket.id
-        // })
-        // rooms = filteredRooms
-
+        //Usuwanie pokoju założonego przez rozłączonego użytkownika
         rooms = rooms.filter(room => {
             if(room.socket != socket.id){
                 return room
+            }else{
+                io.emit('updateRooms', rooms) //Ponowna emitacja zaktualizowanej listy pokoi
             }
         })
-
-        console.log(rooms)
+        //Usuwanie rozłączonego użytkownika z listy użytkowników
         users = users.filter(user => {
             if(user.ID != socket.id){
                 return user
             }
         })
-
-        io.emit('updateRooms', rooms)
         console.log('User disconnected!')
     })
 })

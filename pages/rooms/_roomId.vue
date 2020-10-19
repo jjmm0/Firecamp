@@ -8,7 +8,7 @@
                 </div>
                 {{chat.socket}}
             </div>
-            <input style="background-color: red;" @keyup.enter="send(chat.input)" v-model="chat.input" type="text" />
+            <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" />
         </div>
     </div>
 </template>
@@ -26,12 +26,15 @@ export default {
     },
     mounted(){
         this.socket = this.$nuxtSocket({})
+
         this.socket.on('newMessage', (message) => {
             this.messages.push({msg: message.input, nick: 'jakisnick'})
         })
+
+        this.socket.emit('roomConnect', this.$route.params.roomId)
     },
     methods: {
-        send(message){
+        send(){
             this.socket.emit('newMessage', this.chat)
         }
     }

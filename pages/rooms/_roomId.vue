@@ -29,7 +29,7 @@ export default {
         }
     },
     mounted(){
-        this.socket = this.$nuxtSocket({})
+        this.socket = window.socket
 
         this.socket.on('newMessage', (receivedChat) => {
             this.messages.push({msg: receivedChat.input, nick: receivedChat.nick})

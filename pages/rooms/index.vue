@@ -28,9 +28,7 @@ export default {
     }
   },
   mounted(){
-    this.socket = this.$nuxtSocket({
-      name: "main",
-    })
+    this.socket = window.socket
 
     this.socket.on('updateRooms', (rooms) => {
       this.rooms = rooms

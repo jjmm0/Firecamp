@@ -13,6 +13,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: "stylesheet", type: "text/css", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" }
+      ],
+      script: [
+        { src: 'http://localhost:3001/socket.io/socket.io.js' }
       ]
   },
 
@@ -36,19 +39,12 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/axios',
-    'nuxt-socket-io'
   ],
-  io: {
-    sockets: [{
-      name: "main",
-      url: "http://localhost:3001",
-      default: true,
-    }]
-  },
 
   axios: {
     baseURL: "/"
   },
+
   serverMiddleware: [
     "~/api/index"
   ],

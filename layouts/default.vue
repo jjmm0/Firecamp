@@ -7,6 +7,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  beforeMount() {
+    window.socket = io('http://localhost:3001/');
+  }
+}
+</script>
+
 <style>
 html,
 body,

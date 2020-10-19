@@ -34,9 +34,7 @@ export default {
         }
     },
     mounted(){
-        this.socket = this.$nuxtSocket({
-        name: "main",
-        })
+        this.socket = window.socket;
 
         this.socket.on('joinedRoom', (roomId) => {
             alert('Ktos wbija do cb')

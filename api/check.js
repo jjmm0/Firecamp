@@ -33,7 +33,7 @@ module.exports.auth = [
         //         }
         //     })
         // }
-        const utoken = req.headers.utoken || null //Using in requests after login
+        const utoken = req.headers.utoken || null
         if(utoken)
         {
             jwt.verify(req.headers.utoken, 'SikretKluczES', (err, decoded) => {

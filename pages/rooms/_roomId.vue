@@ -15,20 +15,24 @@
 
 <script>
 export default {
+    middleware: 'verify',
     data(){
         return{
+            //Informacje chatu(nick, id, input)
             chat: {
+                nick: this.$store.state.userdata.nick || null,
                 socket: this.$route.params.roomId,
                 input: '',
             },
+            //Tablica z wiadomościami
             messages: []
         }
     },
     mounted(){
         this.socket = this.$nuxtSocket({})
 
-        this.socket.on('newMessage', (message) => {
-            this.messages.push({msg: message.input, nick: 'jakisnick'})
+        this.socket.on('newMessage', (receivedChat) => {
+            this.messages.push({msg: receivedChat.input, nick: receivedChat.nick})
         })
 
         this.socket.emit('roomConnect', this.$route.params.roomId)

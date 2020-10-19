@@ -49,7 +49,7 @@ io.on('connection', (socket) => {
         socket.join(roomId)
     })
     socket.on('newMessage', (chat) => {
-        io.to(chat.socket).emit('newMessage', chat.input)
+        io.to(chat.socket).emit('newMessage', chat)
     })
 
     socket.on('disconnect', async () => {

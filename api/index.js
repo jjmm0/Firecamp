@@ -5,8 +5,6 @@ const app = express()
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
 
-// Tablice użytkowników/pokoi
-let users = []
 let rooms = []
 
 io.on('connection', (socket) => {
@@ -15,8 +13,8 @@ io.on('connection', (socket) => {
     users.push({ID: socket.id})
     console.log(users)
 
-    // Aktualizacja listy pokoi jeżeli ktoś właśnie utworzył nowy
-    socket.on('updateRooms', (room) => {
+    // Aktualizacja tablicy z pokojami jeżeli ktoś właśnie utworzył nowy
+    socket.on('createRoom', (room) => {
         rooms.push({name: room.name, description: room.description, uname: room.uname, socket: socket.id})
         console.log(rooms)
         io.emit('updateRooms', rooms)
@@ -28,8 +26,8 @@ io.on('connection', (socket) => {
             if(room.socket != roomToJoin.socket){
                 return room
             }else{
-                io.to(roomToJoin.socket).emit('joinedRoom', roomToJoin.socket)
-                io.to(socket.id).emit('joinedRoom', roomToJoin.socket)
+                io.to(roomToJoin.socket).emit('created', roomToJoin.socket)
+                io.to(socket.id).emit('created', roomToJoin.socket)
             }
         })
         io.emit('updateRooms', rooms)

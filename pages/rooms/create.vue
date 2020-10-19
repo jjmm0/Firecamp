@@ -36,7 +36,7 @@ export default {
     mounted(){
         this.socket = window.socket;
 
-        this.socket.on('joinedRoom', (roomId) => {
+        this.socket.on('created', (roomId) => {
             alert('Ktos wbija do cb')
             this.$router.push(`/rooms/${roomId}`)
         })
@@ -44,7 +44,7 @@ export default {
     methods: {
         createRoom(){
             const room = this.room
-            this.socket.emit('updateRooms', room)
+            this.socket.emit('createRoom', room)
         }
     }
     

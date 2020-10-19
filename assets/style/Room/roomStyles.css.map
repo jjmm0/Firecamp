@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "roomStyles.scss"
+    ],
+    "names": [],
+    "file": "roomStyles.css"
+}

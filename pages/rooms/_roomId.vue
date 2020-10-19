@@ -12,3 +12,7 @@ export default {
         }
     }
 }
+</script>
+<style>
+@import 'assets/style/Room/roomStyles.css';
+</style>

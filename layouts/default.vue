@@ -15,7 +15,7 @@ body,
   height: 100%;
   /* Tło */
     /* background: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg'); */
-    background-image: url("../assets/boat.jpg"); 
+    background-image: url("../assets/bg/boat.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -32,6 +32,7 @@ body,
 }
 
 .box2 {
+  height: 100%;
   flex: 1;
 }
 

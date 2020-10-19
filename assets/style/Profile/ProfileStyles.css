@@ -3,8 +3,7 @@
 }
 
 .content {
-  max-height: calc(100% - 83px);
-  height: 856px;
+  height: 80%;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -13,20 +12,21 @@
 
 .profile {
   margin: auto;
-  width: 1280px;
-  height: auto;
+  width: 80%;
+  height: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (64px)[20];
-      grid-template-columns: repeat(20, 64px);
-  -ms-grid-rows: (64px)[11];
-      grid-template-rows: repeat(11, 64px);
+  -ms-grid-columns: (1fr)[20];
+      grid-template-columns: repeat(20, 1fr);
+  -ms-grid-rows: (1fr)[11];
+      grid-template-rows: repeat(11, 1fr);
   outline: 4px solid white;
   -webkit-backdrop-filter: blur(3px) brightness(70%);
           backdrop-filter: blur(3px) brightness(70%);
 }
 
 #userProfilePicture {
+  height: 100%;
   -ms-grid-row: 2;
   -ms-grid-row-span: 4;
   -ms-grid-column: 2;
@@ -49,7 +49,7 @@
 }
 
 .Username {
-  line-height: 64px;
+  line-height: 100%;
   color: white;
   padding: 4px;
   font-size: 24px;
@@ -69,10 +69,10 @@
   font-size: 18px;
   padding: 8px;
   -ms-grid-row: 4;
-  -ms-grid-row-span: 7;
+  -ms-grid-row-span: 6;
   -ms-grid-column: 8;
-  -ms-grid-column-span: 12;
-  grid-area: 4 / 8 / 11 / 20;
+  -ms-grid-column-span: 11;
+  grid-area: 4 / 8 / 10 / 19;
   outline: 2px solid white;
   background-color: transparent;
   border: none;
@@ -88,20 +88,20 @@
   font-size: 18px;
   padding: 8px;
   -ms-grid-row: 4;
-  -ms-grid-row-span: 7;
+  -ms-grid-row-span: 6;
   -ms-grid-column: 8;
-  -ms-grid-column-span: 12;
-  grid-area: 4 / 8 / 11 / 20;
+  -ms-grid-column-span: 11;
+  grid-area: 4 / 8 / 10 / 19;
   outline: 2px solid white;
 }
 
 .saveDesc {
-  vertical-align: middle;
+  text-align: center;
   margin: 10px;
-  -ms-grid-row: 11;
+  -ms-grid-row: 10;
   -ms-grid-row-span: 1;
-  -ms-grid-column: 18;
+  -ms-grid-column: 17;
   -ms-grid-column-span: 2;
-  grid-area: 11 / 18 / 12 / 20;
+  grid-area: 10 / 17 / 11 / 19;
 }
 /*# sourceMappingURL=ProfileStyles.css.map */

@@ -13,9 +13,11 @@ $pusherHeight: 10%;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
-    width: 60%;
+    width: 70%;
     height: calc(100% - #{$pusherHeight});  
-    margin: 0 20%;
+    // margin: 0 20%;
+    margin-left: auto;
+    margin-right: auto;
     border-top: 2px solid white;
     border-left: 2px solid white;
     border-right: 2px solid white;
@@ -60,11 +62,13 @@ h1{
 }
 
 .lbutton{
-    border: solid rgb(36, 158, 36) 2px;
+    border: solid rgb(0, 255, 0) 4px;
     transition: all 0.5s;
     cursor: pointer;
     height: 100px;
     width: 300px;
+    // height: 100px;
+    // width: 300px;
     line-height: 90px;
     text-align: center;
     

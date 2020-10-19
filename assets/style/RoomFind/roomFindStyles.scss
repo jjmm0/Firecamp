@@ -1,0 +1,39 @@
+.wrapper{
+    height: 100%;
+}
+.content{
+    height: calc(100% - 83px);
+    padding: 40px 80px;
+    // background-color: rgba(255, 0, 0, 0.3);
+    // display: flex;
+    // align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.block{
+    margin: 20px;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    height: 200px;
+    width: 350px;
+    outline: 3px solid white;
+    background-color: transparent;
+    backdrop-filter: blur(3px) brightness(80%);
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    .roomName{
+        font-size: 24px;
+    }
+    .userName{
+        font-size: 22px;
+    }
+    .roomDesc{
+        font-size: 16px;
+    }
+}
+.block:hover{
+    box-shadow: inset 0px 0px 22px -1px #FFFFFF;
+}

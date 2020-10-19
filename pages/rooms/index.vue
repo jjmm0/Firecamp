@@ -1,15 +1,25 @@
 <template>
-  <div>
-    <HeaderHelper/>
+  <div class="wrapper">
+    <div>
+      <HeaderHelper/>
+    </div>
     <!-- <RoomWindow  /> -->
-    <div v-for="room in rooms">
+    <!-- <div v-for="room in rooms">
       <div @click="joinRoom(room)" style="background-color: blue; margin: 1%;">{{room.name}}<br />{{room.uname}}<br />{{room.description}}</div>
 
+    </div> -->
+    <div class="content" >
+      <div class="block" v-for="room in rooms" @click="joinRoom(room)">
+        <div class="roomName">{{room.name}}</div>
+        <div class="userName">{{room.uname}}</div>
+        <div class="roomDesc">{{room.description}}</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   middleware: ['LoggedIn', 'verify'],
   data(){
@@ -38,3 +48,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import 'assets/style/RoomFind/roomFindStyles.css';
+</style>

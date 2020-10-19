@@ -1,0 +1,54 @@
+.wrapper {
+  height: 100%;
+}
+
+.content {
+  height: calc(100% - 83px);
+  padding: 40px 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.block {
+  margin: 20px;
+  text-align: center;
+  color: white;
+  display: inline-block;
+  height: 200px;
+  width: 350px;
+  outline: 3px solid white;
+  background-color: transparent;
+  -webkit-backdrop-filter: blur(3px) brightness(80%);
+          backdrop-filter: blur(3px) brightness(80%);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.block .roomName {
+  font-size: 24px;
+}
+
+.block .userName {
+  font-size: 22px;
+}
+
+.block .roomDesc {
+  font-size: 16px;
+}
+
+.block:hover {
+  -webkit-box-shadow: inset 0px 0px 22px -1px #FFFFFF;
+          box-shadow: inset 0px 0px 22px -1px #FFFFFF;
+}
+/*# sourceMappingURL=roomFindStyles.css.map */

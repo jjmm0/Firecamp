@@ -18,7 +18,7 @@
           </nuxt-link>
         </div>
         
-        <div style="margin-left: 20%">
+        <div >
           <nuxt-link to="/loginPage">
             <div class="rbutton">
               <b><a class="buttontext">Helper</a></b>

@@ -4,22 +4,6 @@
       <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
       <HeaderClient v-else />
     </div>
-    <!-- <div class="user-pfp">
-      <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
-    </div>
-    <div class="userInfo">
-      <div class="infowrap">
-        <div class="userName info">{{name}}</div>
-        <div class="userStats info">{{likes}}</div>
-      </div>
-
-      
-        <div class="userDesc info">
-          <input v-if="canedit" type="text" v-model="description" @keyup.enter="editDesc()">
-          <a v-else>{{description}}</a>
-        </div>
-      
-    </div> -->
     <div class="content">      
       <div class="profile">
         <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">

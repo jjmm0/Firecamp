@@ -63,7 +63,7 @@ module.exports.auth = [
         }
         else{
             res.status(201).end()
-            console.log('No token in header!')
+            console.log('No token supplied!')
         }
     }
 ]

@@ -36,6 +36,11 @@ export default {
     mounted(){
         this.socket = window.socket;
 
+
+        this.socket.emit('leaveRoom')
+        this.socket.on('refresh', () =>{
+            alert('odswiez')
+        })
         this.socket.on('created', (roomId) => {
             this.socket.emit('roomConnect', roomId);
             this.$router.push(`/rooms/${roomId}`);

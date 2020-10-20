@@ -10,7 +10,6 @@ let openRooms = [] // Array with joinable rooms
 
 io.on('connection', (socket) => {
     console.log('User connected!');
-    // io.emit('updateRooms', openRooms);
 
     // Update and emit rooms array if someone already created new one
     socket.on('createRoom', (room) => {
@@ -40,21 +39,22 @@ io.on('connection', (socket) => {
     })
 
     socket.on('joinRoom', async(roomToJoin) => {
-        // Usuwanie z tablicy z pokojami tego pokoju do którego ktoś dołączył
+        // Deleting selected room from array if someone join
         openRooms = await openRooms.filter(room => {
             if(room.socket != roomToJoin.socket){
                 return room;
             }else{
+                //Emit data to room creator and room
                 io.to(roomToJoin.socket).emit('created', roomToJoin.socket);
                 io.to(socket.id).emit('joined', roomToJoin.socket);
             }
         });
-        console.log(openRooms)
         io.emit('updateRooms', openRooms);
     })
 
     // Joining user to selected room
     socket.on('roomConnect', (roomId) => {
+        // Check is helper/client slot in room is available
         io.of('/').in(roomId).clients(async (err, clients) => {
             for(let room of rooms){
                 if(room.clientID != null && room.helperID != null)
@@ -62,13 +62,16 @@ io.on('connection', (socket) => {
                     console.log('FULL')
                 }
                 else{
+                    // Check who is the creator(client) of the room
                     for(let room of rooms){
                         if(room.socket === socket.id){
                             room.clientID = socket.id;
                             socket.join(roomId);
+                            socket.room = roomId
                         }else{
                             room.helperID = socket.id;
                             socket.join(roomId);
+                            socket.room = roomId
                         }
                     }
     
@@ -78,26 +81,40 @@ io.on('connection', (socket) => {
         })
     })
     socket.on('newMessage', (chat) => {
+        //Check to which socket room send new message
         for(let room of rooms){
             if(room.clientID == socket.id){
                 let message = {
                     msg: chat.input,
                     nick: room.client
                 }
-                io.to(room.socket).emit('newMessage', message);
+                io.to(socket.room).emit('newMessage', message);
             }
             else if(room.helperID == socket.id){
                 let message = {
                     msg: chat.input,
                     nick: chat.nick
                 }
-                io.to(room.socket).emit('newMessage', message);
+                io.to(socket.room).emit('newMessage', message);
             }
         }
     })
 
+
+    socket.on('reload', () => {
+        for(let room of rooms){
+            if(room.clientID === socket.id){
+                io.to(socket.id).emit('refresh')
+                socket.disconnect()
+            }
+            else if(room.helperID === socket.id){
+                io.to(socket.id).emit('refresh')
+                socket.disconnect()
+            }
+        }
+    })
     socket.on('disconnect', async() => {
-        // Usuwanie pokoju założonego przez rozłączonego użytkownika
+        // Deleting client room on disconnect
         rooms = await rooms.filter(room => {
             if(room.socket != socket.id){
                 return room
@@ -105,11 +122,11 @@ io.on('connection', (socket) => {
 
             }
         })
-
         openRooms = await openRooms.filter(room => {
             if(room.socket != socket.id){
                 return room
             }else{
+                // Emiting new openRooms array
                 io.emit('updateRooms', openRooms)
             }
         })

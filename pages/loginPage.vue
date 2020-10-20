@@ -1,15 +1,15 @@
 <template>
     <div class="page">
-      <HeaderClient />
+      <div class="HeaderClient">
+        <HeaderClient />
+      </div>
       <div class="wrapper">
         <!-- <div class="choice">
           <div @click="handleChoice(1)" class="loginpg log"><span>Zaloguj się</span></div>
           <div @click="handleChoice(2)" class="loginpg reg"><span>Zarejestruj się</span></div>
         </div> -->
         
-        <nuxt-link to="/">
-          <img id="return" src="~/assets/ReturnArrow.png">
-        </nuxt-link>
+          <img id="return" @click="handleRoute('/')" src="~/assets/ReturnArrow.png">
         <div class="buttons">
           <div class="button loginbt" @click="handleChoice(1)">Zaloguj się</div>
           <div class="button registerbt" @click="handleChoice(2)">Zarejestruj się</div>
@@ -34,6 +34,9 @@ export default {
   methods:{
     handleChoice(choice){
       this.choice = choice;
+    },
+    handleRoute(route){
+      this.$router.push(`${route}`)
     }
   }
 }

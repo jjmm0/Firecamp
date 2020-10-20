@@ -1,0 +1,104 @@
+.wrapper{
+    // display: inline-block;
+    text-align: center;
+    // justify-content: center;
+    // align-items: center;
+    // margin-top: 20%;
+    
+    height: 100%;
+    // padding-top: 10%;
+    
+    
+}
+center{
+    height: 100%;
+}
+.form-group{
+    
+    margin: auto;   
+    animation: SlideFromTop 1s ease-out;
+    // position: relative;
+    backdrop-filter: blur(3px) brightness(60%);
+    padding: 10px;
+    outline: 4px solid white;
+    width: 30%;
+    min-width: 300px;
+}
+
+@keyframes SlideFromTop { 
+    from {
+        opacity: 0;
+    }
+    to{ 
+        // top: 0;  
+        opacity: 1;
+    }
+}
+label{
+    // margin-bottom: 2px;
+    color: white;
+    font-size: 22px;
+}
+input{
+    border-radius: 0px;
+    margin: auto;
+    color: white;
+    // margin-bottom: 2px;
+    width: 70%;
+    background-color: transparent ;
+    border: 3px solid white ;
+    // appearance: none;
+}
+
+input:focus{
+    color: white;
+    background-color: transparent;
+}
+
+.button{
+    text-align: center;
+}
+.alertText{
+    padding: 4px 8px;
+    margin-top: 4px;
+    color: #ff1c1c;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: auto;
+    display: inline-block;
+    border-radius: 0px;
+    font-size: 16px;
+}
+.disabled{
+    background-color: gray;
+    cursor: default;
+    border-color: transparent;
+}
+.disabled:hover{
+    background-color: gray;
+    cursor: default;
+    outline: none;
+}
+textarea{
+    border-radius: 0px;
+    border: 3px solid white;
+    font-size: 20px;
+    resize: none;
+    color: white;
+    background-color: transparent;
+}
+textarea:focus{
+    background-color: transparent;
+    color: white;
+}
+.redText{
+    color: red;
+}
+#return{
+    padding-top: 3%;
+    display: block;
+    margin: auto;
+    margin-bottom: 3%;
+    cursor: pointer;
+    
+}

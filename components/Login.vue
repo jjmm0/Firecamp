@@ -11,7 +11,7 @@
       <input v-model="login.Password" id="password" type="password" class="form-control">
 
       <p v-show="errorMessage" class="alertText"><b>Błędny login lub hasło!</b></p>
-
+      <br>
       <div class="button">
         <button @click="loginSubmit" type="submit" class="btn btn-primary" >Zaloguj się</button>
       </div>

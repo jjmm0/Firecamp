@@ -52,6 +52,7 @@
   line-height: 100%;
   color: white;
   padding: 4px;
+  padding-top: 20px;
   font-size: 24px;
   border-bottom: 1px solid white;
   margin-bottom: -1px;
@@ -79,6 +80,7 @@
   background-image: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+  resize: none;
 }
 
 .Desc {
@@ -96,6 +98,7 @@
 }
 
 .saveDesc {
+  font-size: 20px;
   text-align: center;
   margin: 10px;
   -ms-grid-row: 10;

@@ -2,7 +2,7 @@
     height: 100%;
 }
 .content{
-    height: calc(100% - 83px);
+    height: calc(100% - 84px);
     padding: 40px 80px;
     // background-color: rgba(255, 0, 0, 0.3);
     // display: flex;
@@ -13,6 +13,7 @@
     justify-content: center;
 }
 .block{
+    word-wrap: break-word;
     margin: 20px;
     text-align: center;
     color: white;

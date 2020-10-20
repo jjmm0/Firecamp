@@ -1,3 +1,7 @@
+.HeaderClient {
+  margin-top: 2%;
+}
+
 #return {
   position: absolute;
   width: 70px;
@@ -34,6 +38,7 @@
 }
 
 .buttons {
+  margin-top: 3%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: (1fr)[1];

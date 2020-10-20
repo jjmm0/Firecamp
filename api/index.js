@@ -8,16 +8,18 @@ const io = require('socket.io')(http)
 let rooms = []
 
 io.on('connection', (socket) => {
-    io.emit('updateRooms', rooms)
     console.log('User connected!')
-    users.push({ID: socket.id})
-    console.log(users)
+    io.emit('updateRooms', rooms)
 
     // Aktualizacja tablicy z pokojami jeżeli ktoś właśnie utworzył nowy
     socket.on('createRoom', (room) => {
         rooms.push({name: room.name, description: room.description, uname: room.uname, socket: socket.id})
         console.log(rooms)
         io.emit('updateRooms', rooms)
+    })
+
+    socket.on('getRooms', () => {
+        io.to(socket.id).emit('updateRooms', rooms)
     })
 
     socket.on('joinRoom', async(roomToJoin) => {
@@ -50,12 +52,12 @@ io.on('connection', (socket) => {
                 io.emit('updateRooms', rooms) // Ponowna emitacja zaktualizowanej listy pokoi
             }
         })
-        // Usuwanie rozłączonego użytkownika z listy użytkowników
-        users = users.filter(user => {
-            if(user.ID != socket.id){
-                return user
-            }
-        })
+        // // Usuwanie rozłączonego użytkownika z listy użytkowników
+        // users = users.filter(user => {
+        //     if(user.ID != socket.id){
+        //         return user
+        //     }
+        // })
         console.log('User disconnected!')
     })
 })

@@ -34,8 +34,9 @@ export default {
       this.rooms = rooms
     })
 
-    this.socket.on('joinedRoom', (roomId) => {
-      alert('wbijanko')
+    this.socket.emit('getRooms')
+
+    this.socket.on('created', (roomId) => {
       this.$router.push(`/rooms/${roomId}`)
     })  
   },

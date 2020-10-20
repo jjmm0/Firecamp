@@ -37,7 +37,6 @@ export default {
         this.socket = window.socket;
 
         this.socket.on('created', (roomId) => {
-            alert('Ktos wbija do cb')
             this.$router.push(`/rooms/${roomId}`)
         })
     },

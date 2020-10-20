@@ -31,13 +31,13 @@ export default {
     this.socket = window.socket
     this.socket.emit('getRooms')
   
-      this.socket.on('updateRooms', (rooms) => {
-        this.rooms = rooms
-      })
+    this.socket.on('updateRooms', (rooms) => {
+      this.rooms = rooms
+    })
 
     this.socket.emit('leaveRoom')
     this.socket.on('refresh', () =>{
-      alert('odswiez')
+      location.reload(true)
     })
 
     this.socket.on('joined', (roomId) => {

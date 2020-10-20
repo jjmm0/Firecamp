@@ -66,13 +66,15 @@ export default {
     this.socket.on('created', (roomId) => {
       this.$router.push(`/rooms/${roomId}`);
     })
+    
     this.socket.emit('leaveRoom')
     this.socket.on('refresh', () =>{
-        alert('odswiez')
+      location.reload(true)
     })
+
     this.socket.on('created', (roomId) => {
-        this.socket.emit('roomConnect', roomId);
-        this.$router.push(`/rooms/${roomId}`);
+      this.socket.emit('roomConnect', roomId);
+      this.$router.push(`/rooms/${roomId}`);
     })
   },
   computed:{

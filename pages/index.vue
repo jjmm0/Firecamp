@@ -10,21 +10,16 @@
       </div>
       
       <div class="accbuttons">
-        <div>
-          <nuxt-link to="/rooms/create">
-            <div class="lbutton">
-              <b><a class="buttontext">Client</a></b>
+          <!-- <nuxt-link to="/rooms/create"> -->
+            <div class="lbutton buttontext" @click="handleRouter('rooms/create')">
+              Client
             </div>
-          </nuxt-link>
-        </div>
-        
-        <div >
-          <nuxt-link to="/loginPage">
-            <div class="rbutton">
-              <b><a class="buttontext">Helper</a></b>
+          <!-- </nuxt-link> -->
+          <!-- <nuxt-link to="/loginPage"> -->
+            <div class="rbutton buttontext" @click="handleRouter('loginPage')">
+              Helper
             </div>
-          </nuxt-link>
-        </div>
+          <!-- </nuxt-link> -->
       </div>
       <Footer />
     </div>
@@ -41,6 +36,12 @@ export default {
   },
   mounted(){
     // this.socket = this.$nuxtSocket()
+  },
+  methods:{
+    handleRouter(route){
+      this.$router.push(`/${route}`)
+
+    }
   }
 
 }

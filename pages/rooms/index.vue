@@ -29,17 +29,21 @@ export default {
   },
   mounted(){
     this.socket = window.socket
-
-    this.socket.on('updateRooms', (rooms) => {
-      this.rooms = rooms
-    })
-
     this.socket.emit('getRooms')
+  
+      this.socket.on('updateRooms', (rooms) => {
+        this.rooms = rooms
+      })
+
+    this.socket.emit('leaveRoom')
+    this.socket.on('refresh', () =>{
+      alert('odswiez')
+    })
 
     this.socket.on('joined', (roomId) => {
       this.socket.emit('roomConnect', roomId)
       this.$router.push(`/rooms/${roomId}`)
-    })  
+    })
   },
   methods: {
     joinRoom(roomToJoin){

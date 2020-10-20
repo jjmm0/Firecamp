@@ -17,25 +17,25 @@ export default {
     middleware: ['verify'],
     data(){
         return{
-            //Informacje chatu(nick, id, input)
+            // Chat information
             chat: {
                 nick: this.$store.state.userdata.name,
                 input: '',
-                socket: this.$route.params.roomId,
             },
-            //Tablica z wiadomościami
             messages: []
         }
     },
     mounted(){
         this.socket = window.socket
 
+        // Receive newMessage
         this.socket.on('newMessage', (message) => {
             this.messages.push({msg: message.msg, nick: message.nick})
         })
     },
     methods: {
         send(){
+            // Emit newMessage
             this.socket.emit('newMessage', this.chat)
         }
     }

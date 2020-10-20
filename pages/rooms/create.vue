@@ -66,6 +66,14 @@ export default {
     this.socket.on('created', (roomId) => {
       this.$router.push(`/rooms/${roomId}`);
     })
+    this.socket.emit('leaveRoom')
+    this.socket.on('refresh', () =>{
+        alert('odswiez')
+    })
+    this.socket.on('created', (roomId) => {
+        this.socket.emit('roomConnect', roomId);
+        this.$router.push(`/rooms/${roomId}`);
+    })
   },
   computed:{
     Condition: function() {
@@ -80,6 +88,7 @@ export default {
   methods: {
     handleRoute(route){
       this.$router.push(`${route}`)
+
     },
     async createRoom(){
       //preventing user from spamming on button

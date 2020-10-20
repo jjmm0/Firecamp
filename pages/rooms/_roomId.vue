@@ -6,7 +6,6 @@
                     <div>{{msg.msg}}</div>
                     <div>{{msg.nick}}</div>
                 </div>
-                {{chat.socket}}
             </div>
             <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" />
         </div>
@@ -15,14 +14,14 @@
 
 <script>
 export default {
-    middleware: 'verify',
+    middleware: ['verify'],
     data(){
         return{
             //Informacje chatu(nick, id, input)
             chat: {
-                nick: this.$store.state.userdata.nick || null,
-                socket: this.$route.params.roomId,
+                nick: this.$store.state.userdata.name,
                 input: '',
+                socket: this.$route.params.roomId,
             },
             //Tablica z wiadomościami
             messages: []
@@ -31,11 +30,9 @@ export default {
     mounted(){
         this.socket = window.socket
 
-        this.socket.on('newMessage', (receivedChat) => {
-            this.messages.push({msg: receivedChat.input, nick: receivedChat.nick})
+        this.socket.on('newMessage', (message) => {
+            this.messages.push({msg: message.msg, nick: message.nick})
         })
-
-        this.socket.emit('roomConnect', this.$route.params.roomId)
     },
     methods: {
         send(){

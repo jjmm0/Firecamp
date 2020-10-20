@@ -37,13 +37,14 @@ export default {
         this.socket = window.socket;
 
         this.socket.on('created', (roomId) => {
-            this.$router.push(`/rooms/${roomId}`)
+            this.socket.emit('roomConnect', roomId);
+            this.$router.push(`/rooms/${roomId}`);
         })
     },
     methods: {
         createRoom(){
-            const room = this.room
-            this.socket.emit('createRoom', room)
+            const room = this.room;
+            this.socket.emit('createRoom', room);
         }
     }
     

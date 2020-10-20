@@ -11,7 +11,7 @@
     <div class="content" >
       <div class="block" v-for="room in rooms" @click="joinRoom(room)">
         <div class="roomName">{{room.name}}</div>
-        <div class="userName">{{room.uname}}</div>
+        <div class="userName">{{room.client}}</div>
         <div class="roomDesc">{{room.description}}</div>
       </div>
     </div>
@@ -36,7 +36,8 @@ export default {
 
     this.socket.emit('getRooms')
 
-    this.socket.on('created', (roomId) => {
+    this.socket.on('joined', (roomId) => {
+      this.socket.emit('roomConnect', roomId)
       this.$router.push(`/rooms/${roomId}`)
     })  
   },

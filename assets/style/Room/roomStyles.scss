@@ -19,12 +19,17 @@
     outline: 3px solid white;
 }
 .chatComp{
+    overflow: scroll;
     background-color: grey;
     grid-area: 3 / 2 / 20 / 14;
 }
 .message{
     background-color: cyan;
     grid-area: 20/ 2 / 21 / 14;
+    .messageInput{
+        width: 85%;
+        height: 100%;
+    }
 }
 .helperComp{
     background-color: red;
@@ -38,5 +43,4 @@
 .endButton{
     background-color: yellow;
     grid-area: 18 / 19 / 20 / 23;
-
 }

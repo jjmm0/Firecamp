@@ -100,25 +100,46 @@ io.on('connection', (socket) => {
 		}
 	})
 	
-	socket.on('notInRoom', (response) => {
+	socket.on('notInRoom', async() => {
 		for(let room of rooms){
+			console.log(`id client: ${room.clientID} id helper: ${room.helperID} id przychodzace ${socket.id}`)
 			if(room.clientID === socket.id){
-				io.to(socket.id).emit('refresh')
+				await io.to(room.socket).emit('userDC')
 				socket.disconnect()
 			}
 			else if(room.helperID === socket.id){
-				io.to(socket.id).emit('refresh')
+				await io.to(room.socket).emit('userDC')
 				socket.disconnect()
 			}
 		}
 	})
+
+	socket.on('canJoin', () => {
+		if(rooms.length <= 0){
+			console.log('xd')
+			io.to(socket.id).emit('cantJoin')
+		}
+		for(let room of rooms){
+			if(!socket.room){
+				io.to(socket.id).emit('cantJoin')
+			}
+			else{
+				for(let room of rooms){
+					if(room.socket != socket.room){
+						io.to(socket.id).emit('cantJoin')
+					}
+				}
+			}
+		}
+	})
+
 	socket.on('disconnect', async() => {
 		// Deleting client room on disconnect
 		rooms = await rooms.filter(room => {
 			if(room.socket != socket.id){
 				return room
 			}else{
-
+				//Do not return any room
 			}
 		})
 		openRooms = await openRooms.filter(room => {

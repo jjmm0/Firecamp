@@ -10,20 +10,24 @@
 <script>
 export default {
   beforeMount() {
-    window.socket = io('http://localhost:3001/');
+    window.socket = io(`${window.location.hostname}:3001`);
   },
-  // mounted(){
-  //   this.socket = window.socket
+  mounted(){
+    this.socket = window.socket
 
-  //   this.socket.on('refresh', () =>{
-  //     location.reload(true)
-  //   })
-  // },
-  // watch: {
-  //   $route () {
-  //     this.socket.emit('notInRoom')
-  //   }
-  // },
+    this.socket.on('userDC', () =>{
+      alert('Connection lost!')
+      location.reload(true)
+    })
+  },
+  watch: {
+    $route (){
+      console.log(this.$route.name)
+      if(this.$route.name != 'rooms-roomId'){
+        this.socket.emit('notInRoom')
+      }
+    }
+  },
 }
 </script>
 

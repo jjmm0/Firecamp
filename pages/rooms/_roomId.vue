@@ -52,6 +52,11 @@ export default {
             await this.$nextTick();
             this.scrollToBottom()
         })
+        this.socket.emit('canJoin')
+        this.socket.on('cantJoin', () => {
+            alert('pal gume mi stad')
+            this.$router.push('/rooms/create')
+        })
     },
     methods: {
         scrollToBottom(){

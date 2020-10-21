@@ -147,9 +147,9 @@ io.on('connection', (socket) => {
 				return room
 			}else{
 				// Emiting new openRooms array
-				io.emit('updateRooms', openRooms)
 			}
 		})
+		io.emit('updateRooms', openRooms)
 		console.log('User disconnected!')
 	})
 })

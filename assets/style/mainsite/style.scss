@@ -23,17 +23,17 @@ $pusherHeight: 10%;
     border-right: 2px solid white;
     backdrop-filter: brightness(70%) blur(3px);
     position: relative;
-    animation: SlideFromDown 1.2s ease-out;
+    animation: SlideFromDown 2s ease-out;
     
 }
 
 @keyframes SlideFromDown {
     from{
-        bottom: -900px;
+        // bottom: -900px;
         opacity: 0;
     }
     to{
-        bottom: 0;
+        // bottom: 0;
         opacity: 1;
     }
 }
@@ -111,7 +111,7 @@ h1{
     text-align: center;
     text-decoration: none;
     // vertical-align: middle;
-    box-shadow: 0px 0px 80px -12px rgba(201, 23, 255, 0.55);
+    box-shadow: 0px 0px 80px -1px rgba(201, 23, 255, 0.75);
 }
 
 .buttontext:visited{

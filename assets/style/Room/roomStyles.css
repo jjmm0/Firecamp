@@ -1,1 +1,68 @@
-/* No CSS *//*# sourceMappingURL=roomStyles.css.map */
+.wrapper {
+  height: 90%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.content {
+  -webkit-backdrop-filter: blur(3px) brightness(70%);
+          backdrop-filter: blur(3px) brightness(70%);
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  margin-top: 5%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[24];
+      grid-template-columns: repeat(24, 1fr);
+  -ms-grid-rows: (1fr)[24];
+      grid-template-rows: repeat(24, 1fr);
+  outline: 3px solid white;
+}
+
+.chatComp {
+  background-color: grey;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 17;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 12;
+  grid-area: 3 / 2 / 20 / 14;
+}
+
+.message {
+  background-color: cyan;
+  -ms-grid-row: 20;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 12;
+  grid-area: 20/ 2 / 21 / 14;
+}
+
+.helperComp {
+  background-color: red;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 15;
+  -ms-grid-column: 15;
+  -ms-grid-column-span: 8;
+  grid-area: 3 / 15 / 18 / 23;
+}
+
+.likeButton {
+  background-color: green;
+  -ms-grid-row: 18;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 15;
+  -ms-grid-column-span: 4;
+  grid-area: 18 / 15 / 20 / 19;
+}
+
+.endButton {
+  background-color: yellow;
+  -ms-grid-row: 18;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 19;
+  -ms-grid-column-span: 4;
+  grid-area: 18 / 19 / 20 / 23;
+}
+/*# sourceMappingURL=roomStyles.css.map */

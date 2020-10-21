@@ -1,0 +1,42 @@
+
+
+.wrapper
+{
+    height: 90%;
+    width: 100%;
+    box-sizing: border-box;
+}
+.content{
+    backdrop-filter: blur(3px) brightness(70%);
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    // padding-top: 5%;
+    margin-top: 5%;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(24, 1fr);
+    outline: 3px solid white;
+}
+.chatComp{
+    background-color: grey;
+    grid-area: 3 / 2 / 20 / 14;
+}
+.message{
+    background-color: cyan;
+    grid-area: 20/ 2 / 21 / 14;
+}
+.helperComp{
+    background-color: red;
+    grid-area: 3 / 15 / 18 / 23;
+}
+.likeButton{
+    background-color: green;
+    grid-area: 18 / 15 / 20 / 19;
+    
+}
+.endButton{
+    background-color: yellow;
+    grid-area: 18 / 19 / 20 / 23;
+
+}

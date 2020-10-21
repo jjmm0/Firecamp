@@ -24,28 +24,24 @@
   -webkit-backdrop-filter: brightness(70%) blur(3px);
           backdrop-filter: brightness(70%) blur(3px);
   position: relative;
-  -webkit-animation: SlideFromDown 1.2s ease-out;
-          animation: SlideFromDown 1.2s ease-out;
+  -webkit-animation: SlideFromDown 2s ease-out;
+          animation: SlideFromDown 2s ease-out;
 }
 
 @-webkit-keyframes SlideFromDown {
   from {
-    bottom: -900px;
     opacity: 0;
   }
   to {
-    bottom: 0;
     opacity: 1;
   }
 }
 
 @keyframes SlideFromDown {
   from {
-    bottom: -900px;
     opacity: 0;
   }
   to {
-    bottom: 0;
     opacity: 1;
   }
 }
@@ -133,8 +129,8 @@ h1 {
   font-size: 36px;
   text-align: center;
   text-decoration: none;
-  -webkit-box-shadow: 0px 0px 80px -12px rgba(201, 23, 255, 0.55);
-          box-shadow: 0px 0px 80px -12px rgba(201, 23, 255, 0.55);
+  -webkit-box-shadow: 0px 0px 80px -1px rgba(201, 23, 255, 0.75);
+          box-shadow: 0px 0px 80px -1px rgba(201, 23, 255, 0.75);
 }
 
 .buttontext:visited {

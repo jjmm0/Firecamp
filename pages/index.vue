@@ -41,7 +41,6 @@ export default {
   methods:{
     handleRouter(route){
       this.$router.push(`/${route}`)
-
     }
   }
 

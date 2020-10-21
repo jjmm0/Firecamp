@@ -117,9 +117,9 @@ export default {
           this.disable = true;
           await this.socket.emit('createRoom', this.room);
           //reseting values
-            this.room.name = '';
-            this.room.uname = '';
-            this.room.description = '';
+            // this.room.name = '';
+            // this.room.uname = '';
+            // this.room.description = '';
         }
       }
     }

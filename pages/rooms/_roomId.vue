@@ -1,13 +1,27 @@
-<template>
-    <div>
-        <div style="background-color: white; width: 1500px; height: 600px; margin: 40px; padding: 1%;">
-            <div style="background-color: gray; color: green; height: 100%; width: 100%">
+            <!-- <div style="background-color: gray; color: green; height: 100%; width: 100%">
                 <div v-for="msg in messages">
                     <div>{{msg.msg}}</div>
                     <div>{{msg.nick}}</div>
                 </div>
-            </div>
-            <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" />
+            <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" /> -->
+<template>
+    <div class="wrapper">
+        <div class="content">
+             <div class="chatComp">
+
+             </div>
+             <div class="message">
+                <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" /> -->
+             </div>
+             <div class="helperComp">
+
+             </div>
+             <div class="likeButton button">
+
+             </div>
+             <div class="endButton button">
+
+             </div>
         </div>
     </div>
 </template>

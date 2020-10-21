@@ -54,7 +54,6 @@ export default {
         })
         this.socket.emit('canJoin')
         this.socket.on('cantJoin', () => {
-            alert('pal gume mi stad')
             this.$router.push('/rooms/create')
         })
     },
@@ -75,6 +74,6 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 @import 'assets/style/Room/roomStyles.css';
 </style>

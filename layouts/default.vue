@@ -10,7 +10,7 @@
 <script>
 export default {
   beforeMount() {
-    window.socket = io('http://localhost:3001/');
+    window.socket = io(`${window.location.hostname}:3001`);
   },
   mounted(){
     this.socket = window.socket

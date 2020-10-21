@@ -63,10 +63,6 @@ export default {
   mounted(){
     this.socket = window.socket;
 
-    this.socket.on('created', (roomId) => {
-      this.$router.push(`/rooms/${roomId}`);
-    })
-    
     this.socket.emit('leaveRoom')
     this.socket.on('refresh', () =>{
       location.reload(true)
@@ -117,9 +113,9 @@ export default {
           this.disable = true;
           await this.socket.emit('createRoom', this.room);
           //reseting values
-            // this.room.name = '';
-            // this.room.uname = '';
-            // this.room.description = '';
+            this.room.name = '';
+            this.room.uname = '';
+            this.room.description = '';
         }
       }
     }

@@ -35,10 +35,10 @@ export default {
       this.rooms = rooms
     })
 
-    this.socket.emit('leaveRoom')
-    this.socket.on('refresh', () =>{
-      location.reload(true)
-    })
+    // this.socket.emit('leaveRoom')
+    // this.socket.on('refresh', () =>{
+    //   location.reload(true)
+    // })
 
     this.socket.on('joined', (roomId) => {
       this.socket.emit('roomConnect', roomId)

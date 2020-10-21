@@ -11,7 +11,19 @@
 export default {
   beforeMount() {
     window.socket = io('http://localhost:3001/');
-  }
+  },
+  // mounted(){
+  //   this.socket = window.socket
+
+  //   this.socket.on('refresh', () =>{
+  //     location.reload(true)
+  //   })
+  // },
+  // watch: {
+  //   $route () {
+  //     this.socket.emit('notInRoom')
+  //   }
+  // },
 }
 </script>
 

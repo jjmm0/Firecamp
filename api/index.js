@@ -99,8 +99,8 @@ io.on('connection', (socket) => {
 			}
 		}
 	})
-
-	socket.on('leaveRoom', (response) => {
+	
+	socket.on('notInRoom', (response) => {
 		for(let room of rooms){
 			if(room.clientID === socket.id){
 				io.to(socket.id).emit('refresh')

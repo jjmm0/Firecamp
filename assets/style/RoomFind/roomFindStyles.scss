@@ -1,9 +1,10 @@
 .wrapper{
     height: 100%;
+    overflow: hidden;
 }
 .content{
-    height: calc(100% - 84px);
-    padding: 40px 80px;
+    height: calc(100% - 54px);
+    padding: 40px 80px 0px 80px;
     // background-color: rgba(255, 0, 0, 0.3);
     // display: flex;
     // align-items: center;

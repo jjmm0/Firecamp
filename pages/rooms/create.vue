@@ -24,7 +24,7 @@
       <label for="roomDesc">Opis pokoju <span :class="{redText: room.description.length > 400}" >{{room.description.length}} / 400</span></label>
       <br>
       
-      <textarea rows="10"  id="roomDesc" class="form-control" autocomplete="off" v-model="room.description"></textarea>
+      <textarea rows="3"  id="roomDesc" class="form-control" autocomplete="off" v-model="room.description"></textarea>
       <!-- Error Messages -->
       <p v-show="userError" class="alertText userAlert"><b>Nazwa użytkownika nie może być pusta!</b></p>
       <p v-show="roomError" class="alertText roomAlert" ><b>Nazwa pokoju nie może być pusta!</b></p>

@@ -13,11 +13,10 @@
                     <div>{{msg.nick}}</div>
                 </div>
              </div>
-             <div class="message">
-                <input class=" messageInput" @keyup.enter="send()" v-model="chat.input" type="text" /> 
+                <input class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" /> 
                 <div class="messageSend" @click="send()">
+                    Wyślij
                 </div>
-             </div>
              <div class="helperComp">
 
              </div>
@@ -48,21 +47,25 @@ export default {
         this.socket = window.socket
 
         // Receive newMessage
-        this.socket.on('newMessage', (message) => {
-            this.scrollToBottom()
+        this.socket.on('newMessage', async (message) => {
             this.messages.push({msg: message.msg, nick: message.nick})
+            await this.$nextTick();
+            this.scrollToBottom()
         })
     },
     methods: {
         scrollToBottom(){
             let chat = this.$refs.chat
-            // debugger
-            chat.scrollTop = chat.scrollHeight;
+            
+            chat.scrollTop = chat.scrollHeight;  
         },
+        // Emit new message
         send(){
-            // Emit newMessage
-            this.scrollToBottom()
-            this.socket.emit('newMessage', this.chat)
+            if(this.chat.input)
+            {
+                this.socket.emit('newMessage', this.chat)
+                this.chat.input = ''
+            }
         }
     }
 }

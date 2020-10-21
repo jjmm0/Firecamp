@@ -5,32 +5,43 @@
     height: 90%;
     width: 100%;
     box-sizing: border-box;
+    // overflow: hidden;
 }
+
+ 
+
 .content{
+    
     backdrop-filter: blur(3px) brightness(70%);
     width: 90%;
     height: 90%;
     margin: auto;
     // padding-top: 5%;
-    margin-top: 5%;
+    margin-top: 4%;
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(24, 1fr);
     outline: 3px solid white;
 }
 .chatComp{
-    overflow: scroll;
+    overflow-y: scroll;
+    // overflow: hidden;
     background-color: grey;
     grid-area: 3 / 2 / 20 / 14;
 }
-.message{
+
+.messageInput{
     background-color: cyan;
-    grid-area: 20/ 2 / 21 / 14;
-    .messageInput{
-        width: 85%;
-        height: 100%;
-    }
+    grid-area: 20/ 2 / 21 / 12;
+    // width: 85%;
+    // height: 100%;
 }
+.messageSend{
+    background-color: orange;
+    grid-area: 20 / 12 / 21 / 14;
+}
+
+
 .helperComp{
     background-color: red;
     grid-area: 3 / 15 / 18 / 23;

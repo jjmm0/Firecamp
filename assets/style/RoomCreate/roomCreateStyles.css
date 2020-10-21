@@ -15,7 +15,7 @@ center {
           backdrop-filter: blur(3px) brightness(60%);
   padding: 10px;
   outline: 4px solid white;
-  width: 30%;
+  width: 40%;
   min-width: 300px;
 }
 
@@ -103,10 +103,11 @@ textarea:focus {
 }
 
 #return {
-  padding-top: 3%;
+  width: 7%;
+  padding-top: 1%;
   display: block;
   margin: auto;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
   cursor: pointer;
 }
 /*# sourceMappingURL=roomCreateStyles.css.map */

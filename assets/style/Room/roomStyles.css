@@ -11,7 +11,7 @@
   width: 90%;
   height: 90%;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 4%;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[24];
@@ -22,7 +22,7 @@
 }
 
 .chatComp {
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: grey;
   -ms-grid-row: 3;
   -ms-grid-row-span: 17;
@@ -31,18 +31,22 @@
   grid-area: 3 / 2 / 20 / 14;
 }
 
-.message {
+.messageInput {
   background-color: cyan;
   -ms-grid-row: 20;
   -ms-grid-row-span: 1;
   -ms-grid-column: 2;
-  -ms-grid-column-span: 12;
-  grid-area: 20/ 2 / 21 / 14;
+  -ms-grid-column-span: 10;
+  grid-area: 20/ 2 / 21 / 12;
 }
 
-.message .messageInput {
-  width: 85%;
-  height: 100%;
+.messageSend {
+  background-color: orange;
+  -ms-grid-row: 20;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 12;
+  -ms-grid-column-span: 2;
+  grid-area: 20 / 12 / 21 / 14;
 }
 
 .helperComp {

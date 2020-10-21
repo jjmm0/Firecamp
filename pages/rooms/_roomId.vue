@@ -7,11 +7,16 @@
 <template>
     <div class="wrapper">
         <div class="content">
-             <div class="chatComp">
-
+             <div class="chatComp" ref="chat">
+                <div v-for="msg in messages">
+                    <div>{{msg.msg}}</div>
+                    <div>{{msg.nick}}</div>
+                </div>
              </div>
              <div class="message">
-                <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" /> -->
+                <input class=" messageInput" @keyup.enter="send()" v-model="chat.input" type="text" /> 
+                <div class="messageSend" @click="send()">
+                </div>
              </div>
              <div class="helperComp">
 
@@ -44,12 +49,19 @@ export default {
 
         // Receive newMessage
         this.socket.on('newMessage', (message) => {
+            this.scrollToBottom()
             this.messages.push({msg: message.msg, nick: message.nick})
         })
     },
     methods: {
+        scrollToBottom(){
+            let chat = this.$refs.chat
+            // debugger
+            chat.scrollTop = chat.scrollHeight;
+        },
         send(){
             // Emit newMessage
+            this.scrollToBottom()
             this.socket.emit('newMessage', this.chat)
         }
     }

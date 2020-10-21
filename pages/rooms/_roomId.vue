@@ -52,6 +52,11 @@ export default {
             this.scrollToBottom()
             this.messages.push({msg: message.msg, nick: message.nick})
         })
+        this.socket.emit('canJoin')
+        this.socket.on('cantJoin', () => {
+            alert('pal gume mi stad')
+            this.$router.push('/rooms/create')
+        })
     },
     methods: {
         scrollToBottom(){

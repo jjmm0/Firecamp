@@ -13,59 +13,61 @@ io.on('connection', (socket) => {
 
 	// Update and emit rooms array if someone already created new one
 	socket.on('createRoom', (room) => {
+		rooms.push({
+			name: room.name,
+			description: room.description,
+			client: room.uname,
+			helperSocket: null,
+			helperID: null,
+			clientSocket: null,
+			socket: socket.id
+		});
+		
+		openRooms.push({
+			name: room.name,
+			description: room.description,
+			client: room.uname,
+			helperSocket: null,
+			helperID: null,
+			clientSocket: null,
+			socket: socket.id
+		});
+		io.emit('updateRooms', openRooms);
+		
 		// Prevent from creating room spam
-		if(rooms.length >= 1)
-		{
-			for(room in rooms){
-				if(room.socket === socket.id){
-					// Do not create room
-				}
-				else{
-					rooms.push({
-						name: room.name,
-						description: room.description,
-						client: room.uname,
-						helperSocket: null,
-						helperID: null,
-						clientSocket: null,
-						socket: socket.id
-					});
-
-					openRooms.push({
-						name: room.name,
-						description: room.description,
-						client: room.uname,
-						helperSocket: null,
-						helperID: null,
-						clientSocket: null,
-						socket: socket.id
-					});
-					io.emit('updateRooms', openRooms);
-				}
-			}
-		}
-		else{
-			rooms.push({
-				name: room.name,
-				description: room.description,
-				client: room.uname,
-				helperSocket: null,
-				helperID: null,
-				clientSocket: null,
-				socket: socket.id
-			});
+		// if(rooms.length >= 1)
+		// {
+		// 	for(room in rooms){
+		// 		if(room.socket === socket.id){
+		// 			// Do not create room
+		// 		}
+		// 		else{
+		// 			break;
+		// 		}
+		// 	}
+		// }
+		// else{
+		// 	rooms.push({
+		// 		name: room.name,
+		// 		description: room.description,
+		// 		client: room.uname,
+		// 		helperSocket: null,
+		// 		helperID: null,
+		// 		clientSocket: null,
+		// 		socket: socket.id
+		// 	});
 			
-			openRooms.push({
-				name: room.name,
-				description: room.description,
-				client: room.uname,
-				helperSocket: null,
-				helperID: null,
-				clientSocket: null,
-				socket: socket.id
-			});
-			io.emit('updateRooms', openRooms);
-		}
+		// 	openRooms.push({
+		// 		name: room.name,
+		// 		description: room.description,
+		// 		client: room.uname,
+		// 		helperSocket: null,
+		// 		helperID: null,
+		// 		clientSocket: null,
+		// 		socket: socket.id
+		// 	});
+		// 	io.emit('updateRooms', openRooms);
+		// }
 	})
 
 	socket.on('getRooms', () => {
@@ -91,27 +93,28 @@ io.on('connection', (socket) => {
 		// Check is helper/client slot in room is available
 		io.of('/').in(data.roomId).clients(async (err, clients) => {
 			for(let room of rooms){
-				if(room.clientSocket != null && room.helperSocket != null)
-				{
-					console.log('FULL')
-				}
-				else{
+				// console.log(room.socket)
+				// if(room.clientSocket != null && room.helperSocket != null)
+				// {
+				// 	console.log('FULL')
+				// }
+				// else{
 					// Check who is the creator(client) of the room
 					for(let room of rooms){
-						if(room.socket === socket.id){
+						if(room.socket === socket.id && !socket.room){
 							room.clientSocket = socket.id;
 							socket.join(data.roomId);
 							socket.room = data.roomId
-						}else{
+							break;
+						}else if(room.helperSocket == null && !socket.room){
 							room.helperSocket = socket.id;
 							room.helperID = data.helperID
 							socket.join(data.roomId);
 							socket.room = data.roomId
+							break;
 						}
 					}
-	
-				}
-				
+				// }
 			}
 		})
 	})
@@ -141,34 +144,43 @@ io.on('connection', (socket) => {
 		for(let room of rooms){
 			// console.log(`id client: ${room.clientSocket} id helper: ${room.helperSocket} id przychodzace ${socket.id}`)
 			if(room.clientSocket === socket.id){
-				await io.to(room.socket).emit('userDC')
-				socket.disconnect()
+				await io.to(socket.room).emit('userDC')
+				// socket.disconnect()
+				break;
 			}
 			else if(room.helperSocket === socket.id){
-				await io.to(room.socket).emit('userDC')
-				socket.disconnect()
+				await io.to(socket.room).emit('userDC')
+				// socket.disconnect()
+				break;
 			}
 		}
 	})
 
 	socket.on('takeRoomData', () => {
 		if(rooms.length <= 0){
-			console.log('xd')
 			io.to(socket.id).emit('cantJoin')
 		}
 		else{
-			for(let room of rooms){
-				if(!socket.room){
-					io.to(socket.id).emit('cantJoin')
-				}
-				else{
-					for(let room of rooms){
-						if(room.socket != socket.room){
-							io.to(socket.id).emit('cantJoin')
-						}else if(room.socket === socket.id){
+			if(!socket.room){
+				// io.to(socket.id).emit('cantJoin')
+			}
+			else{
+				for(let room of rooms){
+					if(room.socket === socket.id){
+						io.to(socket.id).emit('helperData', room.helperID)
+						break;
+					}
+					else{
+						if(room.socket === socket.room){
 							io.to(socket.id).emit('helperData', room.helperID)
+							break;
+						}
+						else{
+							io.to(socket.id).emit('cantJoin')
+							break;
 						}
 					}
+
 				}
 			}
 		}

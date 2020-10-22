@@ -6,6 +6,7 @@
             <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" /> -->
 <template>
     <div class="wrapper">
+        {{helperID}}
         <div class="content">
              <div class="chatComp" ref="chat">
                 <div v-for="msg in messages">
@@ -46,7 +47,7 @@ export default {
                 nick: this.$store.state.userdata.name,
                 input: '',
             },
-            helperID: "",
+            helperID: "none",
             messages: []
         }
     },

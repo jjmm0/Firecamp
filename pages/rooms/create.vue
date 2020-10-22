@@ -63,15 +63,9 @@ export default {
   mounted(){
     this.socket = window.socket;
 
-    this.socket.emit('leaveRoom')
-    this.socket.on('refresh', () =>{
-      location.reload(true)
-    })
-
     this.socket.on('created', (roomId) => {
       let data = {
         roomId: roomId,
-        helperID: this.$store.state.userdata.uid
       }
       this.socket.emit('roomConnect', data)
       this.$router.push(`/rooms/${roomId}`);

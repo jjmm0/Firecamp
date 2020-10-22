@@ -12,70 +12,63 @@ io.on('connection', (socket) => {
 	console.log('User connected!');
 
 	// Update and emit rooms array if someone already created new one
-	socket.on('createRoom', (room) => {
-		// for(let room of rooms){
-		// 	if(socket.room){
-		// 		break;
-		// 	}
-		// 	else{
-
-		// 	}
-		// }
-		rooms.push({
-			name: room.name,
-			description: room.description,
-			client: room.uname,
-			helperSocket: null,
-			helperID: null,
-			clientSocket: null,
-			socket: socket.id
-		});
-		
-		openRooms.push({
-			name: room.name,
-			description: room.description,
-			client: room.uname,
-			helperSocket: null,
-			helperID: null,
-			clientSocket: null,
-			socket: socket.id
-		});
-		io.emit('updateRooms', openRooms);
-		
-		// Prevent from creating room spam
-		// if(rooms.length >= 1)
-		// {
-		// 	for(room in rooms){
-		// 		if(room.socket === socket.id){
-		// 			// Do not create room
-		// 		}
-		// 		else{
-		// 			break;
-		// 		}
-		// 	}
-		// }
-		// else{
-		// 	rooms.push({
-		// 		name: room.name,
-		// 		description: room.description,
-		// 		client: room.uname,
-		// 		helperSocket: null,
-		// 		helperID: null,
-		// 		clientSocket: null,
-		// 		socket: socket.id
-		// 	});
+	socket.on('createRoom', (roomData) => {
+		if(rooms.length <= 0){
+			rooms.push({
+				name: roomData.name,
+				description: roomData.description,
+				client: roomData.uname,
+				helperSocket: null,
+				helperID: null,
+				clientSocket: null,
+				socket: socket.id
+			});
 			
-		// 	openRooms.push({
-		// 		name: room.name,
-		// 		description: room.description,
-		// 		client: room.uname,
-		// 		helperSocket: null,
-		// 		helperID: null,
-		// 		clientSocket: null,
-		// 		socket: socket.id
-		// 	});
-		// 	io.emit('updateRooms', openRooms);
-		// }
+			openRooms.push({
+				name: roomData.name,
+				description: roomData.description,
+				client: roomData.uname,
+				helperSocket: null,
+				helperID: null,
+				clientSocket: null,
+				socket: socket.id
+			});
+			io.emit('updateRooms', openRooms);
+		}
+		else{
+			for(let room of rooms){
+				if(socket.room){
+					break;
+				}
+				else if(socket.id == room.socket){
+					break;
+				}
+				else if(socket.id != room.socket)
+				{
+					rooms.push({
+						name: roomData.name,
+						description: roomData.description,
+						client: roomData.uname,
+						helperSocket: null,
+						helperID: null,
+						clientSocket: null,
+						socket: socket.id
+					});
+					
+					openRooms.push({
+						name: roomData.name,
+						description: roomData.description,
+						client: roomData.uname,
+						helperSocket: null,
+						helperID: null,
+						clientSocket: null,
+						socket: socket.id
+					});
+					io.emit('updateRooms', openRooms);
+					break;
+				}
+			}
+		}
 	})
 
 	socket.on('getRooms', () => {
@@ -98,22 +91,29 @@ io.on('connection', (socket) => {
 
 	// Joining user to selected room
 	socket.on('roomConnect', (data) => {
+		console.log(data)
 		// Check is helper/client slot in room is available
 		io.of('/').in(data.roomId).clients(async (err, clients) => {
-			for(let room of rooms){
-				// Check who is the creator(client) of the room
+			// Check who is the creator(client) of the room
+			if(clients.length > 3){
+				//Do nothing
+			}
+			else if(clients.length < 3){
 				for(let room of rooms){
-					if(room.socket === socket.id && !socket.room){
-						room.clientSocket = socket.id;
-						socket.join(data.roomId);
-						socket.room = data.roomId
-						break;
-					}else if(room.helperSocket == null && !socket.room){
-						room.helperSocket = socket.id;
-						room.helperID = data.helperID
-						socket.join(data.roomId);
-						socket.room = data.roomId
-						break;
+					if(room.socket == data.roomId){
+						if(room.socket === socket.id && !socket.room){
+							room.clientSocket = socket.id;
+							socket.join(data.roomId);
+							socket.room = data.roomId
+							break;
+						}else if(room.helperSocket != true && !socket.room){
+							room.helperSocket = socket.id;
+							room.helperID = data.helperID
+							socket.join(data.roomId);
+							socket.room = data.roomId
+							break;
+						}
+
 					}
 				}
 			}
@@ -182,6 +182,7 @@ io.on('connection', (socket) => {
 	})
 
 	socket.on('disconnect', async() => {
+		console.log(rooms)
 		// Deleting client room on disconnect
 		rooms = await rooms.filter(room => {
 			if(room.socket != socket.id){

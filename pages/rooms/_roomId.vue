@@ -46,7 +46,7 @@ export default {
     },
     mounted(){
         this.socket = window.socket
-
+        
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {
             this.messages.push({msg: message.msg, nick: message.nick})
@@ -61,7 +61,6 @@ export default {
             this.helperID = helperID
             // console.log(this.helperID)
         })
-
     },
     methods: {
         scrollToBottom(){

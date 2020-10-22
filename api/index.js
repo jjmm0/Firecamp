@@ -13,27 +13,34 @@ io.on('connection', (socket) => {
 
 	// Update and emit rooms array if someone already created new one
 	socket.on('createRoom', (room) => {
-		rooms.push({
-			name: room.name,
-			description: room.description,
-			client: room.uname,
-			helperSocket: null,
-			helperID: null,
-			clientSocket: null,
-			socket: socket.id
-		});
-		
-		openRooms.push({
-			name: room.name,
-			description: room.description,
-			client: room.uname,
-			helperSocket: null,
-			helperID: null,
-			clientSocket: null,
-			socket: socket.id
-		});
+		for(room in rooms){
+			if(room.socket === socket.id){
+				// Do not create room
+			}
+			else{
+				rooms.push({
+					name: room.name,
+					description: room.description,
+					client: room.uname,
+					helperSocket: null,
+					helperID: null,
+					clientSocket: null,
+					socket: socket.id
+				});
+				
+				openRooms.push({
+					name: room.name,
+					description: room.description,
+					client: room.uname,
+					helperSocket: null,
+					helperID: null,
+					clientSocket: null,
+					socket: socket.id
+				});
+				io.emit('updateRooms', openRooms);
+			}
+		}
 
-		io.emit('updateRooms', openRooms);
 	})
 
 	socket.on('getRooms', () => {

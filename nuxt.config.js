@@ -15,7 +15,7 @@ export default {
       { rel: "stylesheet", type: "text/css", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" }
       ],
       script: [
-      //  { src: 'http://localhost:3001/socket.io/socket.io.js'},
+       { src: 'http://localhost:3001/socket.io/socket.io.js'},
        { src: 'http://207.154.206.18:3001/socket.io/socket.io.js'},
       ]
   },

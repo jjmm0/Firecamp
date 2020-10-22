@@ -6,9 +6,10 @@
     
     <div class="indexcontainer " >
       <div class="text">
-        <h1>Witaj na Ognisku!</h1><br/>
-          Strona ta jest poświęcona pomaganiu osobom z problemami/( (deperesją) wywal jedrzej jc ok) poprzez rozmowę.
-          Jeżeli jesteś tutaj, aby pomóć wybierz prawy przycisk, jeśli jednak to ty potrzebujesz pomocy wybierz lewy przycisk .
+        <h1>Witaj na <b><i>Firecamp!</i></b></h1><br/>
+          Strona Firecamp jest poświęcona pomaganiu osobom z różnymi problemami poprzez rozmowę.
+          <br>
+          Jeżeli jesteś tutaj, aby pomóc, wybierz prawy przycisk, jeśli jednak to Ty potrzebujesz pomocy, wybierz lewy przycisk.
       </div>
       
       <div class="accbuttons">

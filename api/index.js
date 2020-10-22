@@ -18,6 +18,7 @@ io.on('connection', (socket) => {
 			description: room.description,
 			client: room.uname,
 			helperSocket: null,
+			helperID: null,
 			clientSocket: null,
 			socket: socket.id
 		});
@@ -27,6 +28,7 @@ io.on('connection', (socket) => {
 			description: room.description,
 			client: room.uname,
 			helperSocket: null,
+			helperID: null,
 			clientSocket: null,
 			socket: socket.id
 		});
@@ -54,8 +56,6 @@ io.on('connection', (socket) => {
 
 	// Joining user to selected room
 	socket.on('roomConnect', (data) => {
-		console.log(data.roomId)
-		console.log(data)
 		// Check is helper/client slot in room is available
 		io.of('/').in(data.roomId).clients(async (err, clients) => {
 			for(let room of rooms){
@@ -72,6 +72,7 @@ io.on('connection', (socket) => {
 							socket.room = data.roomId
 						}else{
 							room.helperSocket = socket.id;
+							room.helperID = data.helperID
 							socket.join(data.roomId);
 							socket.room = data.roomId
 						}
@@ -106,7 +107,7 @@ io.on('connection', (socket) => {
 	
 	socket.on('notInRoom', async() => {
 		for(let room of rooms){
-			console.log(`id client: ${room.clientSocket} id helper: ${room.helperSocket} id przychodzace ${socket.id}`)
+			// console.log(`id client: ${room.clientSocket} id helper: ${room.helperSocket} id przychodzace ${socket.id}`)
 			if(room.clientSocket === socket.id){
 				await io.to(room.socket).emit('userDC')
 				socket.disconnect()
@@ -123,18 +124,23 @@ io.on('connection', (socket) => {
 			console.log('xd')
 			io.to(socket.id).emit('cantJoin')
 		}
-		for(let room of rooms){
-			if(!socket.room){
-				io.to(socket.id).emit('cantJoin')
-			}
-			else{
-				for(let room of rooms){
-					if(room.socket != socket.room){
-						io.to(socket.id).emit('cantJoin')
+		else{
+			for(let room of rooms){
+				if(!socket.room){
+					io.to(socket.id).emit('cantJoin')
+				}
+				else{
+					for(let room of rooms){
+						if(room.socket != socket.room){
+							io.to(socket.id).emit('cantJoin')
+						}else if(room.socket === socket.id){
+							io.to(socket.id).emit('helperData', room.helperID)
+						}
 					}
 				}
 			}
 		}
+		
 	})
 
 	socket.on('disconnect', async() => {

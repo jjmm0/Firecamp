@@ -9,8 +9,8 @@
         <div class="content">
              <div class="chatComp" ref="chat">
                 <div v-for="msg in messages">
-                    <div>{{msg.msg}}</div>
                     <div>{{msg.nick}}</div>
+                    <div>{{msg.msg}}</div>
                 </div>
              </div>
                 <input class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" placeholder="Napisz wiadomość"/> 

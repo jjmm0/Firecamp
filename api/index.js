@@ -13,34 +13,59 @@ io.on('connection', (socket) => {
 
 	// Update and emit rooms array if someone already created new one
 	socket.on('createRoom', (room) => {
-		for(room in rooms){
-			if(room.socket === socket.id){
-				// Do not create room
-			}
-			else{
-				rooms.push({
-					name: room.name,
-					description: room.description,
-					client: room.uname,
-					helperSocket: null,
-					helperID: null,
-					clientSocket: null,
-					socket: socket.id
-				});
-				
-				openRooms.push({
-					name: room.name,
-					description: room.description,
-					client: room.uname,
-					helperSocket: null,
-					helperID: null,
-					clientSocket: null,
-					socket: socket.id
-				});
-				io.emit('updateRooms', openRooms);
+		// Prevent from creating room spam
+		if(rooms.length >= 1)
+		{
+			for(room in rooms){
+				if(room.socket === socket.id){
+					// Do not create room
+				}
+				else{
+					rooms.push({
+						name: room.name,
+						description: room.description,
+						client: room.uname,
+						helperSocket: null,
+						helperID: null,
+						clientSocket: null,
+						socket: socket.id
+					});
+
+					openRooms.push({
+						name: room.name,
+						description: room.description,
+						client: room.uname,
+						helperSocket: null,
+						helperID: null,
+						clientSocket: null,
+						socket: socket.id
+					});
+					io.emit('updateRooms', openRooms);
+				}
 			}
 		}
-
+		else{
+			rooms.push({
+				name: room.name,
+				description: room.description,
+				client: room.uname,
+				helperSocket: null,
+				helperID: null,
+				clientSocket: null,
+				socket: socket.id
+			});
+			
+			openRooms.push({
+				name: room.name,
+				description: room.description,
+				client: room.uname,
+				helperSocket: null,
+				helperID: null,
+				clientSocket: null,
+				socket: socket.id
+			});
+			io.emit('updateRooms', openRooms);
+		}
 	})
 
 	socket.on('getRooms', () => {
@@ -126,7 +151,7 @@ io.on('connection', (socket) => {
 		}
 	})
 
-	socket.on('canJoin', () => {
+	socket.on('takeRoomData', () => {
 		if(rooms.length <= 0){
 			console.log('xd')
 			io.to(socket.id).emit('cantJoin')

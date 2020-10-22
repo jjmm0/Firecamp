@@ -47,17 +47,20 @@ export default {
     },
     mounted(){
         this.socket = window.socket
-        
+
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {
             this.messages.push({msg: message.msg, nick: message.nick})
             await this.$nextTick();
             this.scrollToBottom()
         })
-        this.socket.emit('canJoin')
+        // Take data about room(helperID etc.)
+        this.socket.emit('takeRoomData')
         this.socket.on('cantJoin', () => {
-            this.$router.push('/rooms/create')
+            // If u can't join to this room - route push
+            this.$router.push('/')
         })
+        // Take helper data
         this.socket.on('helperData', (helperID) => {
             this.helperID = helperID
             // console.log(this.helperID)

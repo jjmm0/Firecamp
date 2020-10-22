@@ -87,20 +87,55 @@
     background-color: red;
     grid-area: 3 / 15 / 18 / 24;
 }
-.likeButton{
-    display: table-cell;
-    background-color: green;
+.likeContainer{
+    display: table;
+    background-color: rgba(21, 169, 255, 0.3);
     grid-area: 19 / 15 / 21 / 19;
-    font-size: 30px;
-    text-align: center;
-    color: white;
-    vertical-align: middle;
-    .Like{
-        width: 24px;
-        
+    height: 100%;
+    outline: 2px solid white;
+    transition: 0.2s ;
+    cursor: pointer;
+    .likeButton{
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        margin: auto;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        .Like{
+            padding-bottom: 6px;
+            width: 28px;
+        }
     }
 }
-.endButton{
-    background-color: yellow;
+.likeContainer:hover{
+    background-color: rgba(21, 169, 255, 0.5);
+}
+
+.endContainer{
+    display: table;
+    background-color: rgba(197, 0, 0, 0.3);
     grid-area: 19 / 20 / 21 / 24;
+    height: 100%;
+    outline: 2px solid white;
+    transition: 0.2s;
+    cursor: pointer;
+    .endButton{
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+        margin: auto;
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        .Exit{
+            width: 28px;
+            padding-bottom: 6px;
+        }
+    }
+    
+}
+.endContainer:hover{
+    background-color: rgba(197, 0, 0, 0.5);
 }

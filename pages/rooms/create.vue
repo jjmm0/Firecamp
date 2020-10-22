@@ -69,7 +69,11 @@ export default {
     })
 
     this.socket.on('created', (roomId) => {
-      this.socket.emit('roomConnect', roomId);
+      let data = {
+        roomId: roomId,
+        helperID: this.$store.state.userdata.uid
+      }
+      this.socket.emit('roomConnect', data)
       this.$router.push(`/rooms/${roomId}`);
     })
   },

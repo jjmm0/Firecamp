@@ -21,7 +21,7 @@ export default {
     })
   },
   watch: {
-    $route (){
+    $route(){
       console.log(this.$route.name)
       if(this.$route.name != 'rooms-roomId'){
         this.socket.emit('notInRoom')

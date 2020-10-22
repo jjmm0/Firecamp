@@ -162,7 +162,7 @@ io.on('connection', (socket) => {
 		}
 		else{
 			if(!socket.room){
-				// io.to(socket.id).emit('cantJoin')
+				io.to(socket.id).emit('cantJoin')
 			}
 			else{
 				for(let room of rooms){
@@ -170,17 +170,10 @@ io.on('connection', (socket) => {
 						io.to(socket.id).emit('helperData', room.helperID)
 						break;
 					}
-					else{
-						if(room.socket === socket.room){
-							io.to(socket.id).emit('helperData', room.helperID)
-							break;
-						}
-						else{
-							io.to(socket.id).emit('cantJoin')
-							break;
-						}
+					else if(room.socket === socket.room){
+						io.to(socket.id).emit('helperData', room.helperID)
+						break;
 					}
-
 				}
 			}
 		}

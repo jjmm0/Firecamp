@@ -84,8 +84,37 @@
 
 
 .helperComp{
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0.3);
     grid-area: 3 / 15 / 18 / 24;
+    outline: 2px solid white;
+    center{
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+    }
+    .pfpContainer{
+        width: 100%;
+        height: 130px;
+        display: block;
+        // text-align: center;
+        margin-top: 10px;
+        .profilePicture{
+            width: 30%;
+            border-radius: 50%;
+            margin-left: 35%;
+        }
+        .likes{
+            padding-left: 10px;
+            width: auto;
+            font-size: 24px;
+            display: inline-block;
+            color: white;
+            margin-left: 10%;
+            .helperLikes{
+                display: inline-block;
+            }
+        }
+    }
 }
 .likeContainer{
     display: table;
@@ -95,6 +124,7 @@
     outline: 2px solid white;
     transition: 0.2s ;
     cursor: pointer;
+    box-shadow: 0 0 28px -2px rgba(21, 169, 255, 0.7);
     .likeButton{
         height: 100%;
         display: table-cell;
@@ -121,6 +151,7 @@
     outline: 2px solid white;
     transition: 0.2s;
     cursor: pointer;
+    box-shadow: 0 0 28px -2px rgba(197, 0, 0, 0.7);
     .endButton{
         display: table-cell;
         height: 100%;

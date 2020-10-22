@@ -21,7 +21,7 @@
       <br>
       <input type="text" id="roomName" class="form-control" autocomplete="off" v-model="room.name">
       <br>
-      <label for="roomDesc">Opis pokoju <span :class="{redText: room.description.length > 400}" >{{room.description.length}} / 400</span></label>
+      <label for="roomDesc">Opis pokoju <span :class="{redText: room.description.length > 150}" >{{room.description.length}} / 150</span></label>
       <br>
       
       <textarea rows="3"  id="roomDesc" class="form-control" autocomplete="off" v-model="room.description"></textarea>
@@ -33,7 +33,7 @@
       <br>
       <div class="button">
         <!-- <button @click="createRoom" type="submit"  :class="{disabled: disable ||  room.description.length > 400 || room.uname.length > 20 || room.name.length > 20}" :disabled="disable || room.description.length > 400" class="btn btn-primary">Utwórz pokój</button> -->
-        <button @click="createRoom" type="submit"  :class="{disabled: Condition}" :disabled="disable || room.description.length > 400" class="btn btn-primary">Utwórz pokój</button>
+        <button @click="createRoom" type="submit"  :class="{disabled: Condition}" :disabled="disable || room.description.length > 150" class="btn btn-primary">Utwórz pokój</button>
       </div>
     </div>
   </div>
@@ -73,7 +73,7 @@ export default {
   },
   computed:{
     Condition: function() {
-      if(this.disable || this.room.description.length > 400 || this.room.uname.length > 20 || this.room.name.length > 20){
+      if(this.disable || this.room.description.length > 150 || this.room.uname.length > 20 || this.room.name.length > 20){
         return true
       }
       else{

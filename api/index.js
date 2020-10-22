@@ -13,6 +13,14 @@ io.on('connection', (socket) => {
 
 	// Update and emit rooms array if someone already created new one
 	socket.on('createRoom', (room) => {
+		// for(let room of rooms){
+		// 	if(socket.room){
+		// 		break;
+		// 	}
+		// 	else{
+
+		// 	}
+		// }
 		rooms.push({
 			name: room.name,
 			description: room.description,
@@ -93,28 +101,21 @@ io.on('connection', (socket) => {
 		// Check is helper/client slot in room is available
 		io.of('/').in(data.roomId).clients(async (err, clients) => {
 			for(let room of rooms){
-				// console.log(room.socket)
-				// if(room.clientSocket != null && room.helperSocket != null)
-				// {
-				// 	console.log('FULL')
-				// }
-				// else{
-					// Check who is the creator(client) of the room
-					for(let room of rooms){
-						if(room.socket === socket.id && !socket.room){
-							room.clientSocket = socket.id;
-							socket.join(data.roomId);
-							socket.room = data.roomId
-							break;
-						}else if(room.helperSocket == null && !socket.room){
-							room.helperSocket = socket.id;
-							room.helperID = data.helperID
-							socket.join(data.roomId);
-							socket.room = data.roomId
-							break;
-						}
+				// Check who is the creator(client) of the room
+				for(let room of rooms){
+					if(room.socket === socket.id && !socket.room){
+						room.clientSocket = socket.id;
+						socket.join(data.roomId);
+						socket.room = data.roomId
+						break;
+					}else if(room.helperSocket == null && !socket.room){
+						room.helperSocket = socket.id;
+						room.helperID = data.helperID
+						socket.join(data.roomId);
+						socket.room = data.roomId
+						break;
 					}
-				// }
+				}
 			}
 		})
 	})

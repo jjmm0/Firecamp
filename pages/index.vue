@@ -6,19 +6,20 @@
     
     <div class="indexcontainer " >
       <div class="text">
-        <h1>NAGŁÓWEK</h1><br/>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        <h1>Witaj na Ognisku!</h1><br/>
+          Strona ta jest poświęcona pomaganiu osobom z problemami/( (deperesją) wywal jedrzej jc ok) poprzez rozmowę.
+          Jeżeli jesteś tutaj, aby pomóć wybierz prawy przycisk, jeśli jednak to ty potrzebujesz pomocy wybierz lewy przycisk .
       </div>
       
       <div class="accbuttons">
           <!-- <nuxt-link to="/rooms/create"> -->
             <div class="lbutton buttontext" @click="handleRouter('rooms/create')">
-              Client
+              Potrzebuję pomocy
             </div>
           <!-- </nuxt-link> -->
           <!-- <nuxt-link to="/loginPage"> -->
             <div class="rbutton buttontext" @click="handleRouter('loginPage')">
-              Helper
+              Chcę pomagać
             </div>
           <!-- </nuxt-link> -->
       </div>

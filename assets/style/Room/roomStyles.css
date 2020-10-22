@@ -98,12 +98,45 @@
 }
 
 .helperComp {
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.3);
   -ms-grid-row: 3;
   -ms-grid-row-span: 15;
   -ms-grid-column: 15;
   -ms-grid-column-span: 9;
   grid-area: 3 / 15 / 18 / 24;
+  outline: 2px solid white;
+}
+
+.helperComp center {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+
+.helperComp .pfpContainer {
+  width: 100%;
+  height: 130px;
+  display: block;
+  margin-top: 10px;
+}
+
+.helperComp .pfpContainer .profilePicture {
+  width: 30%;
+  border-radius: 50%;
+  margin-left: 35%;
+}
+
+.helperComp .pfpContainer .likes {
+  padding-left: 10px;
+  width: auto;
+  font-size: 24px;
+  display: inline-block;
+  color: white;
+  margin-left: 10%;
+}
+
+.helperComp .pfpContainer .likes .helperLikes {
+  display: inline-block;
 }
 
 .likeContainer {
@@ -119,6 +152,8 @@
   -webkit-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;
+  -webkit-box-shadow: 0 0 28px -2px rgba(21, 169, 255, 0.7);
+          box-shadow: 0 0 28px -2px rgba(21, 169, 255, 0.7);
 }
 
 .likeContainer .likeButton {
@@ -153,6 +188,8 @@
   -webkit-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;
+  -webkit-box-shadow: 0 0 28px -2px rgba(197, 0, 0, 0.7);
+          box-shadow: 0 0 28px -2px rgba(197, 0, 0, 0.7);
 }
 
 .endContainer .endButton {

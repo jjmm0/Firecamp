@@ -91,6 +91,8 @@ textarea {
   resize: none;
   color: white;
   background-color: transparent;
+  width: 70%;
+  margin: auto;
 }
 
 textarea:focus {

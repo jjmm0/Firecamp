@@ -64,11 +64,10 @@
   -ms-grid-column: 12;
   -ms-grid-column-span: 2;
   grid-area: 20 / 12 / 21 / 14;
-  -webkit-box-shadow: inset 0 0 10px -1px rgba(139, 22, 197, 0.863);
-          box-shadow: inset 0 0 10px -1px rgba(139, 22, 197, 0.863);
+  -webkit-box-shadow: inset 0 0 10px -1px rgba(139, 22, 197, 0.9);
+          box-shadow: inset 0 0 10px -1px rgba(139, 22, 197, 0.9);
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
-  z-index: -1213123;
   cursor: pointer;
 }
 
@@ -81,7 +80,6 @@
 
 ::-webkit-scrollbar {
   width: 10px;
-  margin: 10px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
@@ -109,12 +107,21 @@
 }
 
 .likeButton {
+  display: table-cell;
   background-color: green;
   -ms-grid-row: 19;
   -ms-grid-row-span: 2;
   -ms-grid-column: 15;
   -ms-grid-column-span: 4;
   grid-area: 19 / 15 / 21 / 19;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  vertical-align: middle;
+}
+
+.likeButton .Like {
+  width: 24px;
 }
 
 .endButton {

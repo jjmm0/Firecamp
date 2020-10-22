@@ -11,7 +11,7 @@
  
 
 .content{
-    
+    min-width: 1025px;
     backdrop-filter: blur(3px) brightness(70%);
     width: 90%;
     height: 90%;
@@ -24,34 +24,76 @@
     outline: 3px solid white;
 }
 .chatComp{
+    color: white;
     overflow-y: scroll;
     // overflow: hidden;
-    background-color: grey;
+    outline: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.3);
     grid-area: 3 / 2 / 20 / 14;
+    margin-bottom: 10px;
+
 }
 
 .messageInput{
-    background-color: cyan;
+    border: none;
+    color: white;
+    background-color: rgba(0,0,0,0.3);
     grid-area: 20/ 2 / 21 / 12;
-    // width: 85%;
-    // height: 100%;
+    padding-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid white;
+}
+.messageInput:focus{
+    color: white;
+    outline: none;
 }
 .messageSend{
-    background-color: orange;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    background-color:rgba(255, 255, 255, 0.7);
+    // background-color: rgba(139, 22, 197, 0.563);
     grid-area: 20 / 12 / 21 / 14;
+    box-shadow: inset 0 0 10px -1px rgba(139, 22, 197, 0.863);
+    // box-shadow: inset 0 0 8px -1px rgba(255, 255, 255, 0.712);
+    transition: 0.2s ease-in-out;
+    z-index: -1213123;
+    cursor: pointer;
 }
+.messageSend:hover{
+    transition: 0.2s ease-in-out;
+    box-shadow:  0 0 30px -1px rgba(139, 22, 197, 0.863);
+}
+// Custom Scroll Bar
+    ::-webkit-scrollbar {
+        width: 10px;
+        margin: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent; 
+    }
+    ::-webkit-scrollbar-thumb {
+        // background: rgba(139, 22, 197, 0.863);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 100px; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        // background: rgba(139, 22, 197, 0.981);
+        background-color: rgba(217, 176, 238, 1);
+    }
 
 
 .helperComp{
     background-color: red;
-    grid-area: 3 / 15 / 18 / 23;
+    grid-area: 3 / 15 / 18 / 24;
 }
 .likeButton{
     background-color: green;
-    grid-area: 18 / 15 / 20 / 19;
+    grid-area: 19 / 15 / 21 / 19;
     
 }
 .endButton{
     background-color: yellow;
-    grid-area: 18 / 19 / 20 / 23;
+    grid-area: 19 / 20 / 21 / 24;
 }

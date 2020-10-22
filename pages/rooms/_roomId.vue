@@ -13,7 +13,7 @@
                     <div>{{msg.nick}}</div>
                 </div>
              </div>
-                <input class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" /> 
+                <input class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" placeholder="Napisz wiadomość"/> 
                 <div class="messageSend" @click="send()">
                     Wyślij
                 </div>

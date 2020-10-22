@@ -106,30 +106,71 @@
   grid-area: 3 / 15 / 18 / 24;
 }
 
-.likeButton {
-  display: table-cell;
-  background-color: green;
+.likeContainer {
+  display: table;
+  background-color: rgba(21, 169, 255, 0.3);
   -ms-grid-row: 19;
   -ms-grid-row-span: 2;
   -ms-grid-column: 15;
   -ms-grid-column-span: 4;
   grid-area: 19 / 15 / 21 / 19;
+  height: 100%;
+  outline: 2px solid white;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.likeContainer .likeButton {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+  margin: auto;
   font-size: 30px;
   text-align: center;
   color: white;
-  vertical-align: middle;
 }
 
-.likeButton .Like {
-  width: 24px;
+.likeContainer .likeButton .Like {
+  padding-bottom: 6px;
+  width: 28px;
 }
 
-.endButton {
-  background-color: yellow;
+.likeContainer:hover {
+  background-color: rgba(21, 169, 255, 0.5);
+}
+
+.endContainer {
+  display: table;
+  background-color: rgba(197, 0, 0, 0.3);
   -ms-grid-row: 19;
   -ms-grid-row-span: 2;
   -ms-grid-column: 20;
   -ms-grid-column-span: 4;
   grid-area: 19 / 20 / 21 / 24;
+  height: 100%;
+  outline: 2px solid white;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.endContainer .endButton {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  margin: auto;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+}
+
+.endContainer .endButton .Exit {
+  width: 28px;
+  padding-bottom: 6px;
+}
+
+.endContainer:hover {
+  background-color: rgba(197, 0, 0, 0.5);
 }
 /*# sourceMappingURL=roomStyles.css.map */

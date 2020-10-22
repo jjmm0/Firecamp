@@ -40,6 +40,7 @@ export default {
                 nick: this.$store.state.userdata.name,
                 input: '',
             },
+            helperID: "",
             messages: []
         }
     },
@@ -56,6 +57,11 @@ export default {
         this.socket.on('cantJoin', () => {
             this.$router.push('/rooms/create')
         })
+        this.socket.on('helperData', (helperID) => {
+            this.helperID = helperID
+            // console.log(this.helperID)
+        })
+
     },
     methods: {
         scrollToBottom(){

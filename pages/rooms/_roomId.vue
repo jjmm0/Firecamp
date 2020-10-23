@@ -65,7 +65,7 @@ export default {
         }
     },
     mounted(){
-        this.socket = window.socket
+        this.socket = window.socket;
 
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {

@@ -74,7 +74,7 @@ export default {
             this.scrollToBottom();
         })
         // Take data about room(helperID etc.)
-        this.socket.emit('takeRoomData')
+        this.socket.emit('takeRoomData', this.$route.params.roomId)
         this.socket.on('cantJoin', () => {
             // If u can't join to this room - route push
             this.$router.push('/')

@@ -225,11 +225,13 @@ io.on('connection', (socket) => {
 	socket.on('notInRoom', async() => {
 		for(let room of rooms){
 			if(room.clientSocket === socket.id){
+				socket.room = null
 				await io.to(socket.room).emit('userDC');
 				socket.disconnect();
 				break;
 			}
 			else if(room.helperSocket === socket.id){
+				socket.room = null
 				await io.to(socket.room).emit('userDC');
 				socket.disconnect();
 				break;

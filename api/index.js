@@ -23,12 +23,16 @@ io.attach(https)
 // Import user model
 const User = require('./models/user');
 
+// let sockets = [] // Array with connected sockets
 let rooms = [] // Array with rooms
 let openRooms = [] // Array with joinable rooms
 
 io.on('connection', (socket) => {
+	// sockets.push(socket)
+	// socket.IP = socket.request.connection.remoteAddress;
+	// console.log(socket.IP)
+	
 	console.log('User connected!');
-
 	// Update and emit rooms array if someone already created new one
 	socket.on('createRoom', (roomData) => {
 		if(rooms.length <= 0){

@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
   async filename(req, file, cb) {
     const fileName = await check.userId(req)
 
-    cb(null, fileName + '.jpg')
+    cb(null, fileName + '.png')
   },
 })
 const upload = multer({ storage })

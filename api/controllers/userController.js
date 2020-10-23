@@ -112,11 +112,11 @@ module.exports.editprofile = [
 module.exports.getAvatar = [
     async function(req, res){
         //User image
-        const filePath = await path.resolve(__dirname, '../avatar/' + req.params.userId + ".jpg")
+        const filePath = await path.resolve(__dirname, '../avatar/' + req.params.userId + ".png")
         const fileStream = await fs.createReadStream(filePath)
 
         //Default image
-        const defIMG = await path.resolve(__dirname, '../avatar/' + "default.jpg")
+        const defIMG = await path.resolve(__dirname, '../avatar/' + "default.png")
         const defStream = await fs.createReadStream(defIMG)
         
         fileStream.on('open', () => {
@@ -134,7 +134,7 @@ module.exports.getAvatar = [
 module.exports.uploadAvatar = [
     async function(req, res){
         const userid = await check.userId(req)
-        const filePath = await path.resolve(__dirname, "../avatar/" + userid + ".jpg")
+        const filePath = await path.resolve(__dirname, "../avatar/" + userid + ".png")
         
         Jimp.read(filePath, (err, done) => {
             if(done){

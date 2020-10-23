@@ -6,7 +6,6 @@ export default async function ({ store, $axios, redirect }) {
           //Do something
         }
         else if(resolve.status != 200){
-          alert("podrobka")
           store.commit('logout')
           return redirect('/loginPage')
         }

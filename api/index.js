@@ -262,7 +262,6 @@ io.on('connection', (socket) => {
 const userRoutes = require('./routes/users')
 const roomsRoutes = require('./routes/rooms')
 const verifyRoutes = require('./routes/verify');
-// const rankingRoutes = require('./routes/ranking')
  
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -271,7 +270,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(userRoutes)
 app.use(roomsRoutes)
 app.use(verifyRoutes)
-// app.use(rankingRoutes)
 
 // Run socket.io external server
 http.on('error', () => {}).listen(3001);

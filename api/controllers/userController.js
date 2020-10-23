@@ -149,3 +149,11 @@ module.exports.uploadAvatar = [
         })
     }
 ]
+
+module.exports.ranking = [
+    function(req, res){
+        User.find({}, '-_id -Password -Email -Description',).then((resolve) => {
+            res.status(200).send(resolve)
+        })
+    }
+]

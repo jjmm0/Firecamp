@@ -114,7 +114,8 @@ export default {
             }
         },
         like(){
-            this.socket.emit('likeHelper', (this.helperID))    
+            this.socket.emit('likeHelper', (this.helperID))
+            this.helperLikes++;    
         }
 
     }

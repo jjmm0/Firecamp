@@ -94,10 +94,12 @@ io.on('connection', (socket) => {
 		}
 	})
 
+	// Get openRooms array
 	socket.on('getRooms', () => {
 		io.to(socket.id).emit('updateRooms', openRooms);
 	})
 
+	// Join to selected room
 	socket.on('joinRoom', async(roomToJoin) => {
 		// Delete selected room from array if someone join
 		openRooms = await openRooms.filter(room => {

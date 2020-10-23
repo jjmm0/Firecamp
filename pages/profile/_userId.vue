@@ -36,40 +36,40 @@ export default {
   mounted(){
     //Pobierz profil na podstawie routa w adresie
     let result = this.$axios.get(`/api/profile/${this.$route.params.userId}`).then((resolve) => {
-        this.name = resolve.data.name
-        this.description = resolve.data.description
-        this.likes = resolve.data.likes
+        this.name = resolve.data.name;
+        this.description = resolve.data.description;
+        this.likes = resolve.data.likes;
         //Jezeli ten profil nalezy do ciebie zezwol na edycje
         if((resolve.data.id === this.$store.state.userdata.uid)&&
         (resolve.data.name === this.$store.state.userdata.name)&&
         (this.$store.state.userdata.token || this.$store.state.userdata.name || this.$store.state.userdata.uid)){
-          this.canedit = true
+          this.canedit = true;
         }
-    })
+    });
   },
   methods: {
     editDesc(){
-      const { description } = this
+      const { description } = this;
       this.$axios.put('/api/profile', {description}).then((resolve) => {
         if(resolve.status === 200){
-          alert('Zedytowano!')
+          alert('Zedytowano!');
         }
         else{
-          alert('?')
+          alert('?');
         }
       })
     },
     sendAvatar(event) {
-      const formData = new FormData()
-      formData.append('avatar', event.target.files[0])
+      const formData = new FormData();
+      formData.append('avatar', event.target.files[0]);
       
       this.$axios.post('/api/avatar', formData).then((resolve) => {
         if(resolve.status === 200){
-          location.reload(true)
+          location.reload(true);
         }else{
-          alert("Błąd")
+          alert("Błąd");
         }
-      })
+      });
     },
   },
 }

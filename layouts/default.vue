@@ -15,17 +15,19 @@ export default {
     window.socket = io(`${window.location.hostname}:${port}`, { secure });
   },
   mounted(){
-    this.socket = window.socket
+    this.socket = window.socket;
 
+    // If someone from the room are disconnected
     this.socket.on('userDC', () =>{
-      alert('Connection lost!')
-      location.reload(true)
+      alert('Connection lost!');
+      location.reload(true);
     })
   },
   watch: {
     $route(){
+      // If user are not in room emit that
       if(this.$route.name != 'rooms-roomId'){
-        this.socket.emit('notInRoom')
+        this.socket.emit('notInRoom');
       }
     }
   },

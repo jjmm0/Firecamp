@@ -37,12 +37,9 @@ export default {
 
     }
   },
-  mounted(){
-    // this.socket = this.$nuxtSocket()
-  },
   methods:{
     handleRouter(route){
-      this.$router.push(`/${route}`)
+      this.$router.push(`/${route}`);
     }
   }
 

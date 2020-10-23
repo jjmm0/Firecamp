@@ -1,7 +1,8 @@
-require('./db')
+// Import modules, database etc.
+require('./db');
 const fs = require('fs');
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const hostname = require('os').hostname();
 const isDedicatedServer = hostname === 't2n.t2n';
 const path = require('path');
@@ -14,27 +15,25 @@ const httpsOptions = isDedicatedServer ? {
     rejectUnauthorized: false
 } : {};
 
-const http = require('http').createServer(app)
+const http = require('http').createServer(app);
 const https = require('https').createServer(httpsOptions, app);
 const io = require('socket.io')();
-io.attach(http)
-io.attach(https)
+io.attach(http);
+io.attach(https);
 
 // Import user model
 const User = require('./models/user');
 
-// let sockets = [] // Array with connected sockets
-let rooms = [] // Array with rooms
-let openRooms = [] // Array with joinable rooms
+let rooms = []; // Array with rooms
+let openRooms = []; // Array with joinable rooms
 
+// On socket connection
 io.on('connection', (socket) => {
-	// sockets.push(socket)
-	// socket.IP = socket.request.connection.remoteAddress;
-	// console.log(socket.IP)
-	
 	console.log('User connected!');
+
 	// Update and emit rooms array if someone already created new one
 	socket.on('createRoom', (roomData) => {
+		// Check is this socket are not already a room creator
 		if(rooms.length <= 0){
 			rooms.push({
 				name: roomData.name,
@@ -55,6 +54,7 @@ io.on('connection', (socket) => {
 				clientSocket: socket.id,
 				socket: socket.id
 			});
+			// Emit new openRooms array
 			io.emit('updateRooms', openRooms);
 		}
 		else{
@@ -86,6 +86,7 @@ io.on('connection', (socket) => {
 						clientSocket: socket.id,
 						socket: socket.id
 					});
+					// Emit new openRooms array
 					io.emit('updateRooms', openRooms);
 					break;
 				}
@@ -103,11 +104,12 @@ io.on('connection', (socket) => {
 			if(room.socket != roomToJoin.socket){
 				return room;
 			}else{
-				//Emit data to room creator and room
+				//Emit data to client and helper
 				io.to(roomToJoin.socket).emit('created', roomToJoin.socket);
 				io.to(socket.id).emit('joined', roomToJoin.socket);
 			}
 		});
+		// Emit new openRooms array
 		io.emit('updateRooms', openRooms);
 	})
  
@@ -123,7 +125,6 @@ io.on('connection', (socket) => {
 				for(let room of rooms){
 					if(room.socket == data.roomId){
 						if(room.socket === socket.id && !socket.room){
-							// room.clientSocket = socket.id;
 							socket.join(data.roomId);
 							socket.liked = false
 							socket.room = data.roomId
@@ -146,31 +147,32 @@ io.on('connection', (socket) => {
 	// Send room data to user which CAN join to the room
 	socket.on('takeRoomData', (roomId) => {
 		if(rooms.length <= 0){
-			io.to(socket.id).emit('cantJoin')
+			io.to(socket.id).emit('cantJoin');
 		}
 		else{
 			if(!socket.room){
-				io.to(socket.id).emit('cantJoin')
+				io.to(socket.id).emit('cantJoin');
 			}
 			else if(socket.room == roomId){
 				for(let room of rooms){
 					if(room.socket === socket.id){
-						io.to(socket.id).emit('helperData', room.helperID)
+						io.to(socket.id).emit('helperData', room.helperID);
 						break;
 					}
 					else if(room.socket === socket.room){
-						io.to(socket.id).emit('helperData', room.helperID)
+						io.to(socket.id).emit('helperData', room.helperID);
 						break;
 					}
 				}
 			}
 			else{
-				io.to(socket.id).emit('cantJoin')
+				io.to(socket.id).emit('cantJoin');
 			}
 		}
 		
 	})
 
+	// Handle new message
 	socket.on('newMessage', (chat) => {
 		// Check to which socket send a new message
 		for(let room of rooms){
@@ -194,82 +196,86 @@ io.on('connection', (socket) => {
 			}
 		}
 	})
-	
+
+	// Handle like
 	socket.on('likeHelper', (helperID) => {
+		// Check is client already liked someone to prevent like spam
 		if(!socket.liked){
 			User.findOne({_id: helperID}, (err, found) => {
 				if(found){
 					User.findOneAndUpdate({_id: helperID}, {Likes: found.Likes + 1}, {new: true}, (err, result) => {
 						if(result){
-							socket.liked = true
+							socket.liked = true;
 						}
 						else if(err){
-							console.log(err)
+							console.log(err);
 						}
-					})
+					});
 				}
 				else if(err){
-					console.log(err)
+					console.log(err);
 				}
-			})
+			});
 		}
 	})
 
+	// If user are not in his room - disconnect
 	socket.on('notInRoom', async() => {
 		for(let room of rooms){
 			if(room.clientSocket === socket.id){
-				await io.to(socket.room).emit('userDC')
-				socket.disconnect()
+				await io.to(socket.room).emit('userDC');
+				socket.disconnect();
 				break;
 			}
 			else if(room.helperSocket === socket.id){
-				await io.to(socket.room).emit('userDC')
-				socket.disconnect()
+				await io.to(socket.room).emit('userDC');
+				socket.disconnect();
 				break;
 			}
 		}
 	})
 
-
+	// Socket disconnect
 	socket.on('disconnect', async() => {
 		// Delete client room on disconnect
 		rooms = await rooms.filter(room => {
 			if(room.socket != socket.id){
-				return room
+				return room;
 			}else{
 				//Do not return any room
 			}
 		})
 		openRooms = await openRooms.filter(room => {
 			if(room.socket != socket.id){
-				return room
+				return room;
 			}else{
 				//Do not return any room
 			}
 		})
-		// Emit new openRooms array
-		io.emit('updateRooms', openRooms)
+
 		if(socket.room){
 			// If user was connected to the room
-			io.to(socket.room).emit('userDC')
+			io.to(socket.room).emit('userDC');
 		}
-		console.log('User disconnected!')
+
+		console.log('User disconnected!');
+		// Emit new openRooms array
+		io.emit('updateRooms', openRooms);
 	})
 })
 
 
+
 // Import routes
-const userRoutes = require('./routes/users')
-const roomsRoutes = require('./routes/rooms')
+const userRoutes = require('./routes/users');
 const verifyRoutes = require('./routes/verify');
  
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.use(userRoutes)
-app.use(roomsRoutes)
-app.use(verifyRoutes)
+// Use Routes
+app.use(userRoutes);
+app.use(verifyRoutes);
 
 // Run socket.io external server
 http.on('error', () => {}).listen(3001);

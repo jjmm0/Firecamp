@@ -28,25 +28,25 @@ export default {
     }
   },
   mounted(){
-    this.socket = window.socket
-    this.socket.emit('getRooms')
+    this.socket = window.socket;
+    this.socket.emit('getRooms');
   
     this.socket.on('updateRooms', (rooms) => {
-      this.rooms = rooms
+      this.rooms = rooms;
     })
 
     this.socket.on('joined', (roomId) => {
       let data = {
         roomId: roomId,
         helperID: this.$store.state.userdata.uid
-      }
-      this.socket.emit('roomConnect', data)
-      this.$router.push(`/rooms/${roomId}`)
-    })
+      };
+      this.socket.emit('roomConnect', data);
+      this.$router.push(`/rooms/${roomId}`);
+    });
   },
   methods: {
     joinRoom(roomToJoin){
-      this.socket.emit('joinRoom', roomToJoin)
+      this.socket.emit('joinRoom', roomToJoin);
     }
   }
 }

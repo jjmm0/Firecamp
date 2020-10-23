@@ -36,7 +36,7 @@ export default {
       this.choice = choice;
     },
     handleRoute(route){
-      this.$router.push(`${route}`)
+      this.$router.push(`${route}`);
     }
   }
 }

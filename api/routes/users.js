@@ -1,47 +1,49 @@
-const { Router } = require('express')
-const router = Router()
-const multer = require('multer')
+const { Router } = require('express');
+const router = Router();
+const multer = require('multer');
 
-const userController = require('../controllers/userController')
-const check = require('../check')
+// Import controllers etc.
+const userController = require('../controllers/userController');
+const check = require('../check');
 
 // Multer config
 const storage = multer.diskStorage({
   destination: './api/avatar',
   async filename(req, file, cb) {
-    const fileName = await check.userId(req)
+    const fileName = await check.userId(req);
 
-    cb(null, fileName + '.png')
+    cb(null, fileName + '.png');
   },
-})
-const upload = multer({ storage })
+});
+const upload = multer({ storage });
 
 
-//Register user
-router.post('/register', userController.register)
+// Register user
+router.post('/register', userController.register);
 
-//Login user
-router.post('/login', userController.login)
-
-
+// Login user
+router.post('/login', userController.login);
 
 
-//Get user profile by ID
-router.get('/profile/:userId', userController.profile)
 
-//Get all user profiles
-router.get('/profile', userController.profiles)
 
-//Edit user profile
-router.put('/profile', check.auth, userController.editprofile)
+// Get user profile by ID
+router.get('/profile/:userId', userController.profile);
 
-//User avatar get
-router.get('/avatar/:userId', userController.getAvatar)
+// Get all user profiles
+router.get('/profile', userController.profiles);
 
-//User avatar upload
-router.post('/avatar', check.auth, upload.single('avatar'), userController.uploadAvatar)
+// Edit user profile
+router.put('/profile', check.auth, userController.editprofile);
 
-//Get ranking
-router.get('/ranking', userController.ranking)
+// User avatar get
+router.get('/avatar/:userId', userController.getAvatar);
 
-module.exports = router
+// User avatar upload
+router.post('/avatar', check.auth, upload.single('avatar'), userController.uploadAvatar);
+
+// Get ranking
+router.get('/ranking', userController.ranking);
+
+// Export router
+module.exports = router;

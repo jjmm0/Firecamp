@@ -34,7 +34,7 @@
                     {{helperDesc}}
                 </div>
              </div>
-             <div @click="like()" class="likeContainer">
+             <div v-if="!this.$store.state.userdata.token && !this.$store.state.userdata.uid && !this.$store.state.userdata.name" @click="like()" class="likeContainer">
                 <div class="likeButton button">
                     <svg class="Like" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
                     Like
@@ -60,10 +60,12 @@ export default {
                 nick: this.$store.state.userdata.name,
                 input: '',
             },
+            // Helper information
             helperID: "none",
             helperName: '',
             helperDesc: '',
             helperLikes: 0,
+            // Messages array
             messages: [],
             
         }
@@ -73,48 +75,49 @@ export default {
 
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {
-            this.messages.push({msg: message.msg, nick: message.nick})
+            this.messages.push({msg: message.msg, nick: message.nick});
             await this.$nextTick();
             this.scrollToBottom();
-        })
+        });
         // Take data about room(helperID etc.)
-        this.socket.emit('takeRoomData', this.$route.params.roomId)
+        this.socket.emit('takeRoomData', this.$route.params.roomId);
         this.socket.on('cantJoin', () => {
             // If u can't join to this room - route push
-            this.$router.push('/')
-        })
+            this.$router.push('/');
+        });
         // Take helper data
         this.socket.on('helperData', (helperID) => {
-            this.helperID = helperID
+            this.helperID = helperID;
             this.$axios.get(`/api/profile/${this.helperID}`).then((resolve) => {
-                this.helperName = resolve.data.name
-                this.helperDesc = resolve.data.description
-                this.helperLikes = resolve.data.likes
-                console.log(this.helperID)
-            })
-        })
+                this.helperName = resolve.data.name;
+                this.helperDesc = resolve.data.description;
+                this.helperLikes = resolve.data.likes;
+                console.log(this.helperID);
+            });
+        });
     },
     methods: {
         scrollToBottom(){
-            let chat = this.$refs.chat
+            let chat = this.$refs.chat;
             
             chat.scrollTop = chat.scrollHeight;
         },
-        // Emit new message
         send(){
             if(this.chat.input)
             {
-                this.socket.emit('newMessage', this.chat)
-                this.chat.input = ''
+                // Emit new message
+                this.socket.emit('newMessage', this.chat);
+                this.chat.input = '';
             }
         },
         leaveChat(){
             if(confirm("Opuścić chat?")){
-                this.$router.push('/')
+                this.$router.push('/');
             }
         },
         like(){
-            this.socket.emit('likeHelper', (this.helperID))
+            // Emit like
+            this.socket.emit('likeHelper', (this.helperID));
             this.helperLikes++;    
         }
 

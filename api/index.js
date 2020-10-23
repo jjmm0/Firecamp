@@ -195,8 +195,7 @@ io.on('connection', (socket) => {
 		if(!socket.liked){
 			User.findOne({_id: helperID}, (err, found) => {
 				if(found){
-					console.log("XDD")
-					User.findOneAndUpdate({_id: helperID}, {Likes: founded.Likes + 1}, {new: true}, (err, result) => {
+					User.findOneAndUpdate({_id: helperID}, {Likes: found.Likes + 1}, {new: true}, (err, result) => {
 						if(result){
 							socket.liked = true
 						}

@@ -10,7 +10,7 @@
 <script>
 export default {
   beforeMount() {
-    window.socket = io(`${window.location.hostname}:3001`);
+    window.socket = io(`${window.location.hostname}:3001`, { secure: true});
   },
   mounted(){
     this.socket = window.socket

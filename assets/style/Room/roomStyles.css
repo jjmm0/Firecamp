@@ -98,6 +98,7 @@
 }
 
 .helperComp {
+  overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.3);
   -ms-grid-row: 3;
   -ms-grid-row-span: 15;
@@ -115,15 +116,14 @@
 
 .helperComp .pfpContainer {
   width: 100%;
-  height: 130px;
   display: block;
   margin-top: 10px;
 }
 
 .helperComp .pfpContainer .profilePicture {
-  width: 30%;
+  width: 25%;
   border-radius: 50%;
-  margin-left: 35%;
+  margin-left: 37.5%;
 }
 
 .helperComp .pfpContainer .likes {
@@ -137,6 +137,9 @@
 
 .helperComp .pfpContainer .likes .helperLikes {
   display: inline-block;
+  width: 28px;
+  padding-bottom: 10px;
+  color: #0000d5;
 }
 
 .likeContainer {
@@ -169,10 +172,24 @@
 .likeContainer .likeButton .Like {
   padding-bottom: 6px;
   width: 28px;
+  height: 28px;
 }
 
 .likeContainer:hover {
   background-color: rgba(21, 169, 255, 0.5);
+}
+
+.helperName {
+  margin-top: 4px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.helperDesc {
+  color: white;
+  font-size: 16px;
+  padding: 6px;
 }
 
 .endContainer {
@@ -209,17 +226,5 @@
 
 .endContainer:hover {
   background-color: rgba(197, 0, 0, 0.5);
-}
-
-h6 {
-  margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
 }
 /*# sourceMappingURL=roomStyles.css.map */

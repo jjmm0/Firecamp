@@ -1,10 +1,21 @@
 require('./db')
+const fs = require('fs');
 const express = require('express')
 const app = express()
+const hostname = require('os').hostname();
+const isDedicatedServer = hostname === 't2n.t2n';
+const path = require('path');
+
+const httpsOptions = isDedicatedServer ? {
+	key: fs.readFileSync(path.resolve(__dirname, '../ssl/privkey.pem')),
+	cert: fs.readFileSync(path.resolve(__dirname, '../ssl/cert.pem')),
+	ca: fs.readFileSync(path.resolve(__dirname, '../ssl/chain.pem')),
+    requestCert: false,
+    rejectUnauthorized: false
+} : {};
 
 const http = require('http').createServer(app)
-// const io = require('socket.io')(http)
-const https = require('https').createServer(app);
+const https = require('https').createServer(httpsOptions, app);
 const io = require('socket.io')();
 io.attach(http)
 io.attach(https)

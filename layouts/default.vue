@@ -10,7 +10,9 @@
 <script>
 export default {
   beforeMount() {
-    window.socket = io(`${window.location.hostname}:3001`, { secure: true});
+    const secure = uri.protocol === 'https'
+    const port = secure ? '3002':'3001';
+    window.socket = io(`${window.location.hostname}:${port}`, { secure });
   },
   mounted(){
     this.socket = window.socket

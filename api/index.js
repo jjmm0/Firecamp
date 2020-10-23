@@ -3,7 +3,11 @@ const express = require('express')
 const app = express()
 
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+// const io = require('socket.io')(http)
+const https = require('https').createServer(app);
+const io = require('socket.io')();
+io.attach('http')
+io.attach('https')
 
 let rooms = [] // Array with rooms
 let openRooms = [] // Array with joinable rooms
@@ -224,6 +228,7 @@ app.use(verifyRoutes)
 
 // Run socket.io external server
 http.on('error', () => {}).listen(3001);
+https.on('error', () => {}).listen(3002);
 
 module.exports = {
 	path: '/api',

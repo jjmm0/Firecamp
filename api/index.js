@@ -6,8 +6,8 @@ const http = require('http').createServer(app)
 // const io = require('socket.io')(http)
 const https = require('https').createServer(app);
 const io = require('socket.io')();
-io.attach('http')
-io.attach('https')
+io.attach(http)
+io.attach(https)
 
 let rooms = [] // Array with rooms
 let openRooms = [] // Array with joinable rooms

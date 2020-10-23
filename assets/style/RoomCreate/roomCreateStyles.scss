@@ -18,7 +18,8 @@ center{
     margin: auto;   
     animation: SlideFromTop 1s ease-out;
     // position: relative;
-    backdrop-filter: blur(3px) brightness(60%);
+    backdrop-filter: blur(3px); 
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 10px;
     outline: 4px solid white;
     width: 40%;
@@ -97,7 +98,7 @@ textarea:focus{
     color: red;
 }
 #return{
-    width: 7%;
+    height: 7%;
     padding-top: 1%;
     display: block;
     margin: auto;

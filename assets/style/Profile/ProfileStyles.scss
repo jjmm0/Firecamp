@@ -27,8 +27,8 @@ $pfBorder: 4px;
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: repeat(11, 1fr);
   outline: $pfBorder solid white;
-
-  backdrop-filter: blur(3px) brightness(70%);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
 }
 #userProfilePicture{
   height: 100%;
@@ -55,7 +55,7 @@ $pfBorder: 4px;
   grid-area: 2 / 8 / 3 / 12;
 }
 .editor{
-  backdrop-filter: blur(3px) brightness(70%);
+  // backdrop-filter: blur(3px) brightness(70%);
   color: white;
   font-size: 18px;
   padding: 8px;

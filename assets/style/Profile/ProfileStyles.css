@@ -21,8 +21,9 @@
   -ms-grid-rows: (1fr)[11];
       grid-template-rows: repeat(11, 1fr);
   outline: 4px solid white;
-  -webkit-backdrop-filter: blur(3px) brightness(70%);
-          backdrop-filter: blur(3px) brightness(70%);
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
 }
 
 #userProfilePicture {
@@ -64,8 +65,6 @@
 }
 
 .editor {
-  -webkit-backdrop-filter: blur(3px) brightness(70%);
-          backdrop-filter: blur(3px) brightness(70%);
   color: white;
   font-size: 18px;
   padding: 8px;

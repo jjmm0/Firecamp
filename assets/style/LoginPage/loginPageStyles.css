@@ -2,6 +2,78 @@
   margin-top: 2%;
 }
 
+.forms {
+  overflow: hidden;
+}
+
+@media (max-width: 400px) {
+  .loginbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-area: 1 / 1 / 2 / 7;
+  }
+  .registerbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 7;
+    -ms-grid-column-span: 6;
+    grid-area: 1 / 7 / 2 / 13;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 700px) {
+  .loginbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 4;
+    grid-area: 1 / 2 / 2 / 6;
+  }
+  .registerbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 8;
+    -ms-grid-column-span: 4;
+    grid-area: 1 / 8 / 2 / 12;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .loginbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 3;
+    grid-area: 1 / 3 / 2 / 6;
+  }
+  .registerbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 8;
+    -ms-grid-column-span: 3;
+    grid-area: 1 / 8 / 2 / 11;
+  }
+}
+
+@media (min-width: 1001px) {
+  .loginbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 2;
+    grid-area: 1 / 4 / 2 / 6;
+  }
+  .registerbt {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 8;
+    -ms-grid-column-span: 2;
+    grid-area: 1 / 8 / 2 / 10;
+  }
+}
+
 #return {
   position: absolute;
   width: 70px;
@@ -26,8 +98,9 @@
   display: inline-block;
   cursor: pointer;
   padding: 10px 0px;
-  -webkit-backdrop-filter: blur(2px) brightness(70%);
-          backdrop-filter: blur(2px) brightness(70%);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.3);
   -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
 }
@@ -45,19 +118,5 @@
       grid-template-rows: repeat(1, 1fr);
   -ms-grid-columns: (1fr)[12];
       grid-template-columns: repeat(12, 1fr);
-}
-
-.loginbt {
-  -ms-grid-row: 1;
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 2;
-  grid-area: 1 / 4 / 1 / 6;
-}
-
-.registerbt {
-  -ms-grid-row: 1;
-  -ms-grid-column: 8;
-  -ms-grid-column-span: 2;
-  grid-area: 1 / 8 / 1 / 10;
 }
 /*# sourceMappingURL=loginPageStyles.css.map */

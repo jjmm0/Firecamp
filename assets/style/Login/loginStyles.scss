@@ -8,14 +8,40 @@
     
 }
 .form-group{
+    background-color: rgba(0, 0, 0, 0.4);
     animation: SlideFromTop 1s ease-out;
     position: relative;
-    backdrop-filter: blur(3px) brightness(70%);
+    backdrop-filter: blur(3px);
     padding: 10px;
     border: 2px solid white;
-    // margin: 20px;
-    width: 400px;
     box-sizing: border-box;
+}
+
+@media (max-width: 400px){
+    .form-group{
+        width: 100%;
+    }
+}
+@media (min-width: 401px) and (max-width: 700px){
+    .form-group{
+        width: 70%;
+    }
+}
+@media (min-width: 701px) and (max-width: 1000px){
+    .form-group{
+        width: 50%;
+    }
+}
+@media (max-width: 1200px) and (min-width:1001px){
+    .form-group{
+        width: 40%;
+    }
+}
+@media (min-width: 1201px){
+    .form-group{
+        width: 30%;
+    }
+
 }
 
 @keyframes SlideFromTop { 
@@ -44,7 +70,9 @@ input:focus{
     color: white;
     background-color: transparent;
 }
-
+.btn{
+    
+}
 .button{
     text-align: center;
 }

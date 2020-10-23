@@ -20,6 +20,9 @@ const io = require('socket.io')();
 io.attach(http)
 io.attach(https)
 
+// Import user model
+const User = require('./models/user');
+
 let rooms = [] // Array with rooms
 let openRooms = [] // Array with joinable rooms
 
@@ -118,22 +121,25 @@ io.on('connection', (socket) => {
 						if(room.socket === socket.id && !socket.room){
 							// room.clientSocket = socket.id;
 							socket.join(data.roomId);
-							socket.room = data.roomId
-							break;
-						}else if(room.helperSocket != true && !socket.room){
-							room.helperSocket = socket.id;
-							room.helperID = data.helperID
-							socket.join(data.roomId);
+							socket.liked = false
 							socket.room = data.roomId
 							break;
 						}
-
+						else if(room.helperSocket != true && !socket.room){
+							room.helperSocket = socket.id;
+							room.helperID = data.helperID
+							socket.join(data.roomId);
+							socket.liked = true
+							socket.room = data.roomId
+							break;
+						}
 					}
 				}
 			}
 		})
 	})
 
+	// Send room data to user which CAN join to the room
 	socket.on('takeRoomData', (roomId) => {
 		if(rooms.length <= 0){
 			io.to(socket.id).emit('cantJoin')
@@ -185,6 +191,27 @@ io.on('connection', (socket) => {
 		}
 	})
 	
+	socket.on('likeHelper', (helperID) => {
+		if(!socket.liked){
+			User.findOne({_id: helperID}, (err, found) => {
+				if(found){
+					console.log("XDD")
+					User.findOneAndUpdate({_id: helperID}, {Likes: founded.Likes + 1}, {new: true}, (err, result) => {
+						if(result){
+							socket.liked = true
+						}
+						else if(err){
+							console.log(err)
+						}
+					})
+				}
+				else if(err){
+					console.log(err)
+				}
+			})
+		}
+	})
+
 	socket.on('notInRoom', async() => {
 		for(let room of rooms){
 			if(room.clientSocket === socket.id){
@@ -231,7 +258,7 @@ io.on('connection', (socket) => {
 // Import routes
 const userRoutes = require('./routes/users')
 const roomsRoutes = require('./routes/rooms')
-const verifyRoutes = require('./routes/verify')
+const verifyRoutes = require('./routes/verify');
 // const rankingRoutes = require('./routes/ranking')
  
 app.use(express.json())

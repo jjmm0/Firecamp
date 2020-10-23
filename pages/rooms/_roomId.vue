@@ -110,7 +110,7 @@ export default {
             }
         },
         like(){
-            
+            this.socket.emit('likeHelper', (this.helperID))    
         }
 
     }

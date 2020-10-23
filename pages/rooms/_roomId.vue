@@ -71,7 +71,7 @@ export default {
         this.socket.on('newMessage', async (message) => {
             this.messages.push({msg: message.msg, nick: message.nick})
             await this.$nextTick();
-            this.scrollToBottom()
+            this.scrollToBottom();
         })
         // Take data about room(helperID etc.)
         this.socket.emit('takeRoomData')

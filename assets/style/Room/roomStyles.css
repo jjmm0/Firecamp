@@ -4,6 +4,7 @@
 }
 
 .content {
+  min-width: 300px;
   -webkit-backdrop-filter: blur(3px) brightness(70%);
           backdrop-filter: blur(3px) brightness(70%);
   width: 95%;

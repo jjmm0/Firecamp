@@ -5,6 +5,7 @@ $pfBorder: 4px;
   // position: fixed;
   height: 100%;
   // height: calc(100% - 83px);
+  min-width: 300px;
 }
 .header{
   height: 100px;
@@ -57,6 +58,9 @@ $pfBorder: 4px;
     grid-area: 2 / 8 / 3 / 12;
     font-size: 24px;
     padding-top: 20px;
+  }
+  .likesCounter{
+    grid-area: 2 / 13 / 4 / 15;
 
   }
   .editor{
@@ -90,6 +94,9 @@ $pfBorder: 4px;
     // grid-area: 6 / 2 / 7 / 6;
     grid-area: 4 / 8 / 5 / 13;
   }
+  .likesCounter{
+    grid-area: 4 / 2 / 5 / 5;
+  }
   .Username{
     grid-area: 8 / 2 / 9 / 12;
     font-size: 24px;
@@ -118,7 +125,7 @@ $pfBorder: 4px;
 }
 @media (max-width: 600px){
   .pfpEdit{
-    grid-area: 3 / 8 / 5 / 13;
+    grid-area: 3 / 7 / 5 / 13;
   }
   .profile{
     grid-template-columns: repeat(12, 1fr);
@@ -129,8 +136,11 @@ $pfBorder: 4px;
   #userProfilePicture{
     grid-area: 2 / 2 / 6 / 6;
   }
+  .likesCounter{
+    grid-area: 5 / 7 / 6 / 10;
+  }
   .Username{
-    grid-area: 8 / 2 / 9 / 12;
+    grid-area: 7 / 2 / 8 / 12;
     font-size: 24px;
     // padding-top: 20px;
     .text{
@@ -141,12 +151,12 @@ $pfBorder: 4px;
   .editor{
     font-size: 18px;
     padding: 8px;
-    grid-area: 10 / 2 / 21 / 12;
+    grid-area: 9 / 2 / 21 / 12;
   }
   .Desc{
     font-size: 18px;
     padding: 8px;
-    grid-area: 10 / 2 / 21 / 12;
+    grid-area: 9 / 2 / 21 / 12;
   }
   .saveDesc{
     font-size: 20px;
@@ -157,6 +167,21 @@ $pfBorder: 4px;
 }
 .text{
   display: table-cell;
+}
+.likesCounter{
+  color: white;
+  padding: 4px;
+  font-size: 22px;
+  text-align: center;
+  display: table;
+  .Like{
+    width: 30px;
+    padding-bottom: 12px;
+    color: rgb(0, 38, 255);
+  }
+  .likes{
+    display: table-cell;
+  }
 }
 .profile{
   margin: auto;

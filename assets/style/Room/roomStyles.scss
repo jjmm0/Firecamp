@@ -11,7 +11,7 @@
  
 
 .content{
-    min-width: 1025px;
+
     backdrop-filter: blur(3px) brightness(70%);
     width: 90%;
     height: 90%;
@@ -33,6 +33,123 @@
     margin-bottom: 10px;
 
 }
+//Inside chat
+.message{
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid white;
+    margin-bottom: 20px;
+    display: block;
+}
+@media (min-width: 901px){
+    .helperMessage{
+        width: 80%;
+    }
+    .clientMessage{
+        margin-left: 18%;
+        width: 80%;
+    }
+}
+@media (max-width: 900px){
+    .helperMessage{
+        width: 100%;
+    }
+    .clientMessage{
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+.helperMessage{
+    margin-left: 2%;
+    .headHelper{
+        height: 70px;
+        width: 100%;
+        display: flex;
+        .helperAvatar{
+            height: 100%;
+            // height: 70px;
+            display: inline-block;
+            width: auto;
+            img{
+                padding: 8px;
+                width: 70px;
+                border-radius: 50%;
+            }
+        }
+        .dataHelper{
+            // display: inline-block;
+            height: 100%;
+            flex-direction: row;
+            flex: 1;
+            vertical-align: middle;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+            padding-left: 10px;
+            // width: calc(100% - 70px);
+        }
+        .dateHelper{
+            display: inline-block;
+            font-size: 14px;
+        }
+        .nickHelper{
+            display: inline-block;
+            font-size: 20px;
+        }
+    }
+    .valueH{
+        padding-left: 5%; 
+        padding: 4px 8px 4px 8px;
+    }
+}
+
+.clientMessage{
+    // width: 80%;
+    // margin-left: 18%;
+    .headClient{
+        height: 70px;
+        width: 100%;
+        display: flex;
+        .clientAvatar{
+            height: 100%;
+            // height: 70px;
+            display: inline-block;
+            width: auto;
+            img{
+                padding: 8px;
+                width: 70px;
+                border-radius: 50%;
+            }
+        }
+        .dataClient{
+            // display: inline-block;
+            height: 100%;
+            flex-direction: row;
+            flex: 1;
+            text-align: right;
+            vertical-align: middle;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+            padding-left: 10px;
+            // width: calc(100% - 70px);
+        }
+        .dateClient{
+            display: inline-block;
+            font-size: 14px;
+        }
+        .nickClient{
+            display: inline-block;
+            font-size: 20px;
+        }
+    }
+    .valueC{
+        padding-left: 5%; 
+        padding: 4px 10px 4px 10px;
+    }
+}
+
+
+
 
 .messageInput{
     border: none;
@@ -122,6 +239,7 @@
 }
 .likeContainer{
     display: table;
+    user-select: none;
     background-color: rgba(21, 169, 255, 0.3);
     grid-area: 19 / 15 / 21 / 19;
     height: 100%;
@@ -147,6 +265,14 @@
 .likeContainer:hover{
     background-color: rgba(21, 169, 255, 0.5);
 }
+.liked{
+    background-color: rgba(94, 94, 94, 0.4);
+    box-shadow: none;
+    cursor: default;
+}
+.liked:hover{
+    background-color: rgba(94, 94, 94, 0.4);
+}
 .helperName{
     margin-top: 4px;
     font-size: 20px;
@@ -159,6 +285,7 @@
     padding: 6px;
 }
 .endContainer{
+    user-select: none;
     display: table;
     background-color: rgba(197, 0, 0, 0.3);
     grid-area: 19 / 20 / 21 / 24;
@@ -185,3 +312,5 @@
 .endContainer:hover{
     background-color: rgba(197, 0, 0, 0.5);
 }
+
+

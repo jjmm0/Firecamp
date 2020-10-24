@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="header">
-      <!-- <HeaderHelper/> -->
-      <HeaderBurger />
+      <HeaderHelper v-if="screenWidth > 1030"/>
+      <HeaderBurger v-if="screenWidth <= 1030"/>
+      
+        <!-- <HeaderBurger /> -->
     </div>
     <!-- <RoomWindow  /> -->
     <!-- <div v-for="room in rooms">
@@ -10,6 +12,7 @@
 
     </div> -->
     <div class="content" >
+      {{screenWidth}}
       <div class="block" v-for="room in rooms" @click="joinRoom(room)">
         <div class="roomName" ><i><b><span class="txt">Nazwa pokoju: </span></b></i>{{room.name}}</div>
         <div class="userName"><i><b><span class="txt">Nazwa użytkownika: </span></b></i>{{room.client}}</div>
@@ -26,10 +29,14 @@ export default {
   middleware: ['LoggedIn', 'verify'],
   data(){
     return{
-      rooms: []
+      rooms: [],
+      screenWidth: 0,
     }
   },
   computed:{
+    // screenWidth: function(){
+    //   return window.innerWidth
+    // },
     emptyRooms: function(){
       if(this.rooms.length == 0){
         return true;
@@ -37,7 +44,8 @@ export default {
       else{
         return false;
       }
-    }
+    },
+
   },
   mounted(){
     this.socket = window.socket;
@@ -55,6 +63,10 @@ export default {
       this.socket.emit('roomConnect', data);
       this.$router.push(`/rooms/${roomId}`);
     });
+    this.screenWidth = window.innerWidth;
+    window.addEventListener('resize', ()=>{
+      this.screenWidth = window.innerWidth
+    })
   },
   methods: {
     joinRoom(roomToJoin){

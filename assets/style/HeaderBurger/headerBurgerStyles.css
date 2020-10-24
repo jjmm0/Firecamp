@@ -30,15 +30,29 @@
   margin-right: 5%;
 }
 
-.burgerButton {
-  color: black;
+.icon {
   height: 100%;
-  float: none;
-  vertical-align: middle;
   display: table-cell;
+  vertical-align: middle;
+}
+
+.burgerButton {
+  padding: 8px;
+  border-radius: 50%;
+  background-color: rgba(97, 96, 96, 0.4);
+  color: black;
+  float: none;
   cursor: pointer;
-  width: 40px;
+  width: 60px;
   display: inline-block;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.burgerButton:hover {
+  background-color: rgba(97, 96, 96, 0.7);
 }
 
 .content {

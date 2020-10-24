@@ -9,8 +9,30 @@
         <div class="content">
              <div class="chatComp" ref="chat">
                 <div v-for="msg in messages">
-                    <div>{{msg.nick}}</div>
-                    <div>{{msg.msg}}</div>
+                    <div class="message" :class="{helperMessage: msg.helper, clientMessage: !msg.helper}" v-if="msg.helper"> 
+                        <div class="headHelper">
+                            <div class="avatar helperAvatar" v-if="msg.helper"><img :src="`/api/avatar/${helperID}`"></div>
+                            <div class="avatar clientAvatar" v-if ="!msg.helper"><img :src="`/api/avatar/asdsdajsdgjkah`"></div>
+                            <div class="dataHelper">
+                                <div class="dateHelper">{{msg.time}}</div>
+                                <div class="nickHelper">{{msg.nick}}</div>
+                            </div>
+                        </div>
+                        <div class="valueH">{{msg.msg}}</div>
+
+                    </div>
+                    <div class="message" :class="{helperMessage: msg.helper, clientMessage: !msg.helper}" v-if="!msg.helper"> 
+                        <div class="headClient">
+                            <div class="avatar helperAvatar" v-if="msg.helper"><img :src="`/api/avatar/${helperID}`"></div>
+                            <!-- <div class="avatar clientAvatar" v-if ="!msg.helper"><img :src="`/api/avatar/asdsdajsdgjkah`"></div> -->
+                            <div class="dataClient">
+                                <div class="nickClient">{{msg.nick}}</div>
+                                <div class="dateClient">{{msg.time}}</div>
+                            </div>
+                            <div class="avatar clientAvatar" v-if="!msg.helper"><img :src="`/api/avatar/asdsdajsdgjkah`"></div>
+                        </div>
+                        <div class="valueC">{{msg.msg}}</div>
+                    </div>
                 </div>
              </div>
                 <input class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" placeholder="Napisz wiadomość"/> 
@@ -34,8 +56,8 @@
                     {{helperDesc}}
                 </div>
              </div>
-             <div v-if="!this.$store.state.userdata.token && !this.$store.state.userdata.uid && !this.$store.state.userdata.name" @click="like()" class="likeContainer">
-                <div class="likeButton button">
+             <div v-if="!this.$store.state.userdata.token && !this.$store.state.userdata.uid && !this.$store.state.userdata.name" @click="like()" :class="{liked: liked}" class="likeContainer">
+                <div class="likeButton button"  @click="like()" >
                     <svg class="Like" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
                     Like
                 </div>
@@ -71,14 +93,18 @@ export default {
             
         }
     },
+    computed:{
+        
+    },
     mounted(){
         this.socket = window.socket;
 
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {
-            this.messages.push({msg: message.msg, nick: message.nick});
+            this.messages.push({msg: message.msg, nick: message.nick, helper: message.helper, time: `${new Date().getHours()}:${new Date().getMinutes()}`});
             await this.$nextTick();
             this.scrollToBottom();
+            console.log(this.messages)
         });
         // Take data about room(helperID etc.)
         this.socket.emit('takeRoomData', this.$route.params.roomId);
@@ -98,6 +124,16 @@ export default {
         });
     },
     methods: {
+        isHelper(msg){
+            if(msg.helper){
+                return true;
+                console.log(msg.helper)
+            }
+            else{
+                return false
+                console.log(msg.helper)
+            }
+        },
         scrollToBottom(){
             let chat = this.$refs.chat;
             

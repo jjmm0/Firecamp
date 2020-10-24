@@ -6,7 +6,6 @@
 }
 
 .content {
-  min-width: 1025px;
   -webkit-backdrop-filter: blur(3px) brightness(70%);
           backdrop-filter: blur(3px) brightness(70%);
   width: 90%;
@@ -33,6 +32,148 @@
   -ms-grid-column-span: 12;
   grid-area: 3 / 2 / 20 / 14;
   margin-bottom: 10px;
+}
+
+.message {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid white;
+  margin-bottom: 20px;
+  display: block;
+}
+
+@media (min-width: 901px) {
+  .helperMessage {
+    width: 80%;
+  }
+  .clientMessage {
+    margin-left: 18%;
+    width: 80%;
+  }
+}
+
+@media (max-width: 900px) {
+  .helperMessage {
+    width: 100%;
+  }
+  .clientMessage {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.helperMessage {
+  margin-left: 2%;
+}
+
+.helperMessage .headHelper {
+  height: 70px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.helperMessage .headHelper .helperAvatar {
+  height: 100%;
+  display: inline-block;
+  width: auto;
+}
+
+.helperMessage .headHelper .helperAvatar img {
+  padding: 8px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.helperMessage .headHelper .dataHelper {
+  height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.helperMessage .headHelper .dateHelper {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.helperMessage .headHelper .nickHelper {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.helperMessage .valueH {
+  padding-left: 5%;
+  padding: 4px 8px 4px 8px;
+}
+
+.clientMessage .headClient {
+  height: 70px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.clientMessage .headClient .clientAvatar {
+  height: 100%;
+  display: inline-block;
+  width: auto;
+}
+
+.clientMessage .headClient .clientAvatar img {
+  padding: 8px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.clientMessage .headClient .dataClient {
+  height: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+  vertical-align: middle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.clientMessage .headClient .dateClient {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.clientMessage .headClient .nickClient {
+  display: inline-block;
+  font-size: 20px;
+}
+
+.clientMessage .valueC {
+  padding-left: 5%;
+  padding: 4px 10px 4px 10px;
 }
 
 .messageInput {
@@ -144,6 +285,10 @@
 
 .likeContainer {
   display: table;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background-color: rgba(21, 169, 255, 0.3);
   -ms-grid-row: 19;
   -ms-grid-row-span: 2;
@@ -179,6 +324,17 @@
   background-color: rgba(21, 169, 255, 0.5);
 }
 
+.liked {
+  background-color: rgba(94, 94, 94, 0.4);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  cursor: default;
+}
+
+.liked:hover {
+  background-color: rgba(94, 94, 94, 0.4);
+}
+
 .helperName {
   margin-top: 4px;
   font-size: 20px;
@@ -193,6 +349,10 @@
 }
 
 .endContainer {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   display: table;
   background-color: rgba(197, 0, 0, 0.3);
   -ms-grid-row: 19;

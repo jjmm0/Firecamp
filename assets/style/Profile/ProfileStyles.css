@@ -1,5 +1,6 @@
 .wrapper {
   height: 100%;
+  min-width: 300px;
 }
 
 .header {
@@ -66,6 +67,13 @@
     font-size: 24px;
     padding-top: 20px;
   }
+  .likesCounter {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 13;
+    -ms-grid-column-span: 2;
+    grid-area: 2 / 13 / 4 / 15;
+  }
   .editor {
     font-size: 18px;
     padding: 8px;
@@ -117,6 +125,13 @@
     -ms-grid-column-span: 5;
     grid-area: 4 / 8 / 5 / 13;
   }
+  .likesCounter {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3;
+    grid-area: 4 / 2 / 5 / 5;
+  }
   .Username {
     -ms-grid-row: 8;
     -ms-grid-row-span: 1;
@@ -161,9 +176,9 @@
   .pfpEdit {
     -ms-grid-row: 3;
     -ms-grid-row-span: 2;
-    -ms-grid-column: 8;
-    -ms-grid-column-span: 5;
-    grid-area: 3 / 8 / 5 / 13;
+    -ms-grid-column: 7;
+    -ms-grid-column-span: 6;
+    grid-area: 3 / 7 / 5 / 13;
   }
   .profile {
     -ms-grid-columns: (1fr)[12];
@@ -179,12 +194,19 @@
     -ms-grid-column-span: 4;
     grid-area: 2 / 2 / 6 / 6;
   }
+  .likesCounter {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 7;
+    -ms-grid-column-span: 3;
+    grid-area: 5 / 7 / 6 / 10;
+  }
   .Username {
-    -ms-grid-row: 8;
+    -ms-grid-row: 7;
     -ms-grid-row-span: 1;
     -ms-grid-column: 2;
     -ms-grid-column-span: 10;
-    grid-area: 8 / 2 / 9 / 12;
+    grid-area: 7 / 2 / 8 / 12;
     font-size: 24px;
   }
   .Username .text {
@@ -193,20 +215,20 @@
   .editor {
     font-size: 18px;
     padding: 8px;
-    -ms-grid-row: 10;
-    -ms-grid-row-span: 11;
+    -ms-grid-row: 9;
+    -ms-grid-row-span: 12;
     -ms-grid-column: 2;
     -ms-grid-column-span: 10;
-    grid-area: 10 / 2 / 21 / 12;
+    grid-area: 9 / 2 / 21 / 12;
   }
   .Desc {
     font-size: 18px;
     padding: 8px;
-    -ms-grid-row: 10;
-    -ms-grid-row-span: 11;
+    -ms-grid-row: 9;
+    -ms-grid-row-span: 12;
     -ms-grid-column: 2;
     -ms-grid-column-span: 10;
-    grid-area: 10 / 2 / 21 / 12;
+    grid-area: 9 / 2 / 21 / 12;
   }
   .saveDesc {
     font-size: 20px;
@@ -220,6 +242,24 @@
 }
 
 .text {
+  display: table-cell;
+}
+
+.likesCounter {
+  color: white;
+  padding: 4px;
+  font-size: 22px;
+  text-align: center;
+  display: table;
+}
+
+.likesCounter .Like {
+  width: 30px;
+  padding-bottom: 12px;
+  color: #0026ff;
+}
+
+.likesCounter .likes {
   display: table-cell;
 }
 

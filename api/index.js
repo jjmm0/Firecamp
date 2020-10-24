@@ -29,10 +29,10 @@ let openRooms = []; // Array with joinable rooms
 
 // On socket connection
 io.on('connection', (socket) => {
-	console.log('User connected!');
+		console.log('User connected!');
 
-	// Update and emit rooms array if someone already created new one
-	socket.on('createRoom', (roomData) => {
+		// Update and emit rooms array if someone already created new one
+		socket.on('createRoom', (roomData) => {
 		// Check is this socket are not already a room creator
 		if(rooms.length <= 0){
 			rooms.push({
@@ -225,14 +225,14 @@ io.on('connection', (socket) => {
 	socket.on('notInRoom', async() => {
 		for(let room of rooms){
 			if(room.clientSocket === socket.id){
-				socket.room = null
 				await io.to(socket.room).emit('userDC');
+				socket.room = null
 				socket.disconnect();
 				break;
 			}
 			else if(room.helperSocket === socket.id){
-				socket.room = null
 				await io.to(socket.room).emit('userDC');
+				socket.room = null
 				socket.disconnect();
 				break;
 			}

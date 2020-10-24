@@ -67,6 +67,7 @@ export default {
             helperLikes: 0,
             // Messages array
             messages: [],
+            liked: false,
             
         }
     },
@@ -115,10 +116,16 @@ export default {
                 this.$router.push('/');
             }
         },
-        like(){
+        async like(){
             // Emit like
-            this.socket.emit('likeHelper', (this.helperID));
-            this.helperLikes++;    
+            if(!this.liked)
+            {
+                await this.socket.emit('likeHelper', (this.helperID));
+                await this.$axios.get(`/api/profile/${this.helperID}`).then((resolve) => {
+                    this.helperLikes = resolve.data.likes;
+                });
+                this.liked = true
+            }
         }
 
     }

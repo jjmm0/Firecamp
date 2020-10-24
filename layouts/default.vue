@@ -17,7 +17,7 @@ export default {
   mounted(){
     this.socket = window.socket;
 
-    // If someone from the room are disconnected
+    // If someone from the room will disconnect
     this.socket.on('userDC', () =>{
       alert('Connection lost!');
       location.reload(true);

@@ -73,7 +73,7 @@ export default {
   },
   computed:{
     Condition: function() {
-      if(this.disable || this.room.description.length > 150 || this.room.uname.length > 20 || this.room.name.length > 20){
+      if(this.disable || this.room.description.length > 150 || this.room.uname.length > 20 || this.room.name.length > 30){
         return true
       }
       else{

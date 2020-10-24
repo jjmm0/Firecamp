@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
-    <div>
-      <HeaderHelper/>
+    <div class="header">
+      <!-- <HeaderHelper/> -->
+      <HeaderBurger />
     </div>
     <!-- <RoomWindow  /> -->
     <!-- <div v-for="room in rooms">
@@ -10,10 +11,11 @@
     </div> -->
     <div class="content" >
       <div class="block" v-for="room in rooms" @click="joinRoom(room)">
-        <div class="roomName" >{{room.name}}</div>
-        <div class="userName">{{room.client}}</div>
-        <div class="roomDesc">{{room.description}}</div>
+        <div class="roomName" ><i><b><span class="txt">Nazwa pokoju: </span></b></i>{{room.name}}</div>
+        <div class="userName"><i><b><span class="txt">Nazwa użytkownika: </span></b></i>{{room.client}}</div>
+        <div class="roomDesc"><i><b><span class="txt">Opis: </span></b></i>{{room.description}}</div>
       </div>
+      <div v-if="emptyRooms" class="empty"><div class="text">Brak pokojów</div></div>
     </div>
   </div>
 </template>
@@ -25,6 +27,16 @@ export default {
   data(){
     return{
       rooms: []
+    }
+  },
+  computed:{
+    emptyRooms: function(){
+      if(this.rooms.length == 0){
+        return true;
+      }
+      else{
+        return false;
+      }
     }
   },
   mounted(){

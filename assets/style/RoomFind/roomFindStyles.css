@@ -3,6 +3,11 @@
   overflow: hidden;
 }
 
+.header {
+  height: 100px;
+  z-index: 100;
+}
+
 .content {
   height: calc(100% - 54px);
   padding: 40px 80px 0px 80px;
@@ -21,9 +26,11 @@
 }
 
 .block {
+  padding: 4px;
   word-wrap: break-word;
   margin: 20px;
-  text-align: center;
+  text-align: left;
+  overflow-y: scroll;
   color: white;
   display: inline-block;
   height: 200px;
@@ -38,19 +45,42 @@
 }
 
 .block .roomName {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .block .userName {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .block .roomDesc {
   font-size: 16px;
 }
 
+.block .txt {
+  font-size: 20px;
+  color: #c4c4c4;
+}
+
 .block:hover {
   -webkit-box-shadow: inset 0px 0px 22px -1px #FFFFFF;
           box-shadow: inset 0px 0px 22px -1px #FFFFFF;
+}
+
+.empty {
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  width: 60%;
+  display: table;
+  height: 10%;
+}
+
+.empty .text {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 8px;
 }
 /*# sourceMappingURL=roomFindStyles.css.map */

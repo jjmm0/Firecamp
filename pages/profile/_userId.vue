@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
     <div class="header">
-      <HeaderHelper v-if="screenWidth > 1030"/>
-      <HeaderBurger v-if="screenWidth <= 1030"/>
+      <HeaderHelper v-if="screenWidth > 1030 && this.$store.state.userdata.token && this.$store.state.userdata.uid && this.$store.state.userdata.name"/>
+      <HeaderBurger v-if="screenWidth <= 1030 && this.$store.state.userdata.token && this.$store.state.userdata.uid && this.$store.state.userdata.name"/>
+      <HeaderClient v-else />
     </div>
     <div class="content">      
       <div class="profile">

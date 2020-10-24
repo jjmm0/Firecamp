@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const mongoURL = "mongodb://localhost/ProjektnaKONKURS";
 
+// Connect to mongoDB with mongoose
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

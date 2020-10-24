@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
-    <div>
-      <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
-      <HeaderClient v-else />
+    <div class="header">
+      <!-- <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
+      <HeaderClient v-else /> -->
+      <HeaderBurger />
     </div>
     <div class="content">      
       <div class="profile">
@@ -10,7 +11,9 @@
         <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" placeholder="gunga" class="pfpEdit">
         
           <div class="Username">
-            {{name}} 
+            <div class="text">
+              {{name}} 
+            </div>
           </div>
           <textarea class="editor" v-if="canedit" type="text" v-model="description" />
           <div class="Desc" v-else>

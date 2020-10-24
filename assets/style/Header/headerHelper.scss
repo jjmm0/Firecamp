@@ -1,36 +1,27 @@
 $headerHeight: 50px;
-
 .wrapperHeader{
   display: block;
   box-sizing: border-box;
-}
-.image{
-  
 }
 .logo {
   display: inline-block;
   border: none;
   height: $headerHeight;;
   padding: 2px 0;
-  // margin: 4px 10px 0px 20px ;\
   margin-left: 10%;
 }
-
 .buttons {
   display: block;
-  
   ul{
     padding: 0;
     margin: 0;
     display: inline-block;
     display: grid;
     grid-template-rows: repeat(1, 1fr);
-    grid-template-columns: 1fr repeat(5, 180px);
+    grid-template-columns: 1fr repeat(3, 180px);
   }
   #imgli{
-    // padding: 4px 0;
     border-bottom: 1px solid white;
-    // border-top: 2px solid white;
   }
   li{
     line-height: $headerHeight;
@@ -39,22 +30,15 @@ $headerHeight: 50px;
   .li {
     border-bottom: 1px solid white;
     border-left: 1px solid white;
-    // border-: 2px solid white;
     font-size: 22px;
     text-align: center;
     vertical-align: center;
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(3px) brightness(100%);
-    
     display: inline-block;
     color: white;
     cursor: pointer;
     transition: 0.24s ease-in-out;
-    a {
-      color: white;
-      pointer-events: none;        
-      text-decoration: none;
-    }
   }
 }
 svg{

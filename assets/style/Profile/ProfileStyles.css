@@ -272,6 +272,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
+  overflow-x: hidden;
 }
 
 #userProfilePicture {

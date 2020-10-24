@@ -1,9 +1,6 @@
 <template>
   <div class="box">
     <div class="box2"><Nuxt /></div>
-
-    <!-- <Footer /> -->
-
   </div>
 </template>
 
@@ -40,17 +37,12 @@ body,
 #__nuxt,
 #__layout {
   height: 100%;
-  /* Tło */
-    /* background: url('https://i.pinimg.com/originals/3b/8a/d2/3b8ad2c7b1be2caf24321c852103598a.jpg'); */
     background-image: url("../assets/bg/boat.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    
-    filter: brightness(100%) contrast(100%);
 }
-
 .box {
   margin: 0;
   display: -webkit-box;
@@ -62,14 +54,11 @@ body,
           flex-direction: column;
   height: 100%;
 }
-
 .box2 {
   height: 100%;
-  /* flex: 1; */
 }
 
 html {
-  
   font-family:
     'Source Sans Pro',
     -apple-system,
@@ -87,14 +76,12 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
 }
-
 .button--green {
   display: inline-block;
   border-radius: 4px;
@@ -103,12 +90,10 @@ html {
   text-decoration: none;
   padding: 10px 30px;
 }
-
 .button--green:hover {
   color: #fff;
   background-color: #3b8070;
 }
-
 .button--grey {
   display: inline-block;
   border-radius: 4px;
@@ -118,7 +103,6 @@ html {
   padding: 10px 30px;
   margin-left: 15px;
 }
-
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;

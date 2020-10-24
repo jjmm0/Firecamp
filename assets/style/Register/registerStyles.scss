@@ -1,25 +1,19 @@
 .wrapper{
-    // display: inline-block;
     text-align: center;
     justify-content: center;
     align-items: center;
     margin-top: 3%;
-
-    
 }
 .form-group{
     position: relative;
     animation: SlideFromTop 1s ease-out;
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, 0.4);
-
     padding: 10px;
     border: 2px solid white;
-    // margin: 20px;
     width: 400px;
     box-sizing: border-box;
 }
-
 @media (max-width: 400px){
     .form-group{
         width: 100%;
@@ -44,9 +38,7 @@
     .form-group{
         width: 30%;
     }
-
 }
-
 @keyframes SlideFromTop { 
     from {top: -430px;
         opacity: 0;
@@ -66,12 +58,10 @@ input{
     border: 2px solid white ;
     // appearance: none;
 }
-
 input:focus{
     color: white;
     background-color: transparent;
 }
-
 .button{
     text-align: center;
 }

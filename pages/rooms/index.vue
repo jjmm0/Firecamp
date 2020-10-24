@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="header">
-      <HeaderHelper v-if="screenWidth > 1030"/>
-      <HeaderBurger v-if="screenWidth <= 1030"/>
+      <HeaderHelper v-if="screenWidth > 700"/>
+      <HeaderBurger v-if="screenWidth <= 700"/>
       
     </div>
     <div class="content" >

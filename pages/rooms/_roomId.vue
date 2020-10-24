@@ -1,9 +1,3 @@
-            <!-- <div style="background-color: gray; color: green; height: 100%; width: 100%">
-                <div v-for="msg in messages">
-                    <div>{{msg.msg}}</div>
-                    <div>{{msg.nick}}</div>
-                </div>
-            <input style="background-color: red;" @keyup.enter="send()" v-model="chat.input" type="text" /> -->
 <template>
     <div class="wrapper">
         <div class="content">
@@ -19,12 +13,10 @@
                             </div>
                         </div>
                         <div class="valueH">{{msg.msg}}</div>
-
                     </div>
                     <div class="message" :class="{helperMessage: msg.helper, clientMessage: !msg.helper}" v-if="!msg.helper"> 
                         <div class="headClient">
                             <div class="avatar helperAvatar" v-if="msg.helper"><img :src="`/api/avatar/${helperID}`"></div>
-                            <!-- <div class="avatar clientAvatar" v-if ="!msg.helper"><img :src="`/api/avatar/asdsdajsdgjkah`"></div> -->
                             <div class="dataClient">
                                 <div class="nickClient">{{msg.nick}}</div>
                                 <div class="dateClient">{{msg.time}}</div>
@@ -37,14 +29,11 @@
              </div>
                 <input :disabled="chat.waiting" class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" placeholder="Napisz wiadomość"/> 
                 <div class="messageSend" @click="send()">
-                    <!-- Wyślij -->
                     ->
                 </div>
              <div class="helperComp">
                 <div class="pfpContainer">
-                    
                     <img class="profilePicture" :src="`/api/avatar/${helperID}`" placeholder="Nie ma obrazka" id="userProfilePicture">
-                        
                     <div class="likes">
                         <svg class="helperLikes" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path></svg>
                         <span class="likesText"> {{helperLikes}}</span>
@@ -94,18 +83,23 @@ export default {
             liked: true,
         }
     },
-    computed:{
-        
-    },
     mounted(){
         this.socket = window.socket;
 
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {
-            this.messages.push({msg: message.msg, nick: message.nick, helper: message.helper, time: `${new Date().getHours()}:${new Date().getMinutes()}`});
+            //Create message's sending date
+            let hours = new Date().getHours().toString();
+            let minutes = new Date().getMinutes().toString();
+            if(hours.length == 1){
+                hours =  "0" + hours.toString();
+            }
+            if(minutes.length == 1){
+                minutes =  "0" + minutes.toString();
+            }
+            this.messages.push({msg: message.msg, nick: message.nick, helper: message.helper, time: `${hours}:${minutes}`});
             await this.$nextTick();
             this.scrollToBottom();
-            console.log(this.messages)
         });
         
         // Helper emit takeRoomData
@@ -147,9 +141,10 @@ export default {
             }
         },
         scrollToBottom(){
-            let chat = this.$refs.chat;
-            
-            chat.scrollTop = chat.scrollHeight;
+                let chat = this.$refs.chat;
+            if(chat){
+                chat.scrollTop = chat.scrollHeight;
+            }
         },
         send(){
             if(this.chat.input)

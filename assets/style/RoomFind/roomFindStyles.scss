@@ -9,9 +9,6 @@
 .content{
     height: calc(100% - 54px);
     padding: 40px 80px 0px 80px;
-    // background-color: rgba(255, 0, 0, 0.3);
-    // display: flex;
-    // align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -30,7 +27,6 @@
     outline: 3px solid white;
     background-color: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
-
     transition: 0.2s ease-in-out;
     cursor: pointer;
     .roomName{
@@ -69,7 +65,6 @@
 ::-webkit-scrollbar {
     width: 10px;
     transition: all 0.3s ease-in-out;
-    
   }
   ::-webkit-scrollbar-track {
     background: transparent; 
@@ -83,4 +78,4 @@
     // background: rgba(139, 22, 197, 0.981);
     background-color: rgba(217, 176, 238, 1);
   }
-  // .Scroll Bar
+// .Scroll Bar

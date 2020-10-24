@@ -4,15 +4,8 @@
       <HeaderHelper v-if="screenWidth > 1030"/>
       <HeaderBurger v-if="screenWidth <= 1030"/>
       
-        <!-- <HeaderBurger /> -->
     </div>
-    <!-- <RoomWindow  /> -->
-    <!-- <div v-for="room in rooms">
-      <div @click="joinRoom(room)" style="background-color: blue; margin: 1%;">{{room.name}}<br />{{room.uname}}<br />{{room.description}}</div>
-
-    </div> -->
     <div class="content" >
-      {{screenWidth}}
       <div class="block" v-for="room in rooms" @click="joinRoom(room)">
         <div class="roomName" ><i><b><span class="txt">Nazwa pokoju: </span></b></i>{{room.name}}</div>
         <div class="userName"><i><b><span class="txt">Nazwa użytkownika: </span></b></i>{{room.client}}</div>
@@ -34,9 +27,6 @@ export default {
     }
   },
   computed:{
-    // screenWidth: function(){
-    //   return window.innerWidth
-    // },
     emptyRooms: function(){
       if(this.rooms.length == 0){
         return true;

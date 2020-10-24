@@ -183,21 +183,21 @@ io.on('connection', (socket) => {
 	socket.on('newMessage', (chat) => {
 		// Check to which socket send a new message
 		for(let room of rooms){
-			if(room.clientSocket == socket.id){
+			if(room.clientSocket == socket.id && room.helperSocket){
 				let message = {
 					msg: chat.input,
 					nick: room.client,
 					helper: false,
-				}
+				};
 				io.to(socket.room).emit('newMessage', message);
 				break;
 			}
-			else if(room.helperSocket == socket.id){
+			else if(room.helperSocket == socket.id && room.clientSocket){
 				let message = {
 					msg: chat.input,
 					nick: chat.nick,
 					helper: true,
-				}
+				};
 				io.to(socket.room).emit('newMessage', message);
 				break;
 			}

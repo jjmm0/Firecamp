@@ -37,7 +37,8 @@
              </div>
                 <input class=" messageInput"  @keyup.enter="send()" v-model="chat.input" type="text" placeholder="Napisz wiadomość"/> 
                 <div class="messageSend" @click="send()">
-                    Wyślij
+                    <!-- Wyślij -->
+                    ->
                 </div>
              <div class="helperComp">
                 <div class="pfpContainer">

@@ -4,7 +4,7 @@
 {
     height: 90%;
     width: 100%;
-    box-sizing: border-box;
+    // box-sizing: border-box;
     // overflow: hidden;
 }
 
@@ -13,14 +13,12 @@
 .content{
 
     backdrop-filter: blur(3px) brightness(70%);
-    width: 90%;
-    height: 90%;
+    width: 95%;
+    height: 95%;
     margin: auto;
     // padding-top: 5%;
     margin-top: 4%;
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
-    grid-template-rows: repeat(24, 1fr);
     outline: 3px solid white;
 }
 .chatComp{
@@ -29,9 +27,8 @@
     // overflow: hidden;
     outline: 2px solid white;
     background-color: rgba(0, 0, 0, 0.3);
-    grid-area: 3 / 2 / 20 / 14;
     margin-bottom: 10px;
-
+    
 }
 //Inside chat
 .message{
@@ -41,25 +38,77 @@
     display: block;
 }
 @media (min-width: 901px){
+    .content{
+        grid-template-columns: repeat(24, 1fr);
+        grid-template-rows: repeat(24, 1fr);
+    }
+    .chatComp{
+        grid-area: 3 / 2 / 20 / 14;
+    }
+
     .helperMessage{
         width: 80%;
+        margin-left: 2%;
     }
     .clientMessage{
         margin-left: 18%;
         width: 80%;
     }
+    .messageInput{
+        grid-area: 20/ 2 / 21 / 12;
+    }
+    .messageSend{
+        font-size: 22px;
+        grid-area: 20 / 12 / 21 / 14;
+        
+    }
+    .helperComp{
+        
+        grid-area: 3 / 15 / 18 / 24;
+    }
+    .likeContainer{
+        grid-area: 19 / 15 / 21 / 19;
+    }
+    .endContainer{
+        grid-area: 19 / 20 / 21 / 24;
+    }
 }
 @media (max-width: 900px){
+    .content{
+        grid-template-columns: repeat(24, 1fr);
+        grid-template-rows: repeat(24, 1fr);
+    }
+    .chatComp{
+        grid-area: 1 / 1 / 11 / 25;
+    }
     .helperMessage{
-        width: 100%;
+        width: 80%;
+        margin-left: 2%;
     }
     .clientMessage{
-        margin-left: 0%;
-        width: 100%;
+        margin-left: 18%;
+        width: 80%;
+    }
+    .messageSend{
+        font-size: 18px;
+        grid-area: 11 / 22 / 13 / 25;
+        padding-top: 6px;
+
+    }
+    .helperComp{
+        grid-area: 13 / 12 / 25 / 25;
+    }
+    .messageInput{
+        grid-area: 11 / 1 / 13 / 22;
+    }
+    .likeContainer{
+        grid-area: 13 / 1 / 19 / 12;
+    }
+    .endContainer{
+        grid-area: 19 / 1 / 25 / 12;
     }
 }
 .helperMessage{
-    margin-left: 2%;
     .headHelper{
         height: 70px;
         width: 100%;
@@ -103,8 +152,6 @@
 }
 
 .clientMessage{
-    // width: 80%;
-    // margin-left: 18%;
     .headClient{
         height: 70px;
         width: 100%;
@@ -149,15 +196,11 @@
 }
 
 
-
-
 .messageInput{
     border: none;
     color: white;
     background-color: rgba(0,0,0,0.3);
-    grid-area: 20/ 2 / 21 / 12;
     padding-left: 10px;
-    margin-right: 10px;
     border-bottom: 1px solid white;
 }
 .messageInput:focus{
@@ -165,12 +208,11 @@
     outline: none;
 }
 .messageSend{
+    margin: 6px;
     text-align: center;
-    font-size: 22px;
     font-weight: bold;
     background-color:rgba(255, 255, 255, 0.7);
-
-    grid-area: 20 / 12 / 21 / 14;
+    
     box-shadow: inset 0 0 10px -1px rgba(139, 22, 197, 0.9);
     transition: 0.2s ease-in-out;
 
@@ -203,7 +245,6 @@
 .helperComp{
     overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0.3);
-    grid-area: 3 / 15 / 18 / 24;
     outline: 2px solid white;
     center{
         height: 100%;
@@ -241,7 +282,6 @@
     display: table;
     user-select: none;
     background-color: rgba(21, 169, 255, 0.3);
-    grid-area: 19 / 15 / 21 / 19;
     height: 100%;
     outline: 2px solid white;
     transition: 0.2s ;
@@ -288,7 +328,7 @@
     user-select: none;
     display: table;
     background-color: rgba(197, 0, 0, 0.3);
-    grid-area: 19 / 20 / 21 / 24;
+
     height: 100%;
     outline: 2px solid white;
     transition: 0.2s;

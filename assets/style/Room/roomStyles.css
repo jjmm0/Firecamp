@@ -21,7 +21,6 @@
   overflow-y: scroll;
   outline: 2px solid white;
   background-color: rgba(0, 0, 0, 0.3);
-  margin-bottom: 10px;
 }
 
 .message {
@@ -70,6 +69,7 @@
     grid-area: 20 / 12 / 21 / 14;
   }
   .helperComp {
+    outline: 2px solid white;
     -ms-grid-row: 3;
     -ms-grid-row-span: 15;
     -ms-grid-column: 15;
@@ -77,6 +77,7 @@
     grid-area: 3 / 15 / 18 / 24;
   }
   .likeContainer {
+    outline: 2px solid white;
     -ms-grid-row: 19;
     -ms-grid-row-span: 2;
     -ms-grid-column: 15;
@@ -84,6 +85,7 @@
     grid-area: 19 / 15 / 21 / 19;
   }
   .endContainer {
+    outline: 2px solid white;
     -ms-grid-row: 19;
     -ms-grid-row-span: 2;
     -ms-grid-column: 20;
@@ -129,6 +131,8 @@
     -ms-grid-column: 12;
     -ms-grid-column-span: 13;
     grid-area: 13 / 12 / 25 / 25;
+    border-left: 2px solid white;
+    border-top: 1px solid white;
   }
   .messageInput {
     -ms-grid-row: 11;
@@ -143,8 +147,10 @@
     -ms-grid-column: 1;
     -ms-grid-column-span: 11;
     grid-area: 13 / 1 / 19 / 12;
+    border-top: 2px solid white;
   }
   .endContainer {
+    border-top: 2px solid white;
     -ms-grid-row: 19;
     -ms-grid-row-span: 6;
     -ms-grid-column: 1;
@@ -327,7 +333,6 @@
 .helperComp {
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.3);
-  outline: 2px solid white;
 }
 
 .helperComp center {
@@ -372,7 +377,6 @@
           user-select: none;
   background-color: rgba(21, 169, 255, 0.3);
   height: 100%;
-  outline: 2px solid white;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;
@@ -432,7 +436,6 @@
   display: table;
   background-color: rgba(197, 0, 0, 0.3);
   height: 100%;
-  outline: 2px solid white;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;

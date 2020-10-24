@@ -19,7 +19,7 @@ export default {
 
     // If someone from the room will disconnect
     this.socket.on('userDC', () =>{
-      alert('Connection lost!');
+      alert('Utracono połączenie!');
       location.reload(true);
     })
   },

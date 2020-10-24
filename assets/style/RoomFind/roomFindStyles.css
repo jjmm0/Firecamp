@@ -36,9 +36,9 @@
   height: 200px;
   width: 350px;
   outline: 3px solid white;
-  background-color: transparent;
-  -webkit-backdrop-filter: blur(3px) brightness(80%);
-          backdrop-filter: blur(3px) brightness(80%);
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
   cursor: pointer;
@@ -82,5 +82,24 @@
   display: table-cell;
   vertical-align: middle;
   padding: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #d9b0ee;
 }
 /*# sourceMappingURL=roomFindStyles.css.map */

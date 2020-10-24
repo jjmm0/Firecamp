@@ -1,9 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="header">
-      <!-- <HeaderHelper v-if="this.$store.state.userdata.name || this.$store.state.userdata.uid || this.$store.state.userdata.token" />
-      <HeaderClient v-else /> -->
-      <HeaderBurger />
+      <HeaderHelper v-if="screenWidth > 1030"/>
+      <HeaderBurger v-if="screenWidth <= 1030"/>
     </div>
     <div class="content">      
       <div class="profile">
@@ -40,6 +39,7 @@ export default {
       description: 'asdasda',
       likes: null,
       canedit: false,
+      screenWidth: 0,
     }
   },
   mounted(){
@@ -54,6 +54,11 @@ export default {
         (this.$store.state.userdata.token || this.$store.state.userdata.name || this.$store.state.userdata.uid)){
           this.canedit = true;
         }
+    });
+
+    this.screenWidth = window.innerWidth;
+    window.addEventListener('resize', ()=>{
+      this.screenWidth = window.innerWidth;
     });
   },
   methods: {

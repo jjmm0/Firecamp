@@ -55,8 +55,8 @@ export default {
     });
     this.screenWidth = window.innerWidth;
     window.addEventListener('resize', ()=>{
-      this.screenWidth = window.innerWidth
-    })
+      this.screenWidth = window.innerWidth;
+    });
   },
   methods: {
     joinRoom(roomToJoin){

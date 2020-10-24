@@ -106,13 +106,21 @@ export default {
             this.scrollToBottom();
             console.log(this.messages)
         });
-        // Take data about room(helperID etc.)
-        this.socket.emit('takeRoomData', this.$route.params.roomId);
+        
+        // Emit to take roomData
+        this.socket.emit('takeRoomData', {roomID : this.$route.params.roomId, helper: true});
+
+        // If your helper joined, emit takeRoomData
+        this.socket.on('helperJoined', () => {
+            this.socket.emit('takeRoomData', {roomID : this.$route.params.roomId, helper: false});
+        });
+
         this.socket.on('cantJoin', () => {
             // If u can't join to this room - route push
             this.$router.push('/');
         });
-        // Take helper data
+
+        // Receive helperData
         this.socket.on('helperData', (helperID) => {
             this.helperID = helperID;
             this.$axios.get(`/api/profile/${this.helperID}`).then((resolve) => {

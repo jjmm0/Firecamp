@@ -54,6 +54,8 @@ io.on('connection', (socket) => {
 				clientSocket: socket.id,
 				socket: socket.id
 			});
+			io.to(socket.id).emit('created', socket.id);
+
 			// Emit new openRooms array
 			io.emit('updateRooms', openRooms);
 		}
@@ -86,6 +88,8 @@ io.on('connection', (socket) => {
 						clientSocket: socket.id,
 						socket: socket.id
 					});
+					io.to(socket.id).emit('created', socket.id);
+
 					// Emit new openRooms array
 					io.emit('updateRooms', openRooms);
 					break;
@@ -106,9 +110,9 @@ io.on('connection', (socket) => {
 			if(room.socket != roomToJoin.socket){
 				return room;
 			}else{
-				//Emit data to client and helper
-				io.to(roomToJoin.socket).emit('created', roomToJoin.socket);
+				//Emit data to helper
 				io.to(socket.id).emit('joined', roomToJoin.socket);
+				// io.to(room.clientSocket).emit('takeRoomData')
 			}
 		});
 		// Emit new openRooms array
@@ -147,7 +151,7 @@ io.on('connection', (socket) => {
 	})
 
 	// Send room data to user which CAN join to the room
-	socket.on('takeRoomData', (roomId) => {
+	socket.on('takeRoomData', async(roomData) => {
 		if(rooms.length <= 0){
 			io.to(socket.id).emit('cantJoin');
 		}
@@ -155,14 +159,15 @@ io.on('connection', (socket) => {
 			if(!socket.room){
 				io.to(socket.id).emit('cantJoin');
 			}
-			else if(socket.room == roomId){
+			else if(socket.room == roomData.roomID){
 				for(let room of rooms){
-					if(room.socket === socket.id){
+					if(room.clientSocket === socket.id && room.helperSocket && !roomData.helper){
 						io.to(socket.id).emit('helperData', room.helperID);
 						break;
 					}
-					else if(room.socket === socket.room){
+					else if(room.helperSocket === socket.id && roomData.helper){
 						io.to(socket.id).emit('helperData', room.helperID);
+						io.to(room.clientSocket).emit('helperJoined');
 						break;
 					}
 				}

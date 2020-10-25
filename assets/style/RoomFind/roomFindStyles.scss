@@ -1,12 +1,12 @@
 .wrapper{
     height: 100%;
-    overflow: scroll;
 }
 .header{
     height: 100px;
     z-index: 100;
 }
 .content{
+    overflow: scroll;
     height: calc(100% - 54px);
     padding: 40px 80px 0px 80px;
     display: flex;

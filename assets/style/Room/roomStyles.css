@@ -24,7 +24,7 @@
 }
 
 .message {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
   margin-top: 10px;
   margin-bottom: 10px;
   display: block;
@@ -92,9 +92,15 @@
     -ms-grid-column-span: 4;
     grid-area: 19 / 20 / 21 / 24;
   }
+  .likes {
+    padding: 8px;
+  }
 }
 
 @media (max-width: 900px) {
+  .likes {
+    padding: 4px;
+  }
   .content {
     -ms-grid-columns: (1fr)[24];
         grid-template-columns: repeat(24, 1fr);
@@ -103,10 +109,10 @@
   }
   .chatComp {
     -ms-grid-row: 1;
-    -ms-grid-row-span: 10;
+    -ms-grid-row-span: 11;
     -ms-grid-column: 1;
     -ms-grid-column-span: 24;
-    grid-area: 1 / 1 / 11 / 25;
+    grid-area: 1 / 1 / 12 / 25;
   }
   .helperMessage {
     width: 80%;
@@ -118,11 +124,11 @@
   }
   .messageSend {
     font-size: 18px;
-    -ms-grid-row: 11;
-    -ms-grid-row-span: 2;
+    -ms-grid-row: 12;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 22;
     -ms-grid-column-span: 3;
-    grid-area: 11 / 22 / 13 / 25;
+    grid-area: 12 / 22 / 13 / 25;
     padding-top: 6px;
   }
   .helperComp {
@@ -135,11 +141,11 @@
     border-top: 1px solid white;
   }
   .messageInput {
-    -ms-grid-row: 11;
-    -ms-grid-row-span: 2;
+    -ms-grid-row: 12;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 21;
-    grid-area: 11 / 1 / 13 / 22;
+    grid-area: 12 / 1 / 13 / 22;
   }
   .likeContainer {
     -ms-grid-row: 13;
@@ -215,6 +221,7 @@
 }
 
 .helperMessage .valueH {
+  word-wrap: break-word;
   padding-left: 5%;
   padding: 4px 8px 4px 8px;
 }
@@ -275,6 +282,7 @@
 }
 
 .clientMessage .valueC {
+  word-wrap: break-word;
   padding-left: 5%;
   padding: 4px 10px 4px 10px;
 }
@@ -293,7 +301,6 @@
 }
 
 .messageSend {
-  margin: 6px;
   text-align: center;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.7);
@@ -354,7 +361,7 @@
 }
 
 .helperComp .pfpContainer .likes {
-  padding-left: 10px;
+  outline: 1px solid white;
   width: auto;
   font-size: 24px;
   display: inline-block;
@@ -398,6 +405,12 @@
   padding-bottom: 6px;
   width: 28px;
   height: 28px;
+}
+
+.Send {
+  height: 20px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .likeContainer:hover {

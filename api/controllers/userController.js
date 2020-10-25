@@ -19,7 +19,7 @@ module.exports.register = [
             } 
             else if (result)
             {
-                res.status(201).send({message: "Użytkownik o podanym loginie już istnieje!"});
+                res.status(201).send({message: "Nazwa użytkownika jest zajęta!"});
             } 
             else
             {
@@ -52,7 +52,7 @@ module.exports.login = [
                 });
             }
             else{
-                res.status(200).send(`Uzytkownik nie istnieje`);
+                res.status(200).send(`Użytkownik nie istnieje`);
             }
         });
     }

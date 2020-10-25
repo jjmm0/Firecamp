@@ -37,7 +37,7 @@ body,
 #__nuxt,
 #__layout {
   height: 100%;
-    background-image: url("../assets/bg/boat.jpg"); 
+    background-image: url("../assets/images/boat.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

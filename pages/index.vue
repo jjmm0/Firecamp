@@ -1,7 +1,7 @@
 <template>
   <div class="master">
     <div class="pusher">
-      <img class="logo" src="~/assets/bg/Logo3.png">
+      <img class="logo" src="~/assets/images/Logo3.png">
     </div>
     
     <div class="indexcontainer " >

@@ -1,16 +1,7 @@
 <template>
-    <!-- <div>
-        <label>Nazwa Użytkownika:</label><br>
-        <input v-model="room.uname" type="text"><br>
-        <label>Nazwa Pokoju:</label><br>
-        <input v-model="room.name" type="text"><br>
-        <label>Opis:</label><br>
-        <input v-model="room.description" type="text">
 
-        <button @click="createRoom">CREATE</button>
-    </div> -->
   <div class="wrapper">
-    <img id="return" @click="handleRoute('/')" src="~/assets/bg/Logo3.png">
+    <img id="return" @click="handleRoute('/')" src="~/assets/images/Logo3.png">
 
     <div class="form-group" @keyup.enter="createRoom">
       <label for="userName" >Nazwa użytkownika <span :class="{redText: room.uname.length > 20}" >{{room.uname.length}} / 20</span></label>

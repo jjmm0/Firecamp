@@ -172,11 +172,9 @@
   position: relative;
   border-radius: 50%;
   width: 100%;
-  // box-sizing: border-box;
   cursor: pointer;
   margin-bottom: 0;
 }
-
 .userProfilePicture img{
   display: block;
   width: 100%;
@@ -187,18 +185,13 @@
   opacity: 0.5;
 }
 .overlay{
-  
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  // height: 100%;
-  // width: 100%;
-  // opacity: 0;
   transition: .5s ease;
   background-color: transparent;
-  
   .Overtext{
     color: white;
     font-size: 20px;
@@ -221,7 +214,6 @@
   width: 100%;
   display: none;
   height: 100%;
-  // word-wrap: break-word;
   button{
     height: 100%;
     width: 100%;

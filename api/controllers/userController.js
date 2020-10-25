@@ -1,6 +1,4 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
-const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const Jimp = require('jimp');

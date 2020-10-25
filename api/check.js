@@ -8,11 +8,11 @@ module.exports.auth = [
         if(utoken)
         {
             jwt.verify(req.headers.utoken, 'SikretKluczES', (err, decoded) => {
-                if(decoded == (undefined || null)){
+                if(decoded == undefined || null){
                     res.status(201).end();
                     console.log('Unauthorized!');
                 }
-                else if(decoded.result.Login != (null || undefined)){
+                else if(decoded.result.Login != null || undefined){
                     User.findOne({_id: req.headers.uid, Login: decoded.result.Login}, (err, result) => {
                         if(result){
                             if((result.Login === (decoded.result.Login && req.headers.uname)) && (result.Password === decoded.result.Password)){

@@ -10,7 +10,7 @@ const check = require('../check');
 const storage = multer.diskStorage({
   destination: './api/avatar',
   async filename(req, file, cb) {
-    if(file.mimetype == ('image/jpeg' || 'image/png' || 'image/svg+xml')){
+    if(file.mimetype == 'image/jpeg' || 'image/png' || 'image/svg+xml'){
       const fileName = await check.userId(req);
       cb(null, fileName + '.png');
     }

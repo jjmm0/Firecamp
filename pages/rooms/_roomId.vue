@@ -59,6 +59,8 @@
                 </div>
              </div>
         </div>
+        <audio ref="a2" src="~/assets/sounds/click2.mp4" ></audio>
+        <audio ref="a3" src="~/assets/sounds/not1.mp4" ></audio>
     </div>
 </template>
 
@@ -98,6 +100,7 @@ export default {
                 minutes =  "0" + minutes.toString();
             }
             this.messages.push({msg: message.msg, nick: message.nick, helper: message.helper, time: `${hours}:${minutes}`});
+            this.$refs.a2.play()
             await this.$nextTick();
             this.scrollToBottom();
         });
@@ -108,6 +111,7 @@ export default {
         // If your helper joined, emit takeRoomData
         this.socket.on('helperJoined', () => {
             this.socket.emit('takeRoomData', {roomID : this.$route.params.roomId, helper: false});
+            this.$refs.a3.play()
         });
 
         this.socket.on('cantJoin', () => {

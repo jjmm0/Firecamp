@@ -1,6 +1,6 @@
 .wrapper{
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
 }
 .header{
     height: 100px;
@@ -13,6 +13,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 .block{
     padding: 4px;

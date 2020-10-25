@@ -11,7 +11,7 @@
           <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" >
           <div class="imageInput"></div>
         </label>
-        <input v-if="canedit" type="file" id="file-input" name="avatar" @change="sendAvatar" placeholder="gunga" class="pfpEdit">
+        <input v-if="canedit" type="file" id="file-input" name="avatar" @change="uploadAvatar" placeholder="gunga" class="pfpEdit">
         
           <div class="Username">
             <div class="text">
@@ -28,7 +28,7 @@
           <div class="Desc" v-else>
             {{description}}
           </div>
-          <button class="saveDesc btn btn-primary" v-if="canedit" @click="editDesc()">Zapisz</button>
+          <button class="saveDesc btn btn-primary" v-if="canedit" @click="editDesc">Zapisz</button>
       </div>
     </div>
   </div>
@@ -47,12 +47,12 @@ export default {
     }
   },
   mounted(){
-    //Pobierz profil na podstawie routa w adresie
+    // Get profile by route params
     let result = this.$axios.get(`/api/profile/${this.$route.params.userId}`).then((resolve) => {
         this.name = resolve.data.name;
         this.description = resolve.data.description;
         this.likes = resolve.data.likes;
-        //Jezeli ten profil nalezy do ciebie zezwol na edycje
+        // If this profile is your profile
         if((resolve.data.id === this.$store.state.userdata.uid)&&
         (resolve.data.name === this.$store.state.userdata.name)&&
         (this.$store.state.userdata.token || this.$store.state.userdata.name || this.$store.state.userdata.uid)){
@@ -66,6 +66,7 @@ export default {
     });
   },
   methods: {
+    // Edit description
     editDesc(){
       const { description } = this;
       this.$axios.put('/api/profile', {description}).then((resolve) => {
@@ -77,7 +78,8 @@ export default {
         }
       })
     },
-    sendAvatar(event) {
+    // Upload avatar
+    uploadAvatar(event) {
       const formData = new FormData();
       formData.append('avatar', event.target.files[0]);
       

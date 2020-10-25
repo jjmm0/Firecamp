@@ -39,20 +39,24 @@ export default {
   },
   mounted(){
     this.socket = window.socket;
+    // Send emit to get list of rooms
     this.socket.emit('getRooms');
   
+    // Receive updated list of rooms
     this.socket.on('updateRooms', (rooms) => {
       this.rooms = rooms;
     })
-
+    // If you joined to the room succesfully
     this.socket.on('joined', (roomId) => {
       let data = {
         roomId: roomId,
         helperID: this.$store.state.userdata.uid
       };
+      // Connect to this room and push route
       this.socket.emit('roomConnect', data);
       this.$router.push(`/rooms/${roomId}`);
     });
+
     this.screenWidth = window.innerWidth;
     window.addEventListener('resize', ()=>{
       this.screenWidth = window.innerWidth;

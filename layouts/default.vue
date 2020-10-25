@@ -3,17 +3,15 @@
     <div class="box2"><Nuxt /></div>
   </div>
 </template>
-
 <script>
 export default {
   beforeMount() {
-    const secure = location.protocol === 'https:'
+    const secure = location.protocol === 'https:';
     const port = secure ? '3002':'3001';
     window.socket = io(`${window.location.hostname}:${port}`, { secure });
   },
   mounted(){
     this.socket = window.socket;
-
     // If someone from the room will disconnect
     this.socket.on('userDC', () =>{
       alert('Utracono połączenie!');
@@ -37,7 +35,7 @@ body,
 #__nuxt,
 #__layout {
   height: 100%;
-    background-image: url("../assets/bg/boat.jpg"); 
+    background-image: url("../assets/images/boat.jpg"); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

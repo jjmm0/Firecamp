@@ -10,7 +10,7 @@
         <label for="file-input" class="userProfilePicture">
           <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" > 
           <div class="overlay">
-            <img class="overImg" src="~/assets/bg/PhotoSelection2.png">
+            <img class="overImg" src="~/assets/images/PhotoSelection2.png">
           </div>
         </label>
         <input v-if="canedit" type="file" id="file-input" name="avatar" @change="uploadAvatar" placeholder="gunga" class="pfpEdit">

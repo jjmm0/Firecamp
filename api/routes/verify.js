@@ -4,6 +4,6 @@ const router = Router();
 
 const check = require('../check');
 
-router.post('/verify', check.auth, (req, res) => {res.end()});
+router.post('/verify', check.auth);
 
 module.exports = router;

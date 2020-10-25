@@ -1,6 +1,4 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
-const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const Jimp = require('jimp');
@@ -31,7 +29,7 @@ module.exports.register = [
                         res.status(400).end();
                     }else{
                         console.log(`Utworzono uzytkownika: ${result}`);
-                        jwt.sign({result}, 'SikretKluczES', (err, coded) => {
+                        jwt.sign({result}, 'ad13fwevcv34fewvvsvasv43gwexzv345vsvessv', {expiresIn: '24h'}, (err, coded) => {
                             res.status(200).send({token: coded, login: result.Login, uid: result._id});
                         });
                     }
@@ -49,7 +47,7 @@ module.exports.login = [
                 console.log(err);
             } 
             else if(result){
-                jwt.sign({result}, 'SikretKluczES', (err, coded) => {
+                jwt.sign({result}, 'ad13fwevcv34fewvvsvasv43gwexzv345vsvessv', {expiresIn: '24h'}, (err, coded) => {
                     res.status(200).send({token: coded, login: result.Login, uid: result._id});
                 });
             }

@@ -7,7 +7,7 @@ module.exports.auth = [
         const utoken = req.headers.utoken || null
         if(utoken)
         {
-            jwt.verify(req.headers.utoken, 'SikretKluczES', (err, decoded) => {
+            jwt.verify(req.headers.utoken, 'ad13fwevcv34fewvvsvasv43gwexzv345vsvessv', (err, decoded) => {
                 if(decoded == undefined || null){
                     res.status(201).end();
                     console.log('Unauthorized!');
@@ -47,7 +47,7 @@ module.exports.userId = function (req) {
         reject(new Error('No token supplied!'));
     }
 
-    jwt.verify(token, 'SikretKluczES', function (err, decoded){
+    jwt.verify(token, 'ad13fwevcv34fewvvsvasv43gwexzv345vsvessv', function (err, decoded){
     if(err){
         return reject(err);
     }

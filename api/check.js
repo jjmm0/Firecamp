@@ -38,6 +38,7 @@ module.exports.auth = [
         }
     }
 ]
+
 // Get user id from request
 module.exports.userId = function (req) {
   return new Promise((resolve, reject) => {

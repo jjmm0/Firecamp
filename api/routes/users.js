@@ -43,8 +43,5 @@ router.get('/avatar/:userId', userController.getAvatar);
 // User avatar upload
 router.post('/avatar', check.auth, upload.single('avatar'), userController.uploadAvatar);
 
-// // Get ranking
-// router.get('/ranking', userController.ranking);
-
 // Export router
 module.exports = router;

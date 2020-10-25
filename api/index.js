@@ -112,7 +112,6 @@ io.on('connection', (socket) => {
 			}else{
 				//Emit data to helper
 				io.to(socket.id).emit('joined', roomToJoin.socket);
-				// io.to(room.clientSocket).emit('takeRoomData')
 			}
 		});
 		// Emit new openRooms array

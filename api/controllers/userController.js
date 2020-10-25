@@ -138,22 +138,13 @@ module.exports.uploadAvatar = [
         Jimp.read(filePath, (err, done) => {
             if(done){
                 done
-                .resize(256, 256) //Change image size
-                .write(filePath) //Save image
-                res.status(200).end();
+                .resize(256, 256) // Change image size
+                .write(filePath) // Save image
+                res.status(200).end(); // End response
             }else{
                 console.log(err);
-                res.status(400).end();
+                res.status(400).end(); // End response
             }
-        });
-    }
-]
-
-// Get ranking
-module.exports.ranking = [
-    function(req, res){
-        User.find({}, '-_id -Password -Email -Description',).then((resolve) => {
-            res.status(200).send(resolve);
         });
     }
 ]

@@ -91,7 +91,7 @@ export default {
 
         // Receive newMessage
         this.socket.on('newMessage', async (message) => {
-            //Create message's sending date
+            // Create message's sending date
             let hours = new Date().getHours().toString();
             let minutes = new Date().getMinutes().toString();
             if(hours.length == 1){

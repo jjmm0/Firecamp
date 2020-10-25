@@ -14,8 +14,6 @@
           </div>
         </label>
         <input v-if="canedit" type="file" id="file-input" name="avatar" @change="uploadAvatar" placeholder="gunga" class="pfpEdit">
-        
-
           <div class="Username">
             <div class="text">
               {{name}} 
@@ -85,12 +83,11 @@ export default {
     uploadAvatar(event) {
       const formData = new FormData();
       formData.append('avatar', event.target.files[0]);
-      
       this.$axios.post('/api/avatar', formData).then((resolve) => {
         if(resolve.status === 200){
           location.reload(true);
         }else{
-          alert("Błąd");
+          alert("Wystąpił błąd");
         }
       });
     },

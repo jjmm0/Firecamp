@@ -14,7 +14,6 @@
       <br>
       <label for="roomDesc">Opis pokoju <span :class="{redText: room.description.length > 150}" >{{room.description.length}} / 150</span></label>
       <br>
-      
       <textarea rows="3"  id="roomDesc" class="form-control" autocomplete="off" v-model="room.description"></textarea>
       <!-- Error Messages -->
       <p v-show="userError" class="alertText userAlert"><b>Nazwa użytkownika nie może być pusta!</b></p>
@@ -23,13 +22,11 @@
 
       <br>
       <div class="button">
-        <!-- <button @click="createRoom" type="submit"  :class="{disabled: disable ||  room.description.length > 400 || room.uname.length > 20 || room.name.length > 20}" :disabled="disable || room.description.length > 400" class="btn btn-primary">Utwórz pokój</button> -->
         <button @click="createRoom" type="submit"  :class="{disabled: Condition}" :disabled="disable || room.description.length > 150" class="btn btn-primary">Utwórz pokój</button>
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -41,9 +38,6 @@ export default {
         roomError: false,
         descError: false,
         disable: false,
-        descCharError: false,
-      //counting input length
-      descTotal: 0,
       room: {
         name: "",
         description: "",
@@ -53,7 +47,6 @@ export default {
   },
   mounted(){
     this.socket = window.socket;
-
     this.socket.on('created', (roomId) => {
       let data = {
         roomId: roomId,
@@ -75,7 +68,6 @@ export default {
   methods: {
     handleRoute(route){
       this.$router.push(`${route}`)
-
     },
     async createRoom(){
       //preventing user from spamming on button
@@ -102,9 +94,9 @@ export default {
           this.disable = true;
           await this.socket.emit('createRoom', this.room);
           //reseting values
-            this.room.name = '';
-            this.room.uname = '';
-            this.room.description = '';
+          this.room.name = '';
+          this.room.uname = '';
+          this.room.description = '';
         }
       }
     }

@@ -288,12 +288,12 @@
   display: block;
   width: 100%;
   border-radius: 50%;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
+  -webkit-transition: 0.35s ease-in-out;
+  transition: 0.35s ease-in-out;
 }
 
 .userProfilePicture:hover .overlay .overImg {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .overlay {

@@ -3,7 +3,6 @@
     <div class="pusher">
       <img class="logo" src="~/assets/images/Logo3.png">
     </div>
-    
     <div class="indexcontainer " >
       <div class="filter">
         <div class="text">
@@ -28,24 +27,16 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   middleware: ['notLoggedIn', 'verify'],
-  data(){
-    return{
-
-    }
-  },
   methods:{
     handleRouter(route){
       this.$router.push(`/${route}`);
     }
   }
-
 }
 </script>
-
 <style scoped>
-    @import '~/assets/style/mainsite/style.css';
+@import '~/assets/style/mainsite/style.css';
 </style>

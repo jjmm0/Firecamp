@@ -3,11 +3,10 @@
     <div class="header">
       <HeaderHelper v-if="screenWidth > 700"/>
       <HeaderBurger v-if="screenWidth <= 700"/>
-      
     </div>
-    <div class="content" >
+    <div class="content">
       <div class="block" v-for="room in rooms" @click="joinRoom(room)">
-        <div class="roomName" ><i><b><span class="txt">Nazwa pokoju: </span></b></i>{{room.name}}</div>
+        <div class="roomName"><i><b><span class="txt">Nazwa pokoju: </span></b></i>{{room.name}}</div>
         <div class="userName"><i><b><span class="txt">Nazwa użytkownika: </span></b></i>{{room.client}}</div>
         <div class="roomDesc"><i><b><span class="txt">Opis: </span></b></i>{{room.description}}</div>
       </div>
@@ -17,7 +16,6 @@
 </template>
 
 <script>
-
 export default {
   middleware: ['LoggedIn', 'verify'],
   data(){
@@ -35,18 +33,17 @@ export default {
         return false;
       }
     },
-
   },
   mounted(){
     this.socket = window.socket;
     // Send emit to get list of rooms
     this.socket.emit('getRooms');
-  
+
     // Receive updated list of rooms
     this.socket.on('updateRooms', (rooms) => {
       this.rooms = rooms;
     })
-    // If you joined to the room succesfully
+    // If you joined to the room successfully
     this.socket.on('joined', (roomId) => {
       let data = {
         roomId: roomId,
@@ -56,7 +53,6 @@ export default {
       this.socket.emit('roomConnect', data);
       this.$router.push(`/rooms/${roomId}`);
     });
-
     this.screenWidth = window.innerWidth;
     window.addEventListener('resize', ()=>{
       this.screenWidth = window.innerWidth;

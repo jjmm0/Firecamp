@@ -9,12 +9,21 @@
 .content{
     overflow: scroll;
     height: calc(100% - 54px);
-    padding: 40px 80px 0px 80px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 
+}
+@media (max-width: 500px){
+    .content{
+        padding: 20px 4px 0 4px;
+    }
+}
+@media (min-width: 501px){
+    .content{
+        padding: 40px 80px 0 80px;
+    }
 }
 .block{
     padding: 4px;

@@ -169,21 +169,51 @@
   overflow-x: hidden;
 }
 .userProfilePicture{
+  position: relative;
   border-radius: 50%;
   width: 100%;
-  box-sizing: border-box;
+  // box-sizing: border-box;
   cursor: pointer;
+  margin-bottom: 0;
 }
+
 .userProfilePicture img{
+  display: block;
   width: 100%;
   border-radius: 50%;
   transition: 0.2s ease-in-out;
 }
-.userProfilePicture img:hover{
-  filter: brightness(50%);
+.userProfilePicture:hover .overlay .overImg{
+  opacity: 0.5;
 }
-.imageInput{
+.overlay{
+  
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // height: 100%;
+  // width: 100%;
+  // opacity: 0;
+  transition: .5s ease;
+  background-color: transparent;
+  
+  .Overtext{
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .overImg{
+    opacity: 0;
+    width: 100%;
+  }
 }
 .pfpEdit{
   outline: 1x solid white;

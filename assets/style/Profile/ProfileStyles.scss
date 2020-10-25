@@ -34,7 +34,7 @@
     grid-template-rows: repeat(11, 1fr);
     width: 80%;
   }
-  #userProfilePicture{
+  .userProfilePicture{
     grid-area: 2 / 2 / 6 / 5  ;
   }
   .pfpEdit{
@@ -71,7 +71,7 @@
     grid-template-rows: repeat(24, 1fr);
     width: 95%;
   }
-  #userProfilePicture{
+  .userProfilePicture{
     grid-area: 2 / 6 / 6 / 8;
   }
   .pfpEdit{
@@ -112,7 +112,7 @@
     grid-template-rows: repeat(24, 1fr);
     width: 95%;
   }
-  #userProfilePicture{
+  .userProfilePicture{
     grid-area: 2 / 2 / 6 / 6;
   }
   .likesCounter{
@@ -168,15 +168,28 @@
   backdrop-filter: blur(3px);
   overflow-x: hidden;
 }
-#userProfilePicture{
+.userProfilePicture{
   border-radius: 50%;
   width: 100%;
   box-sizing: border-box;
+  cursor: pointer;
+}
+.userProfilePicture img{
+  width: 100%;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+}
+.userProfilePicture img:hover{
+  filter: brightness(50%);
+}
+.imageInput{
+  position: absolute;
 }
 .pfpEdit{
   outline: 1x solid white;
   color: white;
   width: 100%;
+  display: none;
   height: 100%;
   // word-wrap: break-word;
   button{

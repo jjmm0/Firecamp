@@ -7,8 +7,11 @@
     </div>
     <div class="content">      
       <div class="profile">
-        <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" id="userProfilePicture">
-        <input v-if="canedit" type="file" name="avatar" @change="sendAvatar" placeholder="gunga" class="pfpEdit">
+        <label for="file-input" class="userProfilePicture">
+          <img :src="`/api/avatar/${this.$route.params.userId}`" placeholder="Missing pfp" >
+          <div class="imageInput"></div>
+        </label>
+        <input v-if="canedit" type="file" id="file-input" name="avatar" @change="sendAvatar" placeholder="gunga" class="pfpEdit">
         
           <div class="Username">
             <div class="text">

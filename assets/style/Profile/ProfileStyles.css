@@ -43,7 +43,7 @@
         grid-template-rows: repeat(11, 1fr);
     width: 80%;
   }
-  #userProfilePicture {
+  .userProfilePicture {
     -ms-grid-row: 2;
     -ms-grid-row-span: 4;
     -ms-grid-column: 2;
@@ -111,7 +111,7 @@
         grid-template-rows: repeat(24, 1fr);
     width: 95%;
   }
-  #userProfilePicture {
+  .userProfilePicture {
     -ms-grid-row: 2;
     -ms-grid-row-span: 4;
     -ms-grid-column: 6;
@@ -187,7 +187,7 @@
         grid-template-rows: repeat(24, 1fr);
     width: 95%;
   }
-  #userProfilePicture {
+  .userProfilePicture {
     -ms-grid-row: 2;
     -ms-grid-row-span: 4;
     -ms-grid-column: 2;
@@ -275,17 +275,35 @@
   overflow-x: hidden;
 }
 
-#userProfilePicture {
+.userProfilePicture {
   border-radius: 50%;
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  cursor: pointer;
+}
+
+.userProfilePicture img {
+  width: 100%;
+  border-radius: 50%;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.userProfilePicture img:hover {
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
+}
+
+.imageInput {
+  position: absolute;
 }
 
 .pfpEdit {
   outline: 1x solid white;
   color: white;
   width: 100%;
+  display: none;
   height: 100%;
 }
 

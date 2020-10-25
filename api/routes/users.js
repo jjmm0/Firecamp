@@ -10,9 +10,10 @@ const check = require('../check');
 const storage = multer.diskStorage({
   destination: './api/avatar',
   async filename(req, file, cb) {
-    const fileName = await check.userId(req);
-
-    cb(null, fileName + '.png');
+    if(file.mimetype == ('image/jpeg' || 'image/png' || 'image/svg+xml')){
+      const fileName = await check.userId(req);
+      cb(null, fileName + '.png');
+    }
   },
 });
 const upload = multer({ storage });
@@ -42,8 +43,8 @@ router.get('/avatar/:userId', userController.getAvatar);
 // User avatar upload
 router.post('/avatar', check.auth, upload.single('avatar'), userController.uploadAvatar);
 
-// Get ranking
-router.get('/ranking', userController.ranking);
+// // Get ranking
+// router.get('/ranking', userController.ranking);
 
 // Export router
 module.exports = router;
